@@ -40,7 +40,7 @@ const Navbar = () => {
                     </ul>
                     <form className="d-flex">
                         {checK_loginOr_not ? (
-                            <Link className="btn btn-primary mx-1" to="/login" role="button" onClick={handle_logout}>Logout</Link>
+                            <i className="btn btn-primary mx-1" role="button" onClick={handle_logout}>Logout</i>
                         ) : (
                             <>
                                 <Link className="btn btn-primary mx-1" to="/login" role="button">Login</Link>
