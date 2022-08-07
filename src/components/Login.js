@@ -6,7 +6,7 @@ const Login = (props) => {
     const context = useContext(noteContext);
 
     // context mese set_login function lekar aao
-    const {set_checK_loginOr_not} = context;
+    const {set_checK_loginOr_not, display_alert} = context;
 
     const [credentials, setCredentials] = useState({email: "", password: ""}) 
     let history = useHistory();
@@ -27,10 +27,10 @@ const Login = (props) => {
             localStorage.setItem('token', json.authtoken); 
             set_checK_loginOr_not(true);
             history.push("/");
-
+            display_alert("Login Successfully", "success");
         }
         else{
-            alert("Invalid credentials");
+            display_alert("Invalid credentials", "danger");
         }
     }
 

@@ -7,6 +7,19 @@ const NoteState = (props) => {
   const [notes, setNotes] = useState(notesInitial)
   const [checK_loginOr_not, set_checK_loginOr_not] = useState(false);
 
+  // show_alert call in navbar and when we need to use alert we use display_alert function
+  const [show_alert, set_show_alert] = useState(null);
+  const display_alert = (message, type) =>{
+    set_show_alert({
+      msg: message,
+      type: type
+    })
+    setTimeout(() => {
+      set_show_alert(null);
+    }, 2500);
+
+  }
+
   const authtoken = localStorage.getItem('token');
 
   // Get all Notes
@@ -25,7 +38,7 @@ const NoteState = (props) => {
       setNotes(json);
     }
     else {
-      alert("fetch sddsgdthg");
+      display_alert("Please Login/Signup to access all functionlity", "warning");
     }
   }
 
@@ -48,7 +61,7 @@ const NoteState = (props) => {
       setNotes(notes.concat(note));
     }
     else {
-      alert("add sddsgdthg");
+      display_alert("Please Login/Signup to add note", "warning");
     }
   }
 
@@ -70,7 +83,7 @@ const NoteState = (props) => {
       setNotes(newNotes);
     }
     else {
-      alert("delete sddsgdthg");
+      display_alert("Please Login/Signup to delete note", "warning");
     }
   }
 
@@ -103,12 +116,12 @@ const NoteState = (props) => {
       setNotes(newNotes);
     }
     else {
-      alert("update sddsgdthg");
+      display_alert("Please Login/Signup to update note", "warning");
     }
   }
 
   return (
-    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, set_checK_loginOr_not, getNotes, checK_loginOr_not}}>
+    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, set_checK_loginOr_not, getNotes, checK_loginOr_not, show_alert, display_alert}}>
       {props.children}
     </NoteContext.Provider>
   )
