@@ -26,8 +26,8 @@ const Login = (props) => {
             // Save the auth token and redirect
             localStorage.setItem('token', json.authtoken); 
             set_checK_loginOr_not(true);
-            history.push("/");
             display_alert("Login Successfully", "success");
+            history.push("/");
         }
         else{
             display_alert("Invalid credentials", "danger");
@@ -35,11 +35,12 @@ const Login = (props) => {
     }
 
     const onChange = (e)=>{
+        // get by id or name
         setCredentials({...credentials, [e.target.name]: e.target.value})
     }
 
     return (
-        <div>
+        <div className="mt-5">
             <form  onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
