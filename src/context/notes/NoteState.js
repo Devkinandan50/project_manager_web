@@ -10,10 +10,6 @@ const NoteState = (props) => {
   const authtoken = localStorage.getItem('token');
 
   // Get all Notes
-  useEffect(() => {
-    getNotes();
-  }, [])
-
   const getNotes = async () => {
     // API Call 
     if (checK_loginOr_not) {
@@ -29,7 +25,7 @@ const NoteState = (props) => {
       setNotes(json);
     }
     else {
-      alert("sddsgdthg");
+      alert("fetch sddsgdthg");
     }
   }
 
@@ -52,7 +48,7 @@ const NoteState = (props) => {
       setNotes(notes.concat(note));
     }
     else {
-      alert("sddsgdthg");
+      alert("add sddsgdthg");
     }
   }
 
@@ -74,7 +70,7 @@ const NoteState = (props) => {
       setNotes(newNotes);
     }
     else {
-      alert("sddsgdthg");
+      alert("delete sddsgdthg");
     }
   }
 
@@ -107,12 +103,12 @@ const NoteState = (props) => {
       setNotes(newNotes);
     }
     else {
-      alert("sddsgdthg");
+      alert("update sddsgdthg");
     }
   }
 
   return (
-    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, set_checK_loginOr_not }}>
+    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, set_checK_loginOr_not, getNotes, checK_loginOr_not}}>
       {props.children}
     </NoteContext.Provider>
   )
