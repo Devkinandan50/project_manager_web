@@ -1,10 +1,12 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import noteContext from "../context/notes/noteContext";
+import {useHistory} from 'react-router-dom';
 import "../style/userinfo.css";
 
 export default function UserInfo() {
     const context = useContext(noteContext);
     const { checK_loginOr_not } = context;
+    const history = useHistory();
 
     const intialdata = {};
 
@@ -46,8 +48,10 @@ export default function UserInfo() {
 
                         <p className="title mt-3"> {userdata.name} </p>
                         <p> {userdata.email}</p>
+
+                        <button className="mt-3" onClick={history.goBack} >back</button>
                     </div>
-                    <p> dsfrgrg </p>
+                    {/* <p> dsfrgrg </p> */}
                 </div>
             </div>
         </div>
