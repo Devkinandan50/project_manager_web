@@ -10,6 +10,7 @@ import About from './components/About';
 import NoteState from './context/notes/NoteState';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import UserInfo from './components/UserInfo';
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
               </Route>
               <Route exact path="/signup">
                 <Signup />
+              </Route>
+              <Route exact path="/userinfo">
+                <UserInfo />
               </Route>
             </Switch>
           </div>

@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import noteContext from "../context/notes/noteContext";
 import Alert from './Alert';
 
 const Navbar = () => {
     let location = useLocation();
+    let history = useHistory();
     const context = useContext(noteContext);
     const { checK_loginOr_not, set_checK_loginOr_not, show_alert } = context;
 
@@ -13,6 +15,7 @@ const Navbar = () => {
         if (ans) {
             localStorage.removeItem('token');
             set_checK_loginOr_not(false);
+            history.push("/");
             window.location.reload();
         }
     }
@@ -42,7 +45,10 @@ const Navbar = () => {
                         </ul>
                         <form className="d-flex">
                             {checK_loginOr_not ? (
-                                <i className="btn btn-primary mx-1" role="button" onClick={handle_logout}>Logout</i>
+                                <>
+                                    <Link className="btn btn-primary mx-1" to="/userinfo" role="button">user</Link>
+                                    <i className="btn btn-primary mx-1" role="button" onClick={handle_logout}>Logout</i>
+                                </>
                             ) : (
                                 <>
                                     <Link className="btn btn-primary mx-1" to="/login" role="button">Login</Link>
