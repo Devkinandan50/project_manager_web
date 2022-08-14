@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 const NoteState = (props) => {
   const notesInitial = []
   const host = "http://localhost:5000"
+  const authtoken = localStorage.getItem('token');
   const [notes, setNotes] = useState(notesInitial)
   const [checK_loginOr_not, set_checK_loginOr_not] = useState(false);
 
@@ -20,7 +21,8 @@ const NoteState = (props) => {
 
   }
 
-  const authtoken = localStorage.getItem('token');
+  const[listview, set_listview] = useState(false);
+
 
   // Get all Notes
   const getNotes = async () => {
@@ -123,7 +125,7 @@ const NoteState = (props) => {
   }
 
   return (
-    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, set_checK_loginOr_not, getNotes, checK_loginOr_not, show_alert, display_alert}}>
+    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, set_checK_loginOr_not, getNotes, checK_loginOr_not, show_alert, display_alert, set_listview, listview}}>
       {props.children}
     </NoteContext.Provider>
   )
