@@ -17,10 +17,11 @@ router.get('/fetchallnotes', fetchuser, async (req, res) => {
 
 // ROUTE 2: Add a new Note using: POST "/api/notes/addnote". Login required
 router.post('/addnote', fetchuser, [
-    body('title', 'Enter a valid title').isLength({ min: 3 }),
-    body('description', 'Description must be atleast 5 characters').isLength({ min: 5 }),], async (req, res) => {
+    body('Projectname', 'Enter a valid Projectname').isLength({ min: 3 }),
+    body('description', 'Description must be atleast 5 characters').isLength({ min: 5 }),
+    body('progess', 'Enter a valid Progess').isNumeric({ min: 0, max: 100 })], async (req, res) => {
         try {
-            const { title, description, tag } = req.body;
+            const { Projectname, description, tag, progess, githublink } = req.body;
 
             // If there are errors, return Bad request and the errors
             const errors = validationResult(req);
@@ -28,7 +29,7 @@ router.post('/addnote', fetchuser, [
                 return res.status(400).json({ errors: errors.array() });
             }
             const note = new Note({
-                title, description, tag, user: req.user.id
+                Projectname, description, tag, progess, githublink, user: req.user.id
             })
             const savedNote = await note.save()
 
@@ -42,14 +43,16 @@ router.post('/addnote', fetchuser, [
 
 // ROUTE 3: Update an existing Note using: PUT "/api/notes/updatenote". Login required
 router.put('/updatenote/:id', fetchuser, async (req, res) => {
-    const { title, description, tag } = req.body;
+    const { Projectname, description, tag, progess, githublink } = req.body;
     try {
         // Create a newNote object
         const newNote = {};
-        if (title) { newNote.title = title };
+        if (Projectname) { newNote.Projectname = Projectname };
         if (description) { newNote.description = description };
         if (tag) { newNote.tag = tag };
-
+        if (progess) { newNote.progess = progess };
+        if (githublink) { newNote.githublink = githublink };
+        
         // Find the note to be updated and update it
         let note = await Note.findById(req.params.id);
         if (!note) { return res.status(404).send("Not Found") }
