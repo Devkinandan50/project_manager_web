@@ -32,4 +32,4 @@ const NotesSchema = new Schema({
     },
 })
 
-module.exports = moongoose.model('notes', NotesSchema);
+module.exports = moongoose.model('projects', NotesSchema);
