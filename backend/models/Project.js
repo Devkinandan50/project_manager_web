@@ -7,7 +7,7 @@ const NotesSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
-    title:{
+    Projectname:{
         type: String,
         required: true
     },
@@ -19,10 +19,17 @@ const NotesSchema = new Schema({
         type: String,
         default: "General"
     },
+    progess:{
+        type: Number,
+        default: 0
+    },
+    githublink:{
+        type: String
+    },
     date:{
         type: Date,
         default: Date.now
     },
 })
 
-module.exports = moongoose.model('notes', NotesSchema);
+module.exports = moongoose.model('projects', NotesSchema);
