@@ -72,13 +72,14 @@ const Projects = () => {
                             </div>
                             <div className="modal-footer">
                                 <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button disabled={pro.eProjectname.length<5 || pro.edescription.length<5} onClick={handleClick} type="button" className="btn btn-primary">Update Project</button>
+                                <button disabled={pro.eProjectname.length<5 || pro.edescription.length<5 || pro.progess.length <= 1} onClick={handleClick} type="button" className="btn btn-primary">Update Project</button>
+                            {/* <div id="emailHelp" className="form-text"> to enable button add project name, description, progess</div> */}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="row my-3">
-                    <h2>You all Projects</h2>
+                    <h2>Your all Projects</h2>
                     <div className="container mx-2">
                         {all_projects.length === 0 && 'No Projects to display'}
                     </div>

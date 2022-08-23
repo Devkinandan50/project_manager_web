@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import ProjectContext from "../context/pro_jects/projectContext"
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import Button from '@mui/material/Button';
 import Collapse from 'react-bootstrap/Collapse';
 import ViewModuleIcon from '@mui/icons-material/ViewModule'
@@ -31,7 +32,7 @@ const AddProject = () => {
     }
 
     // add Project
-    const [pro, setpro] = useState({ Projectname: "", description: "", tag: "", progess:"", githublink: "" })
+    const [pro, setpro] = useState({ Projectname: "", description: "", tag: "", progess: "", githublink: "" })
     const handleClick = (e) => {
         e.preventDefault();
         addProject(pro.Projectname, pro.description, pro.tag, pro.progess, pro.githublink);
@@ -47,7 +48,11 @@ const AddProject = () => {
         <>
             <div className="my-3" style={{ display: 'flex', justifyContent: "space-between", width: '100%' }}>
                 <Button variant="outlined" onClick={toggleFunc}><IconButton >
-                    <AddIcon color="primary" size="large" />
+                    {toggle ? (
+                        <RemoveIcon color="primary" size="large" />
+                    ) : (
+                        <AddIcon color="primary" size="large" />
+                    )}
                 </IconButton></Button>
 
                 {listview ? (
@@ -91,7 +96,8 @@ const AddProject = () => {
                                 <input type="text" className="form-control" id="githublink" name="githublink" value={pro.githublink} onChange={onChange} minLength={5} required />
                             </div>
 
-                            <button disabled={pro.Projectname.length < 5 || pro.description.length < 5} type="submit" className="btn btn-primary" onClick={handleClick}>Add Project</button>
+                            <button disabled={pro.Projectname.length < 5 || pro.description.length < 5 || pro.progess.length <= 1} type="submit" className="btn btn-primary" onClick={handleClick}>Add Project</button>
+                            <div id="emailHelp" className="form-text"> to enable button add project name, description, progess</div>
                         </form>
                     </div>
                 </div>
