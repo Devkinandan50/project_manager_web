@@ -2,7 +2,7 @@ const { default: mongoose } = require('mongoose');
 const moongoose = require('mongoose');
 const { Schema } = moongoose;
 
-const NotesSchema = new Schema({
+const ProjectsSchema = new Schema({
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
@@ -32,4 +32,4 @@ const NotesSchema = new Schema({
     },
 })
 
-module.exports = moongoose.model('projects', NotesSchema);
+module.exports = moongoose.model('projects', ProjectsSchema);
