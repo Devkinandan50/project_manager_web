@@ -36,6 +36,7 @@ const AddProject = () => {
         e.preventDefault();
         addProject(pro.Projectname, pro.description, pro.tag, pro.progess, pro.githublink);
         setpro({ Projectname: "", description: "", tag: "", progess: "", githublink: "" })
+        setToggle(false);
     }
 
     const onChange = (e) => {
