@@ -1,10 +1,10 @@
-import Notes from './Notes';
+import Projects from './Projects';
 
 export const Home = () => {
 
     return (
         <div> 
-            <Notes/>
+            <Projects/>
         </div>
     )
 }

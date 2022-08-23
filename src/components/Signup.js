@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react'
 import { useHistory } from 'react-router-dom'
-import ProjectContext from "../context/notes/projectContext"
+import ProjectContext from "../context/pro_jects/projectContext"
 
 const Signup = () => {
     const context = useContext(ProjectContext);

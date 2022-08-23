@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import ProjectContext from "../context/notes/projectContext";
+import ProjectContext from "../context/pro_jects/projectContext";
 import {useHistory} from 'react-router-dom';
 import "../style/userinfo.css";
 

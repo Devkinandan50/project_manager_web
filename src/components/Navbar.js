@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { Link, useLocation } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
-import ProjectContext from "../context/notes/projectContext";
+import ProjectContext from "../context/pro_jects/projectContext";
 import Alert from './Alert';
 
 const Navbar = () => {

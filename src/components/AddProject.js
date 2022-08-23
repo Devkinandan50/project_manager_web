@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import ProjectContext from "../context/notes/projectContext"
+import ProjectContext from "../context/pro_jects/projectContext"
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';

@@ -1,7 +1,7 @@
 import ProjectContext from "./projectContext";
 import React, { useState } from 'react'
 
-const NoteState = (props) => {
+const Pro_State = (props) => {
   const proInitial = []
   const host = "http://localhost:5000"
   const authtoken = localStorage.getItem('token');
@@ -133,4 +133,4 @@ const NoteState = (props) => {
   )
 
 }
-export default NoteState;
+export default Pro_State;

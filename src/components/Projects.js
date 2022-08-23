@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import ProjectContext from "../context/notes/projectContext"
+import ProjectContext from "../context/pro_jects/projectContext"
 import Projectitem from './Projectitem';
 import AddProject from './AddProject';
 
-const Notes = () => {
+const Projects = () => {
     const context = useContext(ProjectContext);
     const { all_projects, editProject, getProjects, checK_loginOr_not } = context;
 
@@ -114,4 +114,4 @@ const Notes = () => {
     )
 }
 
-export default Notes
+export default Projects

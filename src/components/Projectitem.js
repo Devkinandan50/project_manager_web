@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import ProjectContext from "../context/notes/projectContext";
+import ProjectContext from "../context/pro_jects/projectContext";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 // import ListItemButton from '@mui/material/ListItemButton';

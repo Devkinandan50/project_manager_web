@@ -7,7 +7,7 @@ import {
 import Navbar from './components/Navbar';
 import { Home } from './components/Home';
 import About from './components/About';
-import ProState from './context/notes/NoteState';
+import ProState from './context/pro_jects/Pro_State';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import UserInfo from './components/UserInfo';
