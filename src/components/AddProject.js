@@ -8,7 +8,7 @@ import ViewModuleIcon from '@mui/icons-material/ViewModule'
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ToggleButton from '@mui/material/ToggleButton';
 
-const AddNote = () => {
+const AddProject = () => {
     const context = useContext(ProjectContext);
 
     // context mese add function lekar aao
@@ -100,6 +100,6 @@ const AddNote = () => {
     )
 }
 
-export default AddNote
+export default AddProject
 
 

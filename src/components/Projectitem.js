@@ -10,7 +10,7 @@ import UpdateIcon from '@mui/icons-material/Update';
 import IconButton from '@mui/material/IconButton';
 
 
-const Noteitem = (props) => {
+const Projectitem = (props) => {
     const context = useContext(ProjectContext);
     const { deleteProject, listview } = context;
     const { proj, updateproj } = props;
@@ -66,7 +66,7 @@ const Noteitem = (props) => {
     )
 }
 
-export default Noteitem
+export default Projectitem
 
 
 

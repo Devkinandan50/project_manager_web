@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import ProjectContext from "../context/notes/projectContext"
-import Noteitem from './Noteitem';
-import AddNote from './AddNote';
+import Projectitem from './Projectitem';
+import AddProject from './AddProject';
 
 const Notes = () => {
     const context = useContext(ProjectContext);
@@ -34,7 +34,7 @@ const Notes = () => {
         <>
             { checK_loginOr_not ? (
                 <>
-                <AddNote />
+                <AddProject />
                 <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Launch demo modal
                 </button>
@@ -101,7 +101,7 @@ const Notes = () => {
                     ))} */}
     
                     {all_projects.map((project_data) => {
-                        return <Noteitem key={project_data._id} updateproj={updatePro} proj={project_data} />
+                        return <Projectitem key={project_data._id} updateproj={updatePro} proj={project_data} />
                     })}
     
                 </div>
