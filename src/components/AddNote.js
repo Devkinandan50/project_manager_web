@@ -31,16 +31,16 @@ const AddNote = () => {
     }
 
     // add Project
-    const [note, setNote] = useState({ Projectname: "", description: "", tag: "", progess:"", githublink: "" })
+    const [pro, setpro] = useState({ Projectname: "", description: "", tag: "", progess:"", githublink: "" })
     const handleClick = (e) => {
         e.preventDefault();
-        addNote(note.Projectname, note.description, note.tag, note.progess, note.githublink);
-        setNote({ Projectname: "", description: "", tag: "", progess: "", githublink: "" })
+        addNote(pro.Projectname, pro.description, pro.tag, pro.progess, pro.githublink);
+        setpro({ Projectname: "", description: "", tag: "", progess: "", githublink: "" })
     }
 
     const onChange = (e) => {
-        // ...Project means jo hai note vo rehene do aur kuch add karna hai then name: value karo input tag me
-        setNote({ ...note, [e.target.name]: e.target.value })
+        // ...Project means jo hai pro vo rehene do aur kuch add karna hai then name: value karo input tag me
+        setpro({ ...pro, [e.target.name]: e.target.value })
     }
     return (
         <>
@@ -68,29 +68,29 @@ const AddNote = () => {
                         <form className="my-3">
                             <div className="mb-3">
                                 <label htmlFor="Projectname" className="form-label">ProjectName</label>
-                                <input type="text" className="form-control" id="Projectname" name="Projectname" aria-describedby="emailHelp" value={note.Projectname} onChange={onChange} minLength={5} required />
+                                <input type="text" className="form-control" id="Projectname" name="Projectname" aria-describedby="emailHelp" value={pro.Projectname} onChange={onChange} minLength={5} required />
                                 <div id="emailHelp" className="form-text">Name should be atleast 5 characters</div>
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="description" className="form-label">Description</label>
-                                <input type="text" className="form-control" id="description" name="description" value={note.description} onChange={onChange} minLength={5} required />
+                                <input type="text" className="form-control" id="description" name="description" value={pro.description} onChange={onChange} minLength={5} required />
                                 <div id="emailHelp" className="form-text">description should be atleast 5 characters</div>
 
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="tag" className="form-label">Tag</label>
-                                <input type="text" className="form-control" id="tag" name="tag" value={note.tag} onChange={onChange} minLength={5} required />
+                                <input type="text" className="form-control" id="tag" name="tag" value={pro.tag} onChange={onChange} minLength={5} required />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="progess" className="form-label">Progess</label>
-                                <input type="number" className="form-control" id="progess" name="progess" value={note.progess} onChange={onChange} minLength={5} required />
+                                <input type="number" className="form-control" id="progess" name="progess" value={pro.progess} onChange={onChange} minLength={5} required />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="githublink" className="form-label">githublink</label>
-                                <input type="text" className="form-control" id="githublink" name="githublink" value={note.githublink} onChange={onChange} minLength={5} required />
+                                <input type="text" className="form-control" id="githublink" name="githublink" value={pro.githublink} onChange={onChange} minLength={5} required />
                             </div>
 
-                            <button disabled={note.Projectname.length < 5 || note.description.length < 5} type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>
+                            <button disabled={pro.Projectname.length < 5 || pro.description.length < 5} type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>
                         </form>
                     </div>
                 </div>
