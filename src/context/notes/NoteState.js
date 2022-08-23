@@ -5,7 +5,7 @@ const NoteState = (props) => {
   const proInitial = []
   const host = "http://localhost:5000"
   const authtoken = localStorage.getItem('token');
-  const [notes, setNotes] = useState(proInitial)
+  const [all_projects, setall_projects] = useState(proInitial)
   const [checK_loginOr_not, set_checK_loginOr_not] = useState(false);
 
   // show_alert call in navbar and when we need to use alert we use display_alert function
@@ -37,7 +37,7 @@ const NoteState = (props) => {
       });
       const json = await response.json()
       console.log(json)
-      setNotes(json);
+      setall_projects(json);
     }
     else {
       display_alert("Please Login/Signup to access all functionlity", "warning");
@@ -60,7 +60,7 @@ const NoteState = (props) => {
 
       const pro = await response.json();
       // old project me new node add karo  // Logic to add in client
-      setNotes(notes.concat(pro));
+      setall_projects(all_projects.concat(pro));
     }
     else {
       display_alert("Please Login/Signup to add note", "warning");
@@ -82,8 +82,8 @@ const NoteState = (props) => {
       console.log(json);
 
       // agar id == id_of_delete then not filter that node    // Logic to delete in client
-      const newprojects = notes.filter((note) => { return note._id !== id })
-      setNotes(newprojects);
+      const newprojects = all_projects.filter((note) => { return note._id !== id })
+      setall_projects(newprojects);
     }
     else {
       display_alert("Please Login/Signup to delete note", "warning");
@@ -105,7 +105,7 @@ const NoteState = (props) => {
       const json = await response.json();
       console.log(json);
 
-      let newproj = JSON.parse(JSON.stringify(notes))
+      let newproj = JSON.parse(JSON.stringify(all_projects))
 
       // Logic to edit in client
       for (let index = 0; index < newproj.length; index++) {
@@ -119,7 +119,7 @@ const NoteState = (props) => {
           break;
         }
       }
-      setNotes(newproj);
+      setall_projects(newproj);
     }
     else {
       display_alert("Please Login/Signup to update note", "warning");
@@ -127,7 +127,7 @@ const NoteState = (props) => {
   }
 
   return (
-    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, set_checK_loginOr_not, getNotes, checK_loginOr_not, show_alert, display_alert, set_listview, listview}}>
+    <NoteContext.Provider value={{ all_projects, addNote, deleteNote, editNote, set_checK_loginOr_not, getNotes, checK_loginOr_not, show_alert, display_alert, set_listview, listview}}>
       {props.children}
     </NoteContext.Provider>
   )

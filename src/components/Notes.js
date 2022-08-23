@@ -5,7 +5,7 @@ import AddNote from './AddNote';
 
 const Notes = () => {
     const context = useContext(noteContext);
-    const { notes, editNote, getNotes, checK_loginOr_not } = context;
+    const { all_projects, editNote, getNotes, checK_loginOr_not } = context;
 
     // without reload change data
     useEffect(() => {
@@ -80,9 +80,9 @@ const Notes = () => {
                 <div className="row my-3">
                     <h2>You Notes</h2>
                     <div className="container mx-2">
-                        {notes.length === 0 && 'No notes to display'}
+                        {all_projects.length === 0 && 'No notes to display'}
                     </div>
-                    {/* {notes.map((note) => (
+                    {/* {all_projects.map((note) => (
                         <>
                             <div className="col-md-3">
                                 <div className="card my-3">
@@ -100,7 +100,7 @@ const Notes = () => {
                         </>
                     ))} */}
     
-                    {notes.map((project_data) => {
+                    {all_projects.map((project_data) => {
                         return <Noteitem key={project_data._id} updateproj={updateNote} proj={project_data} />
                     })}
     
