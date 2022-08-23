@@ -63,7 +63,7 @@ const NoteState = (props) => {
       setall_projects(all_projects.concat(pro));
     }
     else {
-      display_alert("Please Login/Signup to add note", "warning");
+      display_alert("Please Login/Signup to add Project", "warning");
     }
   }
 
@@ -82,11 +82,11 @@ const NoteState = (props) => {
       console.log(json);
 
       // agar id == id_of_delete then not filter that node    // Logic to delete in client
-      const newprojects = all_projects.filter((note) => { return note._id !== id })
+      const newprojects = all_projects.filter((po) => { return po._id !== id })
       setall_projects(newprojects);
     }
     else {
-      display_alert("Please Login/Signup to delete note", "warning");
+      display_alert("Please Login/Signup to delete Project", "warning");
     }
   }
 
@@ -122,7 +122,7 @@ const NoteState = (props) => {
       setall_projects(newproj);
     }
     else {
-      display_alert("Please Login/Signup to update note", "warning");
+      display_alert("Please Login/Signup to update Project", "warning");
     }
   }
 
