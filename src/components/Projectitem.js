@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import noteContext from "../context/notes/noteContext";
+import ProjectContext from "../context/pro_jects/projectContext";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
+// import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -10,10 +10,10 @@ import UpdateIcon from '@mui/icons-material/Update';
 import IconButton from '@mui/material/IconButton';
 
 
-const Noteitem = (props) => {
-    const context = useContext(noteContext);
-    const { deleteNote, listview } = context;
-    const { note, updateNote } = props;
+const Projectitem = (props) => {
+    const context = useContext(ProjectContext);
+    const { deleteProject, listview } = context;
+    const { proj, updateproj } = props;
     return (
         <>
             {listview ? (
@@ -29,16 +29,16 @@ const Noteitem = (props) => {
 
                     <ListItem disablePadding >
 
-                        <ListItemText primary={note.title} />
-                        <ListItemText primary={note.description} />
+                        <ListItemText primary={proj.Projectname} />
+                        <ListItemText primary={proj.description} />
                         <ListItemIcon>
 
                             <IconButton sx={{ mr: 3 }}>
-                                <i onClick={() => { updateNote(note) }}><UpdateIcon /></i>
+                                <i onClick={() => { updateproj(proj) }}><UpdateIcon /></i>
                             </IconButton>
 
                             <IconButton sx={{ mr: 3 }}>
-                                <i onClick={() => { deleteNote(note._id) }}><DeleteIcon /></i>
+                                <i onClick={() => { deleteProject(proj._id) }}><DeleteIcon /></i>
                             </IconButton>
 
                         </ListItemIcon>
@@ -51,11 +51,11 @@ const Noteitem = (props) => {
                     <div className="card my-3">
                         <div className="card-body">
                             <div className="d-flex align-items-center">
-                                <h5 className="card-title">{note.title}</h5>
-                                <i className="far fa-trash-alt mx-2" onClick={() => { deleteNote(note._id) }}></i>
-                                <i className="far fa-edit mx-2" onClick={() => { updateNote(note) }}></i>
+                                <h5 className="card-title">{proj.Projectname}</h5>
+                                <i className="far fa-trash-alt mx-2" onClick={() => { deleteProject(proj._id) }}></i>
+                                <i className="far fa-edit mx-2" onClick={() => { updateproj(proj) }}></i>
                             </div>
-                            <p className="card-text">{note.description}</p>
+                            <p className="card-text">{proj.description}</p>
 
                         </div>
                     </div>
@@ -66,7 +66,7 @@ const Noteitem = (props) => {
     )
 }
 
-export default Noteitem
+export default Projectitem
 
 
 

@@ -7,7 +7,7 @@ import {
 import Navbar from './components/Navbar';
 import { Home } from './components/Home';
 import About from './components/About';
-import NoteState from './context/notes/NoteState';
+import ProState from './context/pro_jects/Pro_State';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import UserInfo from './components/UserInfo';
@@ -15,7 +15,7 @@ import UserInfo from './components/UserInfo';
 function App() {
   return (
     <>
-      <NoteState>
+      <ProState>
         <Router>
           <Navbar />
           <div className="container">
@@ -38,7 +38,7 @@ function App() {
             </Switch>
           </div>
         </Router>
-      </NoteState>
+      </ProState>
     </>
   );
 }

@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link, useLocation } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
-import noteContext from "../context/notes/noteContext";
+import ProjectContext from "../context/pro_jects/projectContext";
 import Alert from './Alert';
 
 const Navbar = () => {
     let location = useLocation();
     let history = useHistory();
-    const context = useContext(noteContext);
+    const context = useContext(ProjectContext);
     const { checK_loginOr_not, set_checK_loginOr_not, show_alert } = context;
 
     function handle_logout() {
@@ -29,7 +29,7 @@ const Navbar = () => {
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">iNotebook</Link>
+                    <Link className="navbar-brand" to="/">mYProjectbook</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
