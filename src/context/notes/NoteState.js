@@ -25,7 +25,7 @@ const NoteState = (props) => {
 
 
   // Get all Projects
-  const getNotes = async () => {
+  const getProjects = async () => {
     // API Call 
     if (checK_loginOr_not) {
       const response = await fetch(`${host}/api/projects/fetchallprojects`, {
@@ -45,7 +45,7 @@ const NoteState = (props) => {
   }
 
   // Add a Project
-  const addNote = async (Projectname, description, tag, progess ,githublink) => {
+  const addProject = async (Projectname, description, tag, progess ,githublink) => {
     // TODO: API Call
     // API Call 
     if (checK_loginOr_not) {
@@ -68,7 +68,7 @@ const NoteState = (props) => {
   }
 
   // Delete a Project
-  const deleteNote = async (id) => {
+  const deleteProject = async (id) => {
     // API Call
     if (checK_loginOr_not) {
       const response = await fetch(`${host}/api/projects/deleteproject/${id}`, {
@@ -91,7 +91,7 @@ const NoteState = (props) => {
   }
 
   // Edit a Project
-  const editNote = async (id, Projectname, description, tag, progess, githublink) => {
+  const editProject = async (id, Projectname, description, tag, progess, githublink) => {
     // API Call 
     if (checK_loginOr_not) {
       const response = await fetch(`${host}/api/projects/updateproject/${id}`, {
@@ -127,7 +127,7 @@ const NoteState = (props) => {
   }
 
   return (
-    <NoteContext.Provider value={{ all_projects, addNote, deleteNote, editNote, set_checK_loginOr_not, getNotes, checK_loginOr_not, show_alert, display_alert, set_listview, listview}}>
+    <NoteContext.Provider value={{ all_projects, addProject, deleteProject, editProject, set_checK_loginOr_not, getProjects, checK_loginOr_not, show_alert, display_alert, set_listview, listview}}>
       {props.children}
     </NoteContext.Provider>
   )

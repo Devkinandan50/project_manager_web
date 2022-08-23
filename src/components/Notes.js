@@ -5,11 +5,11 @@ import AddNote from './AddNote';
 
 const Notes = () => {
     const context = useContext(noteContext);
-    const { all_projects, editNote, getNotes, checK_loginOr_not } = context;
+    const { all_projects, editProject, getProjects, checK_loginOr_not } = context;
 
     // without reload change data
     useEffect(() => {
-        getNotes();
+        getProjects();
       }, [])
 
     const ref = useRef(null)
@@ -22,7 +22,7 @@ const Notes = () => {
     }
 
     const handleClick = (e)=>{ 
-        editNote(pro.id, pro.eProjectname, pro.edescription, pro.etag, pro.eprogess, pro.egithublink)
+        editProject(pro.id, pro.eProjectname, pro.edescription, pro.etag, pro.eprogess, pro.egithublink)
         refClose.current.click();
     }
 

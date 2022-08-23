@@ -12,7 +12,7 @@ const AddNote = () => {
     const context = useContext(noteContext);
 
     // context mese add function lekar aao
-    const { addNote, set_listview, listview } = context;
+    const { addProject, set_listview, listview } = context;
 
     // toggle add button
     const [toggle, setToggle] = useState(false);
@@ -34,7 +34,7 @@ const AddNote = () => {
     const [pro, setpro] = useState({ Projectname: "", description: "", tag: "", progess:"", githublink: "" })
     const handleClick = (e) => {
         e.preventDefault();
-        addNote(pro.Projectname, pro.description, pro.tag, pro.progess, pro.githublink);
+        addProject(pro.Projectname, pro.description, pro.tag, pro.progess, pro.githublink);
         setpro({ Projectname: "", description: "", tag: "", progess: "", githublink: "" })
     }
 
