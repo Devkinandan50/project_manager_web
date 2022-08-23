@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import noteContext from "../context/notes/noteContext";
+import ProjectContext from "../context/notes/projectContext";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 // import ListItemButton from '@mui/material/ListItemButton';
@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 
 
 const Noteitem = (props) => {
-    const context = useContext(noteContext);
+    const context = useContext(ProjectContext);
     const { deleteProject, listview } = context;
     const { proj, updateproj } = props;
     return (

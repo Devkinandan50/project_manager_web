@@ -1,9 +1,9 @@
 import React, {useContext, useState} from 'react'
 import { useHistory } from 'react-router-dom'
-import noteContext from "../context/notes/noteContext"
+import ProjectContext from "../context/notes/projectContext"
 
 const Signup = () => {
-    const context = useContext(noteContext);
+    const context = useContext(ProjectContext);
 
     // context mese set_login function lekar aao
     const {set_checK_loginOr_not, display_alert} = context;

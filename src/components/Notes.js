@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import noteContext from "../context/notes/noteContext"
+import ProjectContext from "../context/notes/projectContext"
 import Noteitem from './Noteitem';
 import AddNote from './AddNote';
 
 const Notes = () => {
-    const context = useContext(noteContext);
+    const context = useContext(ProjectContext);
     const { all_projects, editProject, getProjects, checK_loginOr_not } = context;
 
     // without reload change data

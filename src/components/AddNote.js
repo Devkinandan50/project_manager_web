@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import noteContext from "../context/notes/noteContext"
+import ProjectContext from "../context/notes/projectContext"
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
@@ -9,7 +9,7 @@ import ViewListIcon from '@mui/icons-material/ViewList';
 import ToggleButton from '@mui/material/ToggleButton';
 
 const AddNote = () => {
-    const context = useContext(noteContext);
+    const context = useContext(ProjectContext);
 
     // context mese add function lekar aao
     const { addProject, set_listview, listview } = context;

@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from 'react'
 import { Link, useLocation } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
-import noteContext from "../context/notes/noteContext";
+import ProjectContext from "../context/notes/projectContext";
 import Alert from './Alert';
 
 const Navbar = () => {
     let location = useLocation();
     let history = useHistory();
-    const context = useContext(noteContext);
+    const context = useContext(ProjectContext);
     const { checK_loginOr_not, set_checK_loginOr_not, show_alert } = context;
 
     function handle_logout() {

@@ -1,4 +1,4 @@
-import NoteContext from "./noteContext";
+import ProjectContext from "./projectContext";
 import React, { useState } from 'react'
 
 const NoteState = (props) => {
@@ -127,9 +127,9 @@ const NoteState = (props) => {
   }
 
   return (
-    <NoteContext.Provider value={{ all_projects, addProject, deleteProject, editProject, set_checK_loginOr_not, getProjects, checK_loginOr_not, show_alert, display_alert, set_listview, listview}}>
+    <ProjectContext.Provider value={{ all_projects, addProject, deleteProject, editProject, set_checK_loginOr_not, getProjects, checK_loginOr_not, show_alert, display_alert, set_listview, listview}}>
       {props.children}
-    </NoteContext.Provider>
+    </ProjectContext.Provider>
   )
 
 }

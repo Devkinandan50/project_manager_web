@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import noteContext from "../context/notes/noteContext";
+import ProjectContext from "../context/notes/projectContext";
 import {useHistory} from 'react-router-dom';
 import "../style/userinfo.css";
 
 export default function UserInfo() {
-    const context = useContext(noteContext);
+    const context = useContext(ProjectContext);
     const { checK_loginOr_not } = context;
     const history = useHistory();
 
