@@ -28,7 +28,7 @@ const NoteState = (props) => {
   const getNotes = async () => {
     // API Call 
     if (checK_loginOr_not) {
-      const response = await fetch(`${host}/api/notes/fetchallnotes`, {
+      const response = await fetch(`${host}/api/projects/fetchallprojects`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -45,17 +45,17 @@ const NoteState = (props) => {
   }
 
   // Add a Note
-  const addNote = async (title, description, tag) => {
+  const addNote = async (Projectname, description, tag, progess ,githublink) => {
     // TODO: API Call
     // API Call 
     if (checK_loginOr_not) {
-      const response = await fetch(`${host}/api/notes/addnote`, {
+      const response = await fetch(`${host}/api/projects/addproject`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           "auth-token": authtoken
         },
-        body: JSON.stringify({ title, description, tag })
+        body: JSON.stringify({ Projectname, description, tag, progess, githublink })
       });
 
       const note = await response.json();
@@ -71,7 +71,7 @@ const NoteState = (props) => {
   const deleteNote = async (id) => {
     // API Call
     if (checK_loginOr_not) {
-      const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+      const response = await fetch(`${host}/api/projects/deleteproject/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ const NoteState = (props) => {
   const editNote = async (id, title, description, tag) => {
     // API Call 
     if (checK_loginOr_not) {
-      const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+      const response = await fetch(`${host}/api/projects/updateproject/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
