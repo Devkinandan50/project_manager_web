@@ -14,20 +14,20 @@ const Notes = () => {
 
     const ref = useRef(null)
     const refClose = useRef(null)
-    const [note, setNote] = useState({id: "", eProjectname: "", edescription: "", etag: "", eprogess:"", egithublink: ""})
+    const [pro, setpro] = useState({id: "", eProjectname: "", edescription: "", etag: "", eprogess:"", egithublink: ""})
 
-    const updateNote = (currentNote) => {
+    const updateNote = (currentpro) => {
         ref.current.click();
-        setNote({id: currentNote._id, eProjectname: currentNote.Projectname, edescription: currentNote.description, etag:currentNote.tag, eprogess:currentNote.progess, egithublink:currentNote.githublink})
+        setpro({id: currentpro._id, eProjectname: currentpro.Projectname, edescription: currentpro.description, etag:currentpro.tag, eprogess:currentpro.progess, egithublink:currentpro.githublink})
     }
 
     const handleClick = (e)=>{ 
-        editNote(note.id, note.eProjectname, note.edescription, note.etag, note.eprogess, note.egithublink)
+        editNote(pro.id, pro.eProjectname, pro.edescription, pro.etag, pro.eprogess, pro.egithublink)
         refClose.current.click();
     }
 
     const onChange = (e)=>{
-        setNote({...note, [e.target.name]: e.target.value})
+        setpro({...pro, [e.target.name]: e.target.value})
     }
 
     return (
@@ -49,30 +49,30 @@ const Notes = () => {
                                 <form className="my-3">
                                     <div className="mb-3">
                                         <label htmlFor="Projectname" className="form-label">Project Name</label>
-                                        <input type="text" className="form-control" id="eProjectname" name="eProjectname" value={note.eProjectname} aria-describedby="emailHelp" onChange={onChange} minLength={5} required/>
+                                        <input type="text" className="form-control" id="eProjectname" name="eProjectname" value={pro.eProjectname} aria-describedby="emailHelp" onChange={onChange} minLength={5} required/>
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="description" className="form-label">Description</label>
-                                        <input type="text" className="form-control" id="edescription" name="edescription" value={note.edescription} onChange={onChange} minLength={5} required/>
+                                        <input type="text" className="form-control" id="edescription" name="edescription" value={pro.edescription} onChange={onChange} minLength={5} required/>
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="tag" className="form-label">Tag</label>
-                                        <input type="text" className="form-control" id="etag" name="etag" value={note.etag} onChange={onChange} />
+                                        <input type="text" className="form-control" id="etag" name="etag" value={pro.etag} onChange={onChange} />
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="progess" className="form-label">progess</label>
-                                        <input type="text" className="form-control" id="eprogess" name="eprogess" value={note.eprogess} onChange={onChange} />
+                                        <input type="text" className="form-control" id="eprogess" name="eprogess" value={pro.eprogess} onChange={onChange} />
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="githublink" className="form-label">githublink</label>
-                                        <input type="text" className="form-control" id="egithublink" name="egithublink" value={note.egithublink} onChange={onChange} />
+                                        <input type="text" className="form-control" id="egithublink" name="egithublink" value={pro.egithublink} onChange={onChange} />
                                     </div>
     
                                 </form>
                             </div>
                             <div className="modal-footer">
                                 <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button disabled={note.eProjectname.length<5 || note.edescription.length<5} onClick={handleClick} type="button" className="btn btn-primary">Update Note</button>
+                                <button disabled={pro.eProjectname.length<5 || pro.edescription.length<5} onClick={handleClick} type="button" className="btn btn-primary">Update Note</button>
                             </div>
                         </div>
                     </div>
@@ -100,8 +100,8 @@ const Notes = () => {
                         </>
                     ))} */}
     
-                    {notes.map((note) => {
-                        return <Noteitem key={note._id} updateNote={updateNote} note={note} />
+                    {notes.map((project_data) => {
+                        return <Noteitem key={project_data._id} updateproj={updateNote} proj={project_data} />
                     })}
     
                 </div>
