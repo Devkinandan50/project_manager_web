@@ -91,7 +91,7 @@ const NoteState = (props) => {
   }
 
   // Edit a Note
-  const editNote = async (id, title, description, tag) => {
+  const editNote = async (id, Projectname, description, tag, progess, githublink) => {
     // API Call 
     if (checK_loginOr_not) {
       const response = await fetch(`${host}/api/projects/updateproject/${id}`, {
@@ -100,7 +100,7 @@ const NoteState = (props) => {
           'Content-Type': 'application/json',
           "auth-token": authtoken
         },
-        body: JSON.stringify({ title, description, tag })
+        body: JSON.stringify({ Projectname, description, tag, progess, githublink })
       });
       const json = await response.json();
       console.log(json);
@@ -111,9 +111,11 @@ const NoteState = (props) => {
       for (let index = 0; index < newNotes.length; index++) {
         const element = newNotes[index];
         if (element._id === id) {
-          newNotes[index].title = title;
+          newNotes[index].Projectname = Projectname;
           newNotes[index].description = description;
           newNotes[index].tag = tag;
+          newNotes[index].progess = progess;
+          newNotes[index].githublink = githublink;
           break;
         }
       }

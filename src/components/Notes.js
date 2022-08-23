@@ -14,15 +14,15 @@ const Notes = () => {
 
     const ref = useRef(null)
     const refClose = useRef(null)
-    const [note, setNote] = useState({id: "", etitle: "", edescription: "", etag: ""})
+    const [note, setNote] = useState({id: "", eProjectname: "", edescription: "", etag: "", eprogess:"", egithublink: ""})
 
     const updateNote = (currentNote) => {
         ref.current.click();
-        setNote({id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag:currentNote.tag})
+        setNote({id: currentNote._id, eProjectname: currentNote.Projectname, edescription: currentNote.description, etag:currentNote.tag, eprogess:currentNote.progess, egithublink:currentNote.githublink})
     }
 
     const handleClick = (e)=>{ 
-        editNote(note.id, note.etitle, note.edescription, note.etag)
+        editNote(note.id, note.eProjectname, note.edescription, note.etag, note.eprogess, note.egithublink)
         refClose.current.click();
     }
 
@@ -48,8 +48,8 @@ const Notes = () => {
                             <div className="modal-body">
                                 <form className="my-3">
                                     <div className="mb-3">
-                                        <label htmlFor="title" className="form-label">Title</label>
-                                        <input type="text" className="form-control" id="etitle" name="etitle" value={note.etitle} aria-describedby="emailHelp" onChange={onChange} minLength={5} required/>
+                                        <label htmlFor="Projectname" className="form-label">Project Name</label>
+                                        <input type="text" className="form-control" id="eProjectname" name="eProjectname" value={note.eProjectname} aria-describedby="emailHelp" onChange={onChange} minLength={5} required/>
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="description" className="form-label">Description</label>
@@ -59,12 +59,20 @@ const Notes = () => {
                                         <label htmlFor="tag" className="form-label">Tag</label>
                                         <input type="text" className="form-control" id="etag" name="etag" value={note.etag} onChange={onChange} />
                                     </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="progess" className="form-label">progess</label>
+                                        <input type="text" className="form-control" id="eprogess" name="eprogess" value={note.eprogess} onChange={onChange} />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="githublink" className="form-label">githublink</label>
+                                        <input type="text" className="form-control" id="egithublink" name="egithublink" value={note.egithublink} onChange={onChange} />
+                                    </div>
     
                                 </form>
                             </div>
                             <div className="modal-footer">
                                 <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button disabled={note.etitle.length<5 || note.edescription.length<5} onClick={handleClick} type="button" className="btn btn-primary">Update Note</button>
+                                <button disabled={note.eProjectname.length<5 || note.edescription.length<5} onClick={handleClick} type="button" className="btn btn-primary">Update Note</button>
                             </div>
                         </div>
                     </div>
