@@ -30,7 +30,7 @@ const AddNote = () => {
         set_listview(true);
     }
 
-    // add note
+    // add Project
     const [note, setNote] = useState({ Projectname: "", description: "", tag: "", progess:"", githublink: "" })
     const handleClick = (e) => {
         e.preventDefault();
@@ -39,7 +39,7 @@ const AddNote = () => {
     }
 
     const onChange = (e) => {
-        // ...note means jo hai note vo rehene do aur kuch add karna hai then name: value karo input tag me
+        // ...Project means jo hai note vo rehene do aur kuch add karna hai then name: value karo input tag me
         setNote({ ...note, [e.target.name]: e.target.value })
     }
     return (

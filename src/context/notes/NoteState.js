@@ -2,10 +2,10 @@ import NoteContext from "./noteContext";
 import React, { useState } from 'react'
 
 const NoteState = (props) => {
-  const notesInitial = []
+  const proInitial = []
   const host = "http://localhost:5000"
   const authtoken = localStorage.getItem('token');
-  const [notes, setNotes] = useState(notesInitial)
+  const [notes, setNotes] = useState(proInitial)
   const [checK_loginOr_not, set_checK_loginOr_not] = useState(false);
 
   // show_alert call in navbar and when we need to use alert we use display_alert function
@@ -24,7 +24,7 @@ const NoteState = (props) => {
   const[listview, set_listview] = useState(false);
 
 
-  // Get all Notes
+  // Get all Projects
   const getNotes = async () => {
     // API Call 
     if (checK_loginOr_not) {
@@ -44,7 +44,7 @@ const NoteState = (props) => {
     }
   }
 
-  // Add a Note
+  // Add a Project
   const addNote = async (Projectname, description, tag, progess ,githublink) => {
     // TODO: API Call
     // API Call 
@@ -59,7 +59,7 @@ const NoteState = (props) => {
       });
 
       const note = await response.json();
-      // old notes me new node add karo  // Logic to add in client
+      // old project me new node add karo  // Logic to add in client
       setNotes(notes.concat(note));
     }
     else {
@@ -67,7 +67,7 @@ const NoteState = (props) => {
     }
   }
 
-  // Delete a Note
+  // Delete a Project
   const deleteNote = async (id) => {
     // API Call
     if (checK_loginOr_not) {
@@ -90,7 +90,7 @@ const NoteState = (props) => {
     }
   }
 
-  // Edit a Note
+  // Edit a Project
   const editNote = async (id, Projectname, description, tag, progess, githublink) => {
     // API Call 
     if (checK_loginOr_not) {
