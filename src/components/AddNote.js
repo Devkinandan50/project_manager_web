@@ -64,7 +64,7 @@ const AddNote = () => {
             <Collapse in={toggle}>
                 <div style={{ color: "Black" }}>
                     <div className="container my-3">
-                        <h2>Add a Note</h2>
+                        <h2>Add a Project</h2>
                         <form className="my-3">
                             <div className="mb-3">
                                 <label htmlFor="Projectname" className="form-label">ProjectName</label>
@@ -90,7 +90,7 @@ const AddNote = () => {
                                 <input type="text" className="form-control" id="githublink" name="githublink" value={pro.githublink} onChange={onChange} minLength={5} required />
                             </div>
 
-                            <button disabled={pro.Projectname.length < 5 || pro.description.length < 5} type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>
+                            <button disabled={pro.Projectname.length < 5 || pro.description.length < 5} type="submit" className="btn btn-primary" onClick={handleClick}>Add Project</button>
                         </form>
                     </div>
                 </div>
