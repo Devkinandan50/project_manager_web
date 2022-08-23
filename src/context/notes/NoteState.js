@@ -58,9 +58,9 @@ const NoteState = (props) => {
         body: JSON.stringify({ Projectname, description, tag, progess, githublink })
       });
 
-      const note = await response.json();
+      const pro = await response.json();
       // old project me new node add karo  // Logic to add in client
-      setNotes(notes.concat(note));
+      setNotes(notes.concat(pro));
     }
     else {
       display_alert("Please Login/Signup to add note", "warning");
@@ -82,8 +82,8 @@ const NoteState = (props) => {
       console.log(json);
 
       // agar id == id_of_delete then not filter that node    // Logic to delete in client
-      const newNotes = notes.filter((note) => { return note._id !== id })
-      setNotes(newNotes);
+      const newprojects = notes.filter((note) => { return note._id !== id })
+      setNotes(newprojects);
     }
     else {
       display_alert("Please Login/Signup to delete note", "warning");
@@ -105,21 +105,21 @@ const NoteState = (props) => {
       const json = await response.json();
       console.log(json);
 
-      let newNotes = JSON.parse(JSON.stringify(notes))
+      let newproj = JSON.parse(JSON.stringify(notes))
 
       // Logic to edit in client
-      for (let index = 0; index < newNotes.length; index++) {
-        const element = newNotes[index];
+      for (let index = 0; index < newproj.length; index++) {
+        const element = newproj[index];
         if (element._id === id) {
-          newNotes[index].Projectname = Projectname;
-          newNotes[index].description = description;
-          newNotes[index].tag = tag;
-          newNotes[index].progess = progess;
-          newNotes[index].githublink = githublink;
+          newproj[index].Projectname = Projectname;
+          newproj[index].description = description;
+          newproj[index].tag = tag;
+          newproj[index].progess = progess;
+          newproj[index].githublink = githublink;
           break;
         }
       }
-      setNotes(newNotes);
+      setNotes(newproj);
     }
     else {
       display_alert("Please Login/Signup to update note", "warning");
