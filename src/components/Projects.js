@@ -17,13 +17,13 @@ const Projects = () => {
     const [pro, setpro] = useState({id: "", eProjectname: "", edescription: "", etag: "", eprogess:"", egithublink: ""})
 
     const updatePro = (currentpro) => {
-        ref.current.click();
+        ref.currentpro.click();
         setpro({id: currentpro._id, eProjectname: currentpro.Projectname, edescription: currentpro.description, etag:currentpro.tag, eprogess:currentpro.progess, egithublink:currentpro.githublink})
     }
 
     const handleClick = (e)=>{ 
         editProject(pro.id, pro.eProjectname, pro.edescription, pro.etag, pro.eprogess, pro.egithublink)
-        refClose.current.click();
+        refClose.currentpro.click();
     }
 
     const onChange = (e)=>{
