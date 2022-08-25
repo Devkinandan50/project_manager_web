@@ -43,7 +43,7 @@ const Login = (props) => {
 
     return (
         <>
-            <div className="mt-5">
+            {/* <div className="mt-5">
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">Email address</label>
@@ -57,9 +57,9 @@ const Login = (props) => {
 
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
-            </div>
+            </div> */}
 
-            {/* <div className="login-options">
+            <div className="login-options">
                 <h2>Login Using The Following Options</h2>
                 <Accordion defaultActiveKey="7">
                     <Accordion.Item eventKey="0">
@@ -93,7 +93,7 @@ const Login = (props) => {
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
-            </div> */}
+            </div>
         </>
     )
 }
