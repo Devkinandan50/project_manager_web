@@ -1,15 +1,15 @@
-.card {
+.card_0f_userinfo {
     border-radius: 1rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 30rem;
     margin: auto;
   }
 
-  .card .card_title{
+  .card_0f_userinfo .card_ka_title{
     text-align: center;
   }
   
-  .title {
+  .title_0f_userinfo {
     color: grey;
     font-size: 18px;
   }
