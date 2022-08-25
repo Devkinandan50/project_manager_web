@@ -16,14 +16,14 @@ const Projects = () => {
     const refClose = useRef(null)
     const [pro, setpro] = useState({id: "", eProjectname: "", edescription: "", etag: "", eprogess:"", egithublink: ""})
 
-    const updatePro = (currentpro) => {
-        ref.currentpro.click();
+    const updateproj = (currentpro) => {
+        ref.current.click();
         setpro({id: currentpro._id, eProjectname: currentpro.Projectname, edescription: currentpro.description, etag:currentpro.tag, eprogess:currentpro.progess, egithublink:currentpro.githublink})
     }
 
     const handleClick = (e)=>{ 
         editProject(pro.id, pro.eProjectname, pro.edescription, pro.etag, pro.eprogess, pro.egithublink)
-        refClose.currentpro.click();
+        refClose.current.click();
     }
 
     const onChange = (e)=>{
@@ -72,7 +72,7 @@ const Projects = () => {
                             </div>
                             <div className="modal-footer">
                                 <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button disabled={pro.eProjectname.length<5 || pro.edescription.length<5 || pro.progess.length <= 1} onClick={handleClick} type="button" className="btn btn-primary">Update Project</button>
+                                <button disabled={pro.eProjectname.length<5 || pro.edescription.length<5 || pro.eprogess.length <= 1} onClick={handleClick} type="button" className="btn btn-primary">Update Project</button>
                             {/* <div id="emailHelp" className="form-text"> to enable button add project name, description, progess</div> */}
                             </div>
                         </div>
@@ -102,7 +102,7 @@ const Projects = () => {
                     ))} */}
     
                     {all_projects.map((project_data) => {
-                        return <Projectitem key={project_data._id} updateproj={updatePro} proj={project_data} />
+                        return <Projectitem key={project_data._id} updateproj={updateproj} proj={project_data} />
                     })}
     
                 </div>
