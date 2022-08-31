@@ -7,6 +7,7 @@ const Pro_State = (props) => {
   const authtoken = localStorage.getItem('token');
   const [all_projects, setall_projects] = useState(proInitial)
   const [checK_loginOr_not, set_checK_loginOr_not] = useState(false);
+  const [facelogin_email, set_facelogin_email] = useState("");
 
   // show_alert call in navbar and when we need to use alert we use display_alert function
   const [show_alert, set_show_alert] = useState(null);
@@ -127,7 +128,7 @@ const Pro_State = (props) => {
   }
 
   return (
-    <ProjectContext.Provider value={{ all_projects, addProject, deleteProject, editProject, set_checK_loginOr_not, getProjects, checK_loginOr_not, show_alert, display_alert, set_listview, listview}}>
+    <ProjectContext.Provider value={{ all_projects, addProject, deleteProject, editProject, set_checK_loginOr_not, getProjects, checK_loginOr_not, show_alert, display_alert, set_listview, listview, facelogin_email, set_facelogin_email}}>
       {props.children}
     </ProjectContext.Provider>
   )

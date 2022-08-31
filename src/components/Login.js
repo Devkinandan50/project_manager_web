@@ -8,7 +8,7 @@ const Login = (props) => {
     const context = useContext(ProjectContext);
 
     // context mese set_login function lekar aao
-    const { set_checK_loginOr_not, display_alert } = context;
+    const { set_checK_loginOr_not, display_alert, facelogin_email, set_facelogin_email} = context;
 
     const [credentials, setCredentials] = useState({ email: "", password: "" })
     let history = useHistory();
@@ -65,12 +65,18 @@ const Login = (props) => {
                         </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="1">
-                        <Link style={{textDecoration: 'none'}} to="/facelogin">
-                            <Accordion.Header>Login with Face Recognition</Accordion.Header>
-                        </Link>
-                        {/* <Accordion.Body style={{ backgroundColor: 'beige' }}>
-                            Not Available this feature now
-                        </Accordion.Body> */}
+                        <Accordion.Header>Login with Face Recognition</Accordion.Header>
+                        
+                        <Accordion.Body style={{ backgroundColor: 'beige' }}>
+                            <div>
+                                <div className="mb-3">
+                                    <label htmlFor="email" className="form-label">Email address</label>
+                                    <input type="email" className="form-control" value={facelogin_email} onChange={(e) => set_facelogin_email(e.target.value)} id="email" name="email" aria-describedby="emailHelp" />
+                                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                                </div>
+                                <Link style={{textDecoration: 'none'}} to="/facelogin"><button className="btn btn-primary">Start Camera</button></Link>
+                            </div>
+                        </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="2">
                         <Accordion.Header>Login with Google</Accordion.Header>
