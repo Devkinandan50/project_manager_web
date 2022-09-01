@@ -70,7 +70,6 @@ const Projectitem = (props) => {
                                 <div className="d-flex flex-row align-items-center">
                                     <div className="icon"> <i className="bx bxl-mailchimp"></i> </div>
                                     <div className="ms-2 c-details">
-                                        {/* <h6 className="mb-0">{proj.Projectname}</h6> <span>1 days ago</span> */}
                                         <h6 className="mb-0">{proj.Projectname}</h6> <span><ReactTimeAgo date={proj.date} locale="en-US"/></span>
                                     </div>
                                 </div>
