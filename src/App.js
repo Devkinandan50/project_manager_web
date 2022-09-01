@@ -11,6 +11,7 @@ import ProState from './context/pro_jects/Pro_State';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import UserInfo from './components/UserInfo';
+import Facelogin from './components/face_recog/Face_login'
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
               </Route>
               <Route exact path="/userinfo">
                 <UserInfo />
+              </Route>
+              <Route exact path="/facelogin">
+                <Facelogin />
               </Route>
             </Switch>
           </div>

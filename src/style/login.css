@@ -1,0 +1,11 @@
+.login-options{
+    border: 3px solid black;
+    width: 65%;
+    margin: 4.5rem auto;
+}
+
+.login-options h2{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}

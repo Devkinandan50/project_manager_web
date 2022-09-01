@@ -36,8 +36,8 @@ export default function UserInfo() {
     return (
         <div>
             <div className='mt-5'>
-                <div className="card">
-                    <div className="card_title">
+                <div className="card card_0f_userinfo">
+                    <div className="card_title card_ka_title">
                         <h1> User Profile </h1>
                         <img
                             className='mt-3'
@@ -46,7 +46,7 @@ export default function UserInfo() {
                             style={{ width: "100%" }}
                         />
 
-                        <p className="title mt-3"> {userdata.name} </p>
+                        <p className="title_0f_userinfo mt-3"> {userdata.name} </p>
                         <p> {userdata.email}</p>
 
                         <button className="mt-3" onClick={history.goBack} >back</button>
