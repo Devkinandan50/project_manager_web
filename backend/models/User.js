@@ -16,9 +16,9 @@ const UserSchema = new Schema({
         required: true
     },
     image:{
-        type: String,
-        required: true
-    },
+        data: Buffer,
+        contentType: String,
+      },
     date:{
         type: Date,
         default: Date.now

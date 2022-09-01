@@ -5,6 +5,10 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var fetchuser = require('../middleware/fetchuser');
+// multer primarily used for uploading files
+const multer = require("multer");
+// fs use to read data from upload Folder
+const fs = require("fs");
 
 const JWT_SECRET = 'dEVKINANDANqwerasdf';
 
@@ -27,13 +31,24 @@ router.get('/', (req, res)=>{
 
 })  */
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
 // ROUTE 1: Create a User using: POST "/api/auth/createuser". No login required
 router.post('/createuser', [
   body('name', 'Enter a valid name').isLength({ min: 3 }),
   body('email', 'Enter a valid email').isEmail(),
   body('password', 'Password must be atleast 5 characters').isLength({ min: 5 }),
 
-], async (req, res) => {
+], upload.single("testImage"), async (req, res) => {
   let success = false;
   // If there are errors, return Bad request and the errors
   const errors = validationResult(req);
@@ -54,7 +69,10 @@ router.post('/createuser', [
       name: req.body.name,
       password: secPass,
       email: req.body.email,
-      image: req.body.image,
+      image: {
+        data: fs.readFileSync("uploads/" + req.file.filename),
+        contentType: "image/png",
+      },
     });
     const data = {
       user: {

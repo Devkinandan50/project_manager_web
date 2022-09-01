@@ -8,6 +8,7 @@ export default function UserInfo() {
     const { checK_loginOr_not } = context;
     const history = useHistory();
 
+    const base64String = "";
     const intialdata = {};
 
     const [userdata, setuserdata] = useState(intialdata);
@@ -41,7 +42,8 @@ export default function UserInfo() {
                         <h1> User Profile </h1>
                         <img
                             className='mt-3'
-                            src="https://bobbyhadz.com/images/blog/react-usestate-dynamic-key/thumbnail.webp"
+                            // src="https://bobbyhadz.com/images/blog/react-usestate-dynamic-key/thumbnail.webp"
+                            src={`${base64String}`}
                             alt="example"
                             style={{ width: "100%" }}
                         />
