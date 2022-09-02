@@ -44,7 +44,9 @@ export default function UserInfo() {
                             // src="https://bobbyhadz.com/images/blog/react-usestate-dynamic-key/thumbnail.webp"
                             src={`${userdata.image}`}
                             alt="example"
+                            // style={{ width: "100%", borderRadius: '40px' }}
                             style={{ width: "100%" }}
+                            height= '350'
                         />
 
                         <p className="title_0f_userinfo mt-3"> {userdata.name} </p>
