@@ -16,7 +16,7 @@ const Projects = () => {
     const refClose = useRef(null)
     const [pro, setpro] = useState({id: "", eProjectname: "", edescription: "", etag: "", eprogess:"", egithublink: ""})
 
-    const updatePro = (currentpro) => {
+    const updateproj = (currentpro) => {
         ref.current.click();
         setpro({id: currentpro._id, eProjectname: currentpro.Projectname, edescription: currentpro.description, etag:currentpro.tag, eprogess:currentpro.progess, egithublink:currentpro.githublink})
     }
@@ -102,7 +102,7 @@ const Projects = () => {
                     ))} */}
     
                     {all_projects.map((project_data) => {
-                        return <Projectitem key={project_data._id} updateproj={updatePro} proj={project_data} />
+                        return <Projectitem key={project_data._id} updateproj={updateproj} proj={project_data} />
                     })}
     
                 </div>
