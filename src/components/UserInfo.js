@@ -41,7 +41,8 @@ export default function UserInfo() {
                         <h1> User Profile </h1>
                         <img
                             className='mt-3'
-                            src="https://bobbyhadz.com/images/blog/react-usestate-dynamic-key/thumbnail.webp"
+                            // src="https://bobbyhadz.com/images/blog/react-usestate-dynamic-key/thumbnail.webp"
+                            src={`${userdata.image}`}
                             alt="example"
                             style={{ width: "100%" }}
                         />
