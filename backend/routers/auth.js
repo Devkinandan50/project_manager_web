@@ -115,12 +115,26 @@ router.post('/login', [
   }
 });
 
-// that part is remaining
-// ROUTE 3: Authenticate a User using: POST "/api/auth/login". No login required
-router.post('/loginbyface', [
+// ROUTE 3: Get loggedin User Details using: POST "/api/auth/getuser". Login required
+router.post('/getuser', fetchuser,  async (req, res) => {
+
+  try {
+    userId = req.user.id;
+    // fetch all except password
+    const user = await User.findById(userId).select("-password")
+    res.send(user)
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+// ROUTE 4: log in using face: POST "/api/auth/face_login".
+router.post('/face_login', [
   body('email', 'Enter a valid email').isEmail(),
-  body('password', 'Password cannot be blank').exists(),
-], async (req, res) => {
+  body('image', 'image cannot be capture').exists(),
+] ,async (req, res) => {
+
   let success = false;
   // If there are errors, return Bad request and the errors
   const errors = validationResult(req);
@@ -128,19 +142,26 @@ router.post('/loginbyface', [
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { email, password } = req.body;
+  const { email, image } = req.body;
   try {
     let user = await User.findOne({ email });
     if (!user) {
       success = false
-      return res.status(400).json({ error: "Please try to login with correct credentials" });
+      return res.status(400).json({ error: "Please sign in first, email cannot exist" });
     }
 
-    const passwordCompare = await bcrypt.compare(password, user.password);
-    if (!passwordCompare) {
+
+    let imgCompare = false;
+    if(image == user.image){
+        imgCompare = true;
+    }
+
+    if (!imgCompare) {
       success = false
       return res.status(400).json({ success, error: "Please try to login with correct credentials" });
     }
+
+
 
     const data = {
       user: {
@@ -156,19 +177,4 @@ router.post('/loginbyface', [
     res.status(500).send("Internal Server Error");
   }
 });
-
-
-// ROUTE 4: Get loggedin User Details using: POST "/api/auth/getuser". Login required
-router.post('/getuser', fetchuser,  async (req, res) => {
-
-  try {
-    userId = req.user.id;
-    // fetch all except password
-    const user = await User.findById(userId).select("-password")
-    res.send(user)
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send("Internal Server Error");
-  }
-})
 module.exports = router
