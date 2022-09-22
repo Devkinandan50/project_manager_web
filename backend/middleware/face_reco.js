@@ -1,6 +1,6 @@
 const faceapi = require('face-api.js');
 
-const face_re = (storeImg, log_Img) => {
+const face_re = (storeImg, log_Img, name) => {
     if(storeImg == log_Img){
         return true;
     }
