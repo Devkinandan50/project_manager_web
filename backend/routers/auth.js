@@ -153,7 +153,7 @@ router.post('/face_login', [
 
 
     let imgCompare = false;
-    if(face_re(user.image, image)){
+    if(face_re(user.image, image, user.name)){
       imgCompare = true;
     }
 
