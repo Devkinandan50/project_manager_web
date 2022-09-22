@@ -5,6 +5,7 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var fetchuser = require('../middleware/fetchuser');
+var face_re = require('../middleware/face_reco');
 
 const JWT_SECRET = 'dEVKINANDANqwerasdf';
 
@@ -152,9 +153,14 @@ router.post('/face_login', [
 
 
     let imgCompare = false;
-    if(image == user.image){
-        imgCompare = true;
+    if(face_re(user.image, image)){
+      imgCompare = true;
     }
+
+
+    // if(image == user.image){
+    //     imgCompare = true;
+    // }
 
     if (!imgCompare) {
       success = false
