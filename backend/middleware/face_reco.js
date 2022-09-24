@@ -9,10 +9,12 @@ const fetch = require('node-fetch');
 
 // faceapi.env.monkeyPatch({ Canvas, Image, ImageData })
 faceapi.env.monkeyPatch({ fetch: fetch });
+// faceapi.env.monkeyPatch({ Canvas, Image })
 
 const MODELS_URL = path.join(__dirname, '/models');
 
 const face_re = (storeImg, log_Img, name) => {
+    const storeImage = Buffer.from(storeImg, "base64");
     Promise.all([
         async function loadAllmodel() {
             await faceapi.nets.ssdMobilenetv1.loadFromDisk(MODELS_URL);
@@ -22,8 +24,25 @@ const face_re = (storeImg, log_Img, name) => {
             await faceapi.nets.tinyFaceDetector.loadFromUri(MODELS_URL);
           }
       ])
-        .then(console.log("done model"))
+        .then(start)
         .catch((e) => console.log(e));
+
+
+        async function start() {
+            console.log("start function")
+            const labeledDescriptors = await loadLabeledImages()
+            console.log(labeledDescriptors)
+        }
+
+        async function loadLabeledImages() {
+            const descriptions = []
+            const img = await faceapi.fetchImage(storeImage)
+            const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
+            descriptions.push(detections.descriptor)
+            console.log("description")
+            console.log(descriptions)
+            return new faceapi.LabeledFaceDescriptors(name, descriptions)
+        }
 
 
     if(storeImg == log_Img){
