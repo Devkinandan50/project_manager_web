@@ -14,15 +14,15 @@ const Projects = () => {
 
     const ref = useRef(null)
     const refClose = useRef(null)
-    const [pro, setpro] = useState({id: "", eProjectname: "", edescription: "", etag: "", eprogess:"", egithublink: ""})
+    const [pro, setpro] = useState({id: "", eProjectname: "", edescription: "", etag: "", eprogess:"", egithublink: "", epro_enddate:""})
 
     const updateproj = (currentpro) => {
         ref.current.click();
-        setpro({id: currentpro._id, eProjectname: currentpro.Projectname, edescription: currentpro.description, etag:currentpro.tag, eprogess:currentpro.progess, egithublink:currentpro.githublink})
+        setpro({id: currentpro._id, eProjectname: currentpro.Projectname, edescription: currentpro.description, etag:currentpro.tag, eprogess:currentpro.progess, egithublink:currentpro.githublink, epro_enddate:currentpro.pro_enddate})
     }
 
     const handleClick = (e)=>{ 
-        editProject(pro.id, pro.eProjectname, pro.edescription, pro.etag, pro.eprogess, pro.egithublink)
+        editProject(pro.id, pro.eProjectname, pro.edescription, pro.etag, pro.eprogess, pro.egithublink, pro.epro_enddate)
         refClose.current.click();
     }
 
@@ -62,6 +62,10 @@ const Projects = () => {
                                     <div className="mb-3">
                                         <label htmlFor="progess" className="form-label">progess</label>
                                         <input type="text" className="form-control" id="eprogess" name="eprogess" value={pro.eprogess} onChange={onChange} />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="pro_enddate" className="form-label">Project End Date</label>
+                                        <input type="date" className="form-control" id="epro_enddate" name="epro_enddate" value={pro.epro_enddate} onChange={onChange} />
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="githublink" className="form-label">githublink</label>

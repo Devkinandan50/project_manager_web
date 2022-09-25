@@ -32,11 +32,11 @@ const AddProject = () => {
     }
 
     // add Project
-    const [pro, setpro] = useState({ Projectname: "", description: "", tag: "", progess: "", githublink: "" })
+    const [pro, setpro] = useState({ Projectname: "", description: "", tag: "", progess: "", pro_enddate: "", githublink: "" })
     const handleClick = (e) => {
         e.preventDefault();
-        addProject(pro.Projectname, pro.description, pro.tag, pro.progess, pro.githublink);
-        setpro({ Projectname: "", description: "", tag: "", progess: "", githublink: "" })
+        addProject(pro.Projectname, pro.description, pro.tag, pro.progess, pro.githublink, pro.pro_enddate);
+        setpro({ Projectname: "", description: "", tag: "", progess: "", githublink: "", pro_enddate: "" })
         setToggle(false);
     }
 
@@ -91,6 +91,10 @@ const AddProject = () => {
                             <div className="mb-3">
                                 <label htmlFor="progess" className="form-label">Progess</label>
                                 <input type="number" className="form-control" id="progess" name="progess" value={pro.progess} onChange={onChange} minLength={5} required />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="pro_enddate" className="form-label">Project End Date</label>
+                                <input type="date" className="form-control" id="pro_enddate" name="pro_enddate" value={pro.pro_enddate} onChange={onChange} required />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="githublink" className="form-label">githublink</label>

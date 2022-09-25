@@ -26,6 +26,9 @@ const ProjectsSchema = new Schema({
     githublink:{
         type: String
     },
+    pro_enddate:{
+        type: Date
+    },
     date:{
         type: Date,
         default: Date.now

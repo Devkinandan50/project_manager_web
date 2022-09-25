@@ -46,7 +46,7 @@ const Pro_State = (props) => {
   }
 
   // Add a Project
-  const addProject = async (Projectname, description, tag, progess ,githublink) => {
+  const addProject = async (Projectname, description, tag, progess ,githublink, pro_enddate) => {
     // TODO: API Call
     // API Call 
     if (checK_loginOr_not) {
@@ -56,7 +56,7 @@ const Pro_State = (props) => {
           'Content-Type': 'application/json',
           "auth-token": authtoken
         },
-        body: JSON.stringify({ Projectname, description, tag, progess, githublink })
+        body: JSON.stringify({ Projectname, description, tag, progess, githublink, pro_enddate })
       });
 
       const pro = await response.json();
@@ -92,7 +92,7 @@ const Pro_State = (props) => {
   }
 
   // Edit a Project
-  const editProject = async (id, Projectname, description, tag, progess, githublink) => {
+  const editProject = async (id, Projectname, description, tag, progess, githublink, pro_enddate) => {
     // API Call 
     if (checK_loginOr_not) {
       const response = await fetch(`${host}/api/projects/updateproject/${id}`, {
@@ -101,7 +101,7 @@ const Pro_State = (props) => {
           'Content-Type': 'application/json',
           "auth-token": authtoken
         },
-        body: JSON.stringify({ Projectname, description, tag, progess, githublink })
+        body: JSON.stringify({ Projectname, description, tag, progess, githublink, pro_enddate })
       });
       const json = await response.json();
       console.log(json);
@@ -117,6 +117,7 @@ const Pro_State = (props) => {
           newproj[index].tag = tag;
           newproj[index].progess = progess;
           newproj[index].githublink = githublink;
+          newproj[index].pro_enddate = pro_enddate;
           break;
         }
       }
