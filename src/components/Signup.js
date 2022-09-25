@@ -41,8 +41,10 @@ const Signup = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { name, email, password } = credentials;
-        const response = await fetch("http://localhost:5000/api/auth/createuser", {
+        const { name, email, password, cpass } = credentials;
+
+        if(cpass === password){
+            const response = await fetch("http://localhost:5000/api/auth/createuser", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -62,6 +64,10 @@ const Signup = () => {
         }
         else {
             display_alert("Invalid credentials", "danger");
+        }
+        }
+        else{
+            display_alert("Password are not same", "danger");
         }
     }
 

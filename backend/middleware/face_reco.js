@@ -1,6 +1,7 @@
 const faceapi = require('face-api.js');
 const path = require('path');
 const fetch = require('node-fetch');
+const { fetchImage } = require('face-api.js');
 
 // const tf = require('@tensorflow/tfjs-node');
 // const Canvas = require('canvas');
@@ -14,7 +15,6 @@ faceapi.env.monkeyPatch({ fetch: fetch });
 const MODELS_URL = path.join(__dirname, '/models');
 
 const face_re = (storeImg, log_Img, name) => {
-    const storeImage = Buffer.from(storeImg, "base64");
     Promise.all([
         async function loadAllmodel() {
             await faceapi.nets.ssdMobilenetv1.loadFromDisk(MODELS_URL);
@@ -36,7 +36,10 @@ const face_re = (storeImg, log_Img, name) => {
 
         async function loadLabeledImages() {
             const descriptions = []
-            const img = await faceapi.fetchImage(storeImage)
+
+            // error in fetchImage
+            // const img = await faceapi.fetchImage(storeImage)
+
             const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
             descriptions.push(detections.descriptor)
             console.log("description")
@@ -44,7 +47,7 @@ const face_re = (storeImg, log_Img, name) => {
             return new faceapi.LabeledFaceDescriptors(name, descriptions)
         }
 
-
+    // temp add kiya qki error nahi aana chahiye
     if(storeImg == log_Img){
         return true;
     }
