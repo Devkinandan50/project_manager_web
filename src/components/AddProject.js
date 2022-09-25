@@ -74,8 +74,8 @@ const AddProject = () => {
                         <form className="my-3">
                             <div className="mb-3">
                                 <label htmlFor="Projectname" className="form-label">ProjectName</label>
-                                <input type="text" className="form-control" id="Projectname" name="Projectname" aria-describedby="emailHelp" value={pro.Projectname} onChange={onChange} minLength={5} required />
-                                <div id="emailHelp" className="form-text">Name should be atleast 5 characters</div>
+                                <input type="text" className="form-control" id="Projectname" name="Projectname" aria-describedby="emailHelp" value={pro.Projectname} onChange={onChange} minLength={5} maxLength={15} required />
+                                <div id="emailHelp" className="form-text">Name should be between 5-15 characters</div>
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="description" className="form-label">Description</label>
