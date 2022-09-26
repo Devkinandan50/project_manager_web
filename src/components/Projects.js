@@ -57,19 +57,19 @@ const Projects = () => {
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="tag" className="form-label">Tag</label>
-                                        <input type="text" className="form-control" id="etag" name="etag" value={pro.etag} onChange={onChange} />
+                                        <input type="text" className="form-control" id="etag" name="etag" value={pro.etag} onChange={onChange} minLength={5} required/>
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="progess" className="form-label">progess</label>
-                                        <input type="text" className="form-control" id="eprogess" name="eprogess" value={pro.eprogess} onChange={onChange} />
+                                        <input type="text" className="form-control" id="eprogess" name="eprogess" value={pro.eprogess} onChange={onChange} minLength={5} required />
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="pro_enddate" className="form-label">Project End Date</label>
-                                        <input type="date" className="form-control" id="epro_enddate" name="epro_enddate" value={pro.epro_enddate} onChange={onChange} />
+                                        <input type="date" className="form-control" id="epro_enddate" name="epro_enddate" value={pro.epro_enddate} onChange={onChange} required/>
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="githublink" className="form-label">githublink</label>
-                                        <input type="text" className="form-control" id="egithublink" name="egithublink" value={pro.egithublink} onChange={onChange} />
+                                        <input type="text" className="form-control" id="egithublink" name="egithublink" value={pro.egithublink} onChange={onChange} minLength={5} required/>
                                     </div>
     
                                 </form>
