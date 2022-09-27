@@ -90,7 +90,7 @@ const AddProject = () => {
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="progess" className="form-label">Progess</label>
-                                <input type="number" className="form-control" id="progess" name="progess" value={pro.progess} onChange={onChange} minLength={5} required />
+                                <input type="number" className="form-control" id="progess" name="progess" value={pro.progess} onChange={onChange} required />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="pro_enddate" className="form-label">Project End Date</label>
