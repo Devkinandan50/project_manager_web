@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import ProjectContext from "../context/pro_jects/projectContext";
+import Barchart from './charts/Barchart'
 
 
 export const Home = () => {
@@ -7,14 +8,17 @@ export const Home = () => {
     const { checK_loginOr_not } = context;
 
     return (
-        <div> 
+        <div>
             {checK_loginOr_not ? (
                 <>
-                <h1> Dashboard</h1>
+                    <div className="row my-3">
+                        <h2> Dashboard</h2>
+                        < Barchart />
+                    </div>
                 </>
             ) : (
                 <>
-                <h1> login kar na</h1>
+                    <h2> login kar na</h2>
                 </>
             )}
         </div>
