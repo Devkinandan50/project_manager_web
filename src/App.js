@@ -12,6 +12,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import UserInfo from './components/UserInfo';
 import Facelogin from './components/face_recog/Face_login'
+import Allprojects from './components/Projects'
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
               </Route>
               <Route exact path="/facelogin">
                 <Facelogin />
+              </Route>
+              <Route exact path="/allprojects">
+                <Allprojects />
               </Route>
             </Switch>
           </div>
