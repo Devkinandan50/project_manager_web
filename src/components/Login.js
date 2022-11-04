@@ -6,6 +6,7 @@ import Accordion from 'react-bootstrap/Accordion';
 
 const Login = (props) => {
     const context = useContext(ProjectContext);
+    const host = "http://localhost:5000"
 
     // context mese set_login function lekar aao
     const { set_checK_loginOr_not, display_alert, facelogin_email, set_facelogin_email} = context;
@@ -15,7 +16,7 @@ const Login = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:5000/api/auth/login", {
+        const response = await fetch(`${host}/api/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

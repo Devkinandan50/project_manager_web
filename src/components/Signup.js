@@ -4,6 +4,7 @@ import ProjectContext from "../context/pro_jects/projectContext"
 
 const Signup = () => {
     const context = useContext(ProjectContext);
+    const host = "http://localhost:5000"
 
     // context mese set_login function lekar aao
     const { set_checK_loginOr_not, display_alert } = context;
@@ -44,7 +45,7 @@ const Signup = () => {
         const { name, email, password, cpass } = credentials;
 
         if(cpass === password){
-            const response = await fetch("http://localhost:5000/api/auth/createuser", {
+            const response = await fetch(`${host}/api/auth/createuser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

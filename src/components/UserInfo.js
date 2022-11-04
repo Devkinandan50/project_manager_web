@@ -5,6 +5,7 @@ import "../style/userinfo.css";
 
 export default function UserInfo() {
     const context = useContext(ProjectContext);
+    const host = "http://localhost:5000"
     const { checK_loginOr_not } = context;
     const history = useHistory();
 
@@ -21,7 +22,7 @@ export default function UserInfo() {
     const getuserdata = async () => {
         // API Call 
         if (checK_loginOr_not) {
-            const response = await fetch(`http://localhost:5000/api/auth/getuser`, {
+            const response = await fetch(`${host}/api/auth/getuser`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
