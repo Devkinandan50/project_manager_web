@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import ProjectContext from "../context/pro_jects/projectContext"
 import TextField from "@material-ui/core/TextField";
 import Projectitem from './Projectitem';
-import AddProject from './AddProject';
+import AddProbutton from './AddPro_button';
 
 const Projects = () => {
     const context = useContext(ProjectContext);
@@ -35,7 +35,7 @@ const Projects = () => {
         <>
             {checK_loginOr_not ? (
                 <>
-                    <AddProject />
+                    <AddProbutton />
                     <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Launch demo modal
                     </button>

@@ -13,7 +13,7 @@ import Login from './components/Login';
 import UserInfo from './components/UserInfo';
 import Facelogin from './components/face_recog/Face_login'
 import Allprojects from './components/Projects'
-import Newproject from './components/Add_newpro'
+import Newproject from './components/addproject/Add_newpro'
 
 function App() {
   return (

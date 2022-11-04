@@ -127,7 +127,7 @@ import ViewModuleIcon from '@mui/icons-material/ViewModule'
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ToggleButton from '@mui/material/ToggleButton';
 
-const AddProject = () => {
+const AddProbutton = () => {
     const context = useContext(ProjectContext);
 
     // context mese add function lekar aao
@@ -170,6 +170,6 @@ const AddProject = () => {
     )
 }
 
-export default AddProject
+export default AddProbutton
 
 

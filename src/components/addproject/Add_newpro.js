@@ -1,5 +1,9 @@
 import React, { useContext, useState } from 'react'
-import ProjectContext from "../context/pro_jects/projectContext"
+import ProjectContext from "../../context/pro_jects/projectContext"
+import IconButton from '@mui/material/IconButton';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import Button from '@mui/material/Button';
 
 const Add_newpro = () => {
     const context = useContext(ProjectContext);
@@ -53,6 +57,15 @@ const Add_newpro = () => {
                             <label htmlFor="githublink" className="form-label">githublink</label>
                             <input type="text" className="form-control" id="githublink" name="githublink" value={pro.githublink} onChange={onChange} minLength={5} required />
                         </div>
+
+                        <h5>Add a Project Member</h5>
+
+                        <Button variant="outlined">
+                        <IconButton >
+                            <AddIcon color="primary" size="large" />
+                        </IconButton>
+                       </Button>
+                        <h5>Add a Project task</h5>
 
                         <button disabled={pro.Projectname.length < 5 || pro.description.length < 5 || pro.progess.length <= 1} type="submit" className="btn btn-primary" onClick={handleClick}>Add Project</button>
                         <div id="emailHelp" className="form-text"> to enable button add project name, description, progess</div>
