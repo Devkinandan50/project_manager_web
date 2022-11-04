@@ -4,6 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Button from '@mui/material/Button';
+import AddProMember from './AddProMember';
 
 const Add_newpro = () => {
     const context = useContext(ProjectContext);
@@ -58,13 +59,8 @@ const Add_newpro = () => {
                             <input type="text" className="form-control" id="githublink" name="githublink" value={pro.githublink} onChange={onChange} minLength={5} required />
                         </div>
 
-                        <h5>Add a Project Member</h5>
-
-                        <Button variant="outlined">
-                        <IconButton >
-                            <AddIcon color="primary" size="large" />
-                        </IconButton>
-                       </Button>
+                        <AddProMember />
+                        
                         <h5>Add a Project task</h5>
 
                         <button disabled={pro.Projectname.length < 5 || pro.description.length < 5 || pro.progess.length <= 1} type="submit" className="btn btn-primary" onClick={handleClick}>Add Project</button>
