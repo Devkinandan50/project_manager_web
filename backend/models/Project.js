@@ -75,7 +75,7 @@ const ProjectsSchema = new Schema({
     },
 
     // to store update date we can also use timestamp 
-    lastpro_updatedate:{
+    lastprogress_updatedate:{
         type: Date,
         default: Date.now
     },
