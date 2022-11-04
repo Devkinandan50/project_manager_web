@@ -17,9 +17,7 @@ const membersSchema = moongoose.Schema(
             required: true,
             unique: true
         }
-    }, {
-    timestamps: true,
-}
+    }
 )
 
 const taskSchema = mongoose.Schema({
@@ -28,7 +26,8 @@ const taskSchema = mongoose.Schema({
         required: true
     },
     taskdescription:{
-        type: String
+        type: String,
+        default: "desc"
     },
     task_assignto:{
         type: String,
@@ -38,6 +37,8 @@ const taskSchema = mongoose.Schema({
         type: String,
         default: "remaining" 
     }
+},{
+    timestamps: true,
 })
 
 const ProjectsSchema = new Schema({

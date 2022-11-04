@@ -21,7 +21,7 @@ router.post('/addproject', fetchuser, [
     body('description', 'Description must be atleast 5 characters').isLength({ min: 5 }),
     body('progess', 'Enter a valid Progess').isNumeric({ min: 0, max: 100 })], async (req, res) => {
         try {
-            const { Projectname, description, tag, progess, githublink, pro_enddate, project_members, taskSchema } = req.body;
+            const { Projectname, description, tag, progess, githublink, pro_enddate, project_members, project_tasks } = req.body;
 
             // If there are errors, return Bad request and the errors
             const errors = validationResult(req);
@@ -29,7 +29,7 @@ router.post('/addproject', fetchuser, [
                 return res.status(400).json({ errors: errors.array() });
             }
             const pro = new Project({
-                Projectname, description, tag, progess, githublink, pro_enddate, user: req.user.id, project_members, taskSchema
+                Projectname, description, tag, progess, githublink, pro_enddate, user: req.user.id, project_members, project_tasks
             })
             const savedpro = await pro.save()
 
