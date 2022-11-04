@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import ProjectContext from "../../context/pro_jects/projectContext"
+import ProjectContext from "../../context/pro_jects/Pro_State"
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -9,43 +9,43 @@ const AddProMember = () => {
     const context = useContext(ProjectContext);
 
     // context mese add function lekar aao
-    const { addProject } = context;
-
+    // const { checK_loginOr_not } = context;
    
-    const [formFields, setFormFields] = useState([
-        { name: '', age: '' },
+    const [addproEmployeData, setaddproEmployeData] = useState([
+        { employename: '', employerole: '', employeemail: ''},
     ])
 
     const handleFormChange = (event, index) => {
-        let data = [...formFields];
+        let data = [...addproEmployeData];
         data[index][event.target.name] = event.target.value;
-        setFormFields(data);
+        setaddproEmployeData(data);
     }
 
-    const submit = (e) => {
+    const hsubmit = (e) => {
         e.preventDefault();
-        console.log(formFields)
+        console.log(addproEmployeData)
     }
 
     const addFields = () => {
         let object = {
-            name: '',
-            age: ''
+            employename: '',
+            employerole: '',
+            employeemail: ''
         }
 
-        setFormFields([...formFields, object])
+        setaddproEmployeData([...addproEmployeData, object])
     }
 
+
     const removeFields = (index) => {
-        let data = [...formFields];
+        let data = [...addproEmployeData];
         data.splice(index, 1)
-        setFormFields(data)
+        setaddproEmployeData(data)
     }
 
     return (
         <>
             <h5>Add a Project Member</h5>
-
             <Button variant="outlined">
                 <IconButton >
                     <AddIcon color="primary" size="large" />
@@ -53,31 +53,35 @@ const AddProMember = () => {
             </Button>
 
 
-            <form onSubmit={submit}>
-                {formFields.map((form, index) => {
+                {addproEmployeData.map((empMember, index) => {
                     return (
                         <div key={index}>
                             <input
-                                name='name'
+                                name='employename'
                                 placeholder='Name'
                                 onChange={event => handleFormChange(event, index)}
-                                value={form.name}
+                                value={empMember.employename}
                             />
                             <input
-                                name='age'
+                                name='employerole'
                                 placeholder='Age'
                                 onChange={event => handleFormChange(event, index)}
-                                value={form.age}
+                                value={empMember.employerole}
+                            />
+                             <input
+                                name='employeemail'
+                                placeholder='Age'
+                                onChange={event => handleFormChange(event, index)}
+                                value={empMember.employeemail}
                             />
                             <button onClick={() => removeFields(index)}>Remove</button>
                         </div>
                     )
                 })}
-            </form>
             <button onClick={addFields}>Add More..</button>
             <br />
             <br />
-            <button onClick={submit}>Submit</button>
+            <button onClick={hsubmit}>Submit</button>
         </>
     )
 }

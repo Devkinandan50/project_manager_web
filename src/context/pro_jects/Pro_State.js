@@ -8,9 +8,13 @@ const Pro_State = (props) => {
   const [all_projects, setall_projects] = useState(proInitial)
   const [checK_loginOr_not, set_checK_loginOr_not] = useState(false);
   const [facelogin_email, set_facelogin_email] = useState("");
+  const[listview, set_listview] = useState(false);
+  const [addproEmployeData, setaddproEmployeData] = useState([
+        { employename: '', employerole: '', employeemail: ''},
+    ])
 
-  // show_alert call in navbar and when we need to use alert we use display_alert function
   const [show_alert, set_show_alert] = useState(null);
+  // show_alert call in navbar and when we need to use alert we use display_alert function
   const display_alert = (message, type) =>{
     set_show_alert({
       msg: message,
@@ -22,7 +26,6 @@ const Pro_State = (props) => {
 
   }
 
-  const[listview, set_listview] = useState(false);
 
 
   // Get all Projects
@@ -129,7 +132,7 @@ const Pro_State = (props) => {
   }
 
   return (
-    <ProjectContext.Provider value={{ all_projects, addProject, deleteProject, editProject, set_checK_loginOr_not, getProjects, checK_loginOr_not, show_alert, display_alert, set_listview, listview, facelogin_email, set_facelogin_email}}>
+    <ProjectContext.Provider value={{ all_projects, addProject, deleteProject, editProject, set_checK_loginOr_not, getProjects, checK_loginOr_not, show_alert, display_alert, set_listview, listview, facelogin_email, set_facelogin_email, addproEmployeData, setaddproEmployeData}}>
       {props.children}
     </ProjectContext.Provider>
   )
