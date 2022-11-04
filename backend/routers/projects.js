@@ -21,7 +21,7 @@ router.post('/addproject', fetchuser, [
     body('description', 'Description must be atleast 5 characters').isLength({ min: 5 }),
     body('progess', 'Enter a valid Progess').isNumeric({ min: 0, max: 100 })], async (req, res) => {
         try {
-            const { Projectname, description, tag, progess, githublink, pro_enddate, project_members} = req.body;
+            const { Projectname, description, tag, progess, githublink, pro_enddate, project_members, taskSchema } = req.body;
 
             // If there are errors, return Bad request and the errors
             const errors = validationResult(req);
@@ -29,7 +29,7 @@ router.post('/addproject', fetchuser, [
                 return res.status(400).json({ errors: errors.array() });
             }
             const pro = new Project({
-                Projectname, description, tag, progess, githublink, pro_enddate, user: req.user.id, project_members
+                Projectname, description, tag, progess, githublink, pro_enddate, user: req.user.id, project_members, taskSchema
             })
             const savedpro = await pro.save()
 
@@ -50,10 +50,11 @@ router.put('/updateproject/:id', fetchuser, async (req, res) => {
         if (Projectname) { newProject.Projectname = Projectname };
         if (description) { newProject.description = description };
         if (tag) { newProject.tag = tag };
-        if (progess) { newProject.progess = progess };
+        if (progess) { newProject.progess = progess
+            newProject.lastpro_updatedate = Date.now();
+        };
         if (githublink) { newProject.githublink = githublink };
         if (pro_enddate) { newProject.pro_enddate = pro_enddate };
-        newProject.lastpro_updatedate = Date.now();
 
         // Find the Project to be updated and update it
         let pro = await Project.findById(req.params.id);

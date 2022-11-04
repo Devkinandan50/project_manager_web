@@ -22,6 +22,24 @@ const membersSchema = moongoose.Schema(
 }
 )
 
+const taskSchema = mongoose.Schema({
+    taskname: {
+        type: String,
+        required: true
+    },
+    taskdescription:{
+        type: String
+    },
+    task_assignto:{
+        type: String,
+        required: true
+    },
+    task_status:{
+        type: String,
+        default: "remaining" 
+    }
+})
+
 const ProjectsSchema = new Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -33,7 +51,7 @@ const ProjectsSchema = new Schema({
     },
     description: {
         type: String,
-        required: true
+        default: "null"
     },
     tag: {
         type: String,
@@ -44,12 +62,15 @@ const ProjectsSchema = new Schema({
         default: 0
     },
     project_members: [membersSchema],
+    project_tasks: [taskSchema],
 
     githublink: {
-        type: String
+        type: String,
+        default: "null"
     },
     pro_enddate: {
-        type: Date
+        type: Date,
+        required: true
     },
 
     // to store update date we can also use timestamp 
