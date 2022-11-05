@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import { Home } from './components/Home';
 import About from './components/About';
 import ProState from './context/pro_jects/Pro_State';
+import SomeState from './context/some_State/Some_State';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import UserInfo from './components/UserInfo';
@@ -19,6 +20,7 @@ function App() {
   return (
     <>
       <ProState>
+        <SomeState>
         <Router>
           <Navbar />
           <div className="container">
@@ -50,6 +52,7 @@ function App() {
             </Switch>
           </div>
         </Router>
+        </SomeState>
       </ProState>
     </>
   );

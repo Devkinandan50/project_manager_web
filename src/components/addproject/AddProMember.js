@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import ProjectContext from "../../context/pro_jects/projectContext"
+import ProjectContext from "../../context/some_State/stateContext"
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -62,18 +62,21 @@ const AddProMember = () => {
                                 placeholder='Name'
                                 onChange={event => handleFormChange(event, index)}
                                 value={empMember.employename}
+                                required
                             />
                             <input
                                 name='employerole'
                                 placeholder='Age'
                                 onChange={event => handleFormChange(event, index)}
                                 value={empMember.employerole}
+                                required
                             />
                              <input
                                 name='employeemail'
                                 placeholder='Age'
                                 onChange={event => handleFormChange(event, index)}
                                 value={empMember.employeemail}
+                                required
                             />
                             <button onClick={() => removeFields(index)}>Remove</button>
                         </div>
