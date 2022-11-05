@@ -47,13 +47,6 @@ const AddProMember = () => {
         <>
             <h5>Add a Project Member</h5>
 
-
-            <Button variant="outlined">
-                <IconButton >
-                    <AddIcon color="primary" size="large" />
-                </IconButton>
-            </Button>
-
                 {addproEmployeData.map((empMember, index) => {
                     return (
                         <div key={index}>
@@ -82,7 +75,12 @@ const AddProMember = () => {
                         </div>
                     )
                 })}
-            <button onClick={addFields}>Add More..</button>
+                <Button onClick={addFields} variant="outlined">
+                <IconButton >
+                    <AddIcon color="primary" size="large" />
+                </IconButton>
+            </Button>
+            {/* <button onClick={addFields}>Add More..</button> */}
             <br />
             <br />
             <button onClick={hsubmit}>Submit</button>
