@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import ProjectContext from "../../context/pro_jects/Pro_State"
+import ProjectContext from "../../context/pro_jects/projectContext"
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -9,11 +9,11 @@ const AddProMember = () => {
     const context = useContext(ProjectContext);
 
     // context mese add function lekar aao
-    // const { checK_loginOr_not } = context;
+    const { addproEmployeData, setaddproEmployeData } = context;
    
-    const [addproEmployeData, setaddproEmployeData] = useState([
-        { employename: '', employerole: '', employeemail: ''},
-    ])
+    // const [addproEmployeData, setaddproEmployeData] = useState([
+    //     { employename: '', employerole: '', employeemail: ''},
+    // ])
 
     const handleFormChange = (event, index) => {
         let data = [...addproEmployeData];
@@ -46,12 +46,13 @@ const AddProMember = () => {
     return (
         <>
             <h5>Add a Project Member</h5>
+
+
             <Button variant="outlined">
                 <IconButton >
                     <AddIcon color="primary" size="large" />
                 </IconButton>
             </Button>
-
 
                 {addproEmployeData.map((empMember, index) => {
                     return (
