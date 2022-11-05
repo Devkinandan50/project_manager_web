@@ -12,11 +12,7 @@ const AddProMember = () => {
 
     // context mese add function lekar aao
     const { addproEmployeData, setaddproEmployeData, loginuserdata } = context;
-
-    // const [addproEmployeData, setaddproEmployeData] = useState([
-    //     { employename: '', employerole: '', employeemail: ''},
-    // ])
-
+    
     const handleFormChange = (event, index) => {
         let data = [...addproEmployeData];
         data[index][event.target.name] = event.target.value;
