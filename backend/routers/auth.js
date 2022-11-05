@@ -66,7 +66,7 @@ router.post('/createuser', [
     success = true;
 
     // res.json(user)
-    res.json({ success, authtoken })
+    res.json({ success, authtoken, "name": user.name, "email": user.email })
 
   } catch (error) {
     console.error(error.message);
@@ -108,7 +108,7 @@ router.post('/login', [
     }
     const authtoken = jwt.sign(data, JWT_SECRET);
     success = true;
-    res.json({ success, authtoken })
+    res.json({ success, authtoken, "name": user.name, "email": user.email })
 
   } catch (error) {
     console.error(error.message);
