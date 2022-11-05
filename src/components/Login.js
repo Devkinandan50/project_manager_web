@@ -3,13 +3,17 @@ import { Link, useHistory } from 'react-router-dom'
 import '../style/login.css';
 import ProjectContext from "../context/pro_jects/projectContext"
 import Accordion from 'react-bootstrap/Accordion';
+import StateContext from "../context/some_State/stateContext"
 
 const Login = (props) => {
     const context = useContext(ProjectContext);
+    const sta_context = useContext(StateContext);
+
     const host = "http://localhost:5000"
 
     // context mese set_login function lekar aao
     const { set_checK_loginOr_not, display_alert, facelogin_email, set_facelogin_email} = context;
+    const { setloginuserdata } = sta_context;
 
     const [credentials, setCredentials] = useState({ email: "", password: "" })
     let history = useHistory();
@@ -24,11 +28,12 @@ const Login = (props) => {
             body: JSON.stringify({ email: credentials.email, password: credentials.password })
         });
         const json = await response.json()
-        console.log(json);
+        // console.log(json);
         if (json.success) {
             // Save the auth token and redirect
             localStorage.setItem('token', json.authtoken);
             set_checK_loginOr_not(true);
+            setloginuserdata({ "name": json.name, "email": json.email});
             display_alert("Login Successfully", "success");
             history.push("/");
         }

@@ -40,7 +40,7 @@ const Pro_State = (props) => {
         }
       });
       const json = await response.json()
-      console.log(json)
+      // console.log(json)
       setall_projects(json);
     }
     else {

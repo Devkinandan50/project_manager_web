@@ -9,7 +9,7 @@ const AddProMember = () => {
     const context = useContext(StateContext);
 
     // context mese add function lekar aao
-    const { addproEmployeData, setaddproEmployeData } = context;
+    const { addproEmployeData, setaddproEmployeData, loginuserdata } = context;
    
     // const [addproEmployeData, setaddproEmployeData] = useState([
     //     { employename: '', employerole: '', employeemail: ''},
@@ -32,7 +32,7 @@ const AddProMember = () => {
             employerole: '',
             employeemail: ''
         }
-
+        console.log(loginuserdata);
         setaddproEmployeData([...addproEmployeData, object])
     }
 
@@ -46,6 +46,8 @@ const AddProMember = () => {
     return (
         <>
             <h5>Add a Project Member</h5>
+            {/* <p> {loginuserdata.name}</p> */}
+            {/* <p> {{loginuserdata.email}}</p> */}
 
                 {addproEmployeData.map((empMember, index) => {
                     return (
