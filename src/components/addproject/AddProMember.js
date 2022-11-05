@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react'
-import ProjectContext from "../../context/some_State/stateContext"
+import StateContext from "../../context/some_State/stateContext"
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Button from '@mui/material/Button';
 
 const AddProMember = () => {
-    const context = useContext(ProjectContext);
+    const context = useContext(StateContext);
 
     // context mese add function lekar aao
     const { addproEmployeData, setaddproEmployeData } = context;
