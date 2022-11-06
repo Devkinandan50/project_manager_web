@@ -11,31 +11,30 @@ const AddProTask = () => {
     const context = useContext(StateContext);
 
     // context mese add function lekar aao
-    const { addproEmployeData, setaddproEmployeData, loginuserdata } = context;
-    
+    const { addprotask, setaddprotask, loginuserdata, addproEmployeData } = context;
+
     const handleFormChange = (event, index) => {
-        let data = [...addproEmployeData];
+        let data = [...addprotask];
         data[index][event.target.name] = event.target.value;
-        setaddproEmployeData(data);
+        setaddprotask(data);
     }
 
     const addFields = () => {
-        let object = {
-            employename: '',
-            employerole: '',
-            employeemail: ''
-        }
-        setaddproEmployeData([...addproEmployeData, object])
+        let object = { taskname: '', taskdescription: '', task_assignto: '', task_status: 'remaining' }
+        setaddprotask([...addprotask, object])
+        console.log(addprotask);
     }
 
 
     const removeFields = (index) => {
-        let data = [...addproEmployeData];
+        let data = [...addprotask];
         data.splice(index, 1)
-        setaddproEmployeData(data)
+        setaddprotask(data)
     }
 
-
+    function displayemployeelist(item) {
+        return <MenuItem value={item.employename}>{item.employename} </MenuItem>
+      }
 
 
     return (
@@ -44,7 +43,7 @@ const AddProTask = () => {
             {/* <p> {loginuserdata.name}</p> */}
             {/* <p> {{loginuserdata.email}}</p> */}
 
-            {addproEmployeData.map((empMember, index) => {
+            {addprotask.map((task, index) => {
                 return (
                     <>
                         <div key={index}>
@@ -52,38 +51,48 @@ const AddProTask = () => {
                                 variant="outlined"
                                 margin="normal"
                                 required
-                                style={{ width: 400, margin: 10 }}
+                                style={{ width: 800, margin: 10 }}
                                 id="name"
-                                label="Name"
-                                name='employename'
+                                label="Task"
+                                name='taskname'
                                 onChange={event => handleFormChange(event, index)}
-                                value={empMember.employename}
+                                value={task.taskname}
                             />
 
-                            <FormControl variant="outlined" style={{ width: 200, margin: 10 }}>
-                                <Select label="Months" name='employerole' onChange={event => handleFormChange(event, index)}
-                                    value={empMember.employerole}>
-                                    <MenuItem value={"owner"}>Owner</MenuItem>
-                                    <MenuItem value={"maintainer"}>Maintainer</MenuItem>
-                                    <MenuItem value={"developer"}>Developer</MenuItem>
-                                    <MenuItem value={"tester"}>Tester</MenuItem>
-                                    <MenuItem value={"reporter"}>Reporter</MenuItem>
+                            <FormControl variant="outlined" style={{ width: 400, margin: 10 }}>
+                                <Select label="Assign To" name='task_assignto' onChange={event => handleFormChange(event, index)}
+                                    value={task.task_assignto}>
+                                    {
+                                        addproEmployeData.map(displayemployeelist)
+                                    }
+                                    {/* <MenuItem value={"reporter"}>Reporter</MenuItem> */}
                                 </Select>
-                                <FormHelperText>Select a Role</FormHelperText>
+                                <FormHelperText>Select a Task Assign To</FormHelperText>
                             </FormControl>
 
                             <TextField
                                 variant="outlined"
                                 margin="normal"
                                 required
-                                style={{ width: 400, margin: 10 }}
-                                id="email"
-                                label="Email Address"
-                                name='employeemail'
+                                style={{ width: 800, margin: 10 }}
+                                id="taskdescription"
+                                label="Task Description"
+                                name='taskdescription'
                                 onChange={event => handleFormChange(event, index)}
-                                value={empMember.employeemail}
-                                autoComplete="email"
+                                value={task.taskdescription}
                             />
+
+                            <FormControl variant="outlined" style={{ width: 400, margin: 10 }}>
+                                <Select label="Task Status" name='task_status' onChange={event => handleFormChange(event, index)}
+                                    value={task.task_status}>
+                                    <MenuItem value={"remaining"}>Remaining</MenuItem>
+                                    <MenuItem value={"inprogress"}>In-Progress</MenuItem>
+                                    <MenuItem value={"completed"}>completed</MenuItem>
+                                </Select>
+                                <FormHelperText>Task Status</FormHelperText>
+                            </FormControl>
+
+
 
                             <Button onClick={() => removeFields(index)} variant="outlined" style={{ margin: 10 }}>
                                 <IconButton >
@@ -101,7 +110,7 @@ const AddProTask = () => {
                 </IconButton>
             </Button>
             {/* <button onClick={addFields}>Add More..</button> */}
-            
+
         </>
     )
 }
