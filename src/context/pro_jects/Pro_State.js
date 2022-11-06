@@ -49,7 +49,7 @@ const Pro_State = (props) => {
   }
 
   // Add a Project
-  const addProject = async (Projectname, description, tag, progess ,githublink, pro_enddate) => {
+  const addProject = async (Projectname, description, tag, progess ,githublink, pro_enddate, project_members) => {
     // TODO: API Call
     // API Call 
     if (checK_loginOr_not) {
@@ -59,7 +59,7 @@ const Pro_State = (props) => {
           'Content-Type': 'application/json',
           "auth-token": authtoken
         },
-        body: JSON.stringify({ Projectname, description, tag, progess, githublink, pro_enddate })
+        body: JSON.stringify({ Projectname, description, tag, progess, githublink, pro_enddate, project_members })
       });
 
       const pro = await response.json();

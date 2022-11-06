@@ -5,18 +5,23 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Button from '@mui/material/Button';
 import AddProMember from './AddProMember';
+import AddProTask from './AddProTask';
+import StateContext from "../../context/some_State/stateContext";
 
 const Add_newpro = () => {
     const context = useContext(ProjectContext);
+    const state_context = useContext(StateContext);
 
     // context mese add function lekar aao
     const { addProject } = context;
+    const { addproEmployeData, setaddproEmployeData } = state_context;
 
     // add Project
     const [pro, setpro] = useState({ Projectname: "", description: "", tag: "", progess: "", pro_enddate: "", githublink: "" })
     const handleClick = (e) => {
         e.preventDefault();
-        addProject(pro.Projectname, pro.description, pro.tag, pro.progess, pro.githublink, pro.pro_enddate);
+        addProject(pro.Projectname, pro.description, pro.tag, pro.progess, pro.githublink, pro.pro_enddate, addproEmployeData);
+        setaddproEmployeData([{ employename: '', employerole: 'owner', employeemail: '' },]);
         setpro({ Projectname: "", description: "", tag: "", progess: "", githublink: "", pro_enddate: "" })
     }
 
@@ -60,8 +65,7 @@ const Add_newpro = () => {
                         </div>
 
                         <AddProMember />
-                        
-                        <h5>Add a Project task</h5>
+                        <AddProTask />
 
                         <button disabled={pro.Projectname.length < 5 || pro.description.length < 5 || pro.progess.length <= 1} type="submit" className="btn btn-primary" onClick={handleClick}>Add Project</button>
                         <div id="emailHelp" className="form-text"> to enable button add project name, description, progess</div>
