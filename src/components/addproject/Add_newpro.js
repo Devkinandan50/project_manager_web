@@ -14,14 +14,15 @@ const Add_newpro = () => {
 
     // context mese add function lekar aao
     const { addProject } = context;
-    const { addproEmployeData, setaddproEmployeData } = state_context;
+    const { addproEmployeData, setaddproEmployeData, addprotask, setaddprotask} = state_context;
 
     // add Project
     const [pro, setpro] = useState({ Projectname: "", description: "", tag: "", progess: "", pro_enddate: "", githublink: "" })
     const handleClick = (e) => {
         e.preventDefault();
-        addProject(pro.Projectname, pro.description, pro.tag, pro.progess, pro.githublink, pro.pro_enddate, addproEmployeData);
+        addProject(pro.Projectname, pro.description, pro.tag, pro.progess, pro.githublink, pro.pro_enddate, addproEmployeData, addprotask);
         setaddproEmployeData([{ employename: '', employerole: 'owner', employeemail: '' },]);
+        setaddprotask([ { taskname: '', taskdescription: '', task_assignto: '', task_status: 'remaining' },])
         setpro({ Projectname: "", description: "", tag: "", progess: "", githublink: "", pro_enddate: "" })
     }
 
