@@ -1,9 +1,6 @@
 import React, { useContext, useState } from 'react'
 import ProjectContext from "../../context/pro_jects/projectContext"
-import IconButton from '@mui/material/IconButton';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import Button from '@mui/material/Button';
+import { Link, useHistory } from 'react-router-dom'
 import AddProMember from './AddProMember';
 import AddProTask from './AddProTask';
 import StateContext from "../../context/some_State/stateContext";
@@ -11,6 +8,8 @@ import StateContext from "../../context/some_State/stateContext";
 const Add_newpro = () => {
     const context = useContext(ProjectContext);
     const state_context = useContext(StateContext);
+
+    let history = useHistory();
 
     // context mese add function lekar aao
     const { addProject } = context;
@@ -24,6 +23,7 @@ const Add_newpro = () => {
         setaddproEmployeData([{ employename: '', employerole: 'owner', employeemail: '' },]);
         setaddprotask([ { taskname: '', taskdescription: '', task_assignto: '', task_status: 'remaining' },])
         setpro({ Projectname: "", description: "", tag: "", progess: "", githublink: "", pro_enddate: "" })
+        history.push("/allprojects");
     }
 
     const onChange = (e) => {
