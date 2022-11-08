@@ -1,12 +1,18 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import ProjectContext from "../context/pro_jects/projectContext"
+import StateContext from "../context/some_State/stateContext"
 import TextField from "@material-ui/core/TextField";
 import Projectitem from './Projectitem';
 import AddProbutton from './AddPro_button';
+import EditProMember from './editProject/EditProMember';
+import EditProTask from './editProject/EditProTask';
 
 const Projects = () => {
     const context = useContext(ProjectContext);
+    const statecontext = useContext(StateContext);
+
     const { all_projects, editProject, getProjects, checK_loginOr_not } = context;
+    const { editproEmployee, seteditproEmployee, editproTask, seteditproTask } = statecontext;
 
     // without reload change data
     useEffect(() => {
@@ -19,11 +25,13 @@ const Projects = () => {
 
     const updateproj = (currentpro) => {
         ref.current.click();
+        seteditproEmployee(currentpro.project_members);
+        seteditproTask(currentpro.project_tasks);
         setpro({ id: currentpro._id, eProjectname: currentpro.Projectname, edescription: currentpro.description, etag: currentpro.tag, eprogess: currentpro.progess, egithublink: currentpro.githublink, epro_enddate: currentpro.pro_enddate })
     }
 
     const handleClick = (e) => {
-        editProject(pro.id, pro.eProjectname, pro.edescription, pro.etag, pro.eprogess, pro.egithublink, pro.epro_enddate)
+        editProject(pro.id, pro.eProjectname, pro.edescription, pro.etag, pro.eprogess, pro.egithublink, pro.epro_enddate, editproEmployee, editproTask)
         refClose.current.click();
     }
 
@@ -74,6 +82,9 @@ const Projects = () => {
                                             <label htmlFor="githublink" className="form-label">githublink</label>
                                             <input type="text" className="form-control" id="egithublink" name="egithublink" value={pro.egithublink} onChange={onChange} minLength={5} required />
                                         </div>
+
+                                        <EditProMember />
+                                        <EditProTask />
 
                                     </form>
                                 </div>

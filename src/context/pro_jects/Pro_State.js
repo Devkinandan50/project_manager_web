@@ -95,7 +95,7 @@ const Pro_State = (props) => {
   }
 
   // Edit a Project
-  const editProject = async (id, Projectname, description, tag, progess, githublink, pro_enddate, project_members) => {
+  const editProject = async (id, Projectname, description, tag, progess, githublink, pro_enddate, project_members, project_tasks) => {
     // API Call 
     if (checK_loginOr_not) {
       const response = await fetch(`${host}/api/projects/updateproject/${id}`, {
@@ -104,7 +104,7 @@ const Pro_State = (props) => {
           'Content-Type': 'application/json',
           "auth-token": authtoken
         },
-        body: JSON.stringify({ Projectname, description, tag, progess, githublink, pro_enddate, project_members })
+        body: JSON.stringify({ Projectname, description, tag, progess, githublink, pro_enddate, project_members, project_tasks})
       });
       const json = await response.json();
       // console.log(json);
@@ -122,6 +122,7 @@ const Pro_State = (props) => {
           newproj[index].githublink = githublink;
           newproj[index].pro_enddate = pro_enddate;
           newproj[index].project_members = project_members;
+          newproj[index].project_tasks = project_tasks;
           break;
         }
       }

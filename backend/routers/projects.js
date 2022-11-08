@@ -43,7 +43,7 @@ router.post('/addproject', fetchuser, [
 
 // ROUTE 3: Update an existing Project using: PUT "/api/projects/updateProject". Login required
 router.put('/updateproject/:id', fetchuser, async (req, res) => {
-    const { Projectname, description, tag, progess, githublink, pro_enddate, project_members} = req.body;
+    const { Projectname, description, tag, progess, githublink, pro_enddate, project_members, project_tasks} = req.body;
     try {
         // Create a newProject object
         const newProject = {};
@@ -56,6 +56,7 @@ router.put('/updateproject/:id', fetchuser, async (req, res) => {
         if (githublink) { newProject.githublink = githublink };
         if (pro_enddate) { newProject.pro_enddate = pro_enddate };
         if (project_members) { newProject.project_members = project_members };
+        if (project_tasks) { newProject.project_tasks = project_tasks };
 
         // Find the Project to be updated and update it
         let pro = await Project.findById(req.params.id);

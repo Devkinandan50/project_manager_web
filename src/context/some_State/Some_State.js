@@ -5,16 +5,15 @@ const Some_State = (props) => {
   const [loginuserdata, setloginuserdata] = useState({name: '', email: ''})
 
 
-  const [addproEmployeData, setaddproEmployeData] = useState([
-      { employename: '', employerole: 'owner', employeemail: '' },
-    ]);
+  const [addproEmployeData, setaddproEmployeData] = useState([]);
 
-    const [addprotask, setaddprotask] = useState([
-      { taskname: '', taskdescription: '', task_assignto: '', task_status: 'remaining' },
-    ]);
+    const [addprotask, setaddprotask] = useState([]);
+
+    const [editproEmployee, seteditproEmployee] = useState([]);
+    const [editproTask, seteditproTask] = useState([]);
 
   return (
-    <StateContext.Provider value={{ addproEmployeData, setaddproEmployeData, loginuserdata, setloginuserdata, addprotask, setaddprotask}}>
+    <StateContext.Provider value={{ addproEmployeData, setaddproEmployeData, loginuserdata, setloginuserdata, addprotask, setaddprotask, editproEmployee, seteditproEmployee, editproTask, seteditproTask}}>
       {props.children}
     </StateContext.Provider>
   )
