@@ -30,6 +30,7 @@ const EditProMember = () => {
 
 
     const removeFields = (index) => {
+        alert("Note: All Task Assign to Deleted Member also Deleted");
         let data = [...editproEmployee];
         data.splice(index, 1)
         seteditproEmployee(data)
@@ -56,7 +57,7 @@ const EditProMember = () => {
                                 id="name"
                                 label="Name"
                                 name='employename'
-                                // onChange={event => handleFormChange(event, index)}
+                                onChange={event => handleFormChange(event, index)}
                                 value={empMember.employename}
                             />
 
