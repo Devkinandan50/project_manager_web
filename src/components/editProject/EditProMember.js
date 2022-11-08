@@ -52,7 +52,7 @@ const EditProMember = () => {
                                 variant="outlined"
                                 margin="normal"
                                 required
-                                style={{ width: 400, margin: 10 }}
+                                style={{ width: 300, margin: 5 }}
                                 id="name"
                                 label="Name"
                                 name='employename'
@@ -60,7 +60,7 @@ const EditProMember = () => {
                                 value={empMember.employename}
                             />
 
-                            <FormControl variant="outlined" style={{ width: 200, margin: 10 }}>
+                            <FormControl variant="outlined" style={{ width: 200, margin: 5 }}>
                                 <Select label="Months" name='employerole' onChange={event => handleFormChange(event, index)}
                                     value={empMember.employerole}>
                                     <MenuItem value={"owner"}>Owner</MenuItem>
@@ -76,7 +76,7 @@ const EditProMember = () => {
                                 variant="outlined"
                                 margin="normal"
                                 required
-                                style={{ width: 400, margin: 10 }}
+                                style={{ width: 300, margin: 5 }}
                                 id="email"
                                 label="Email Address"
                                 name='employeemail'
@@ -85,7 +85,7 @@ const EditProMember = () => {
                                 autoComplete="email"
                             />
 
-                            <Button onClick={() => removeFields(index)} variant="outlined" style={{ margin: 10 }}>
+                            <Button onClick={() => removeFields(index)} variant="outlined" style={{ margin: 5 }}>
                                 <IconButton >
                                     <RemoveIcon color="primary" size="large" />
                                 </IconButton>
@@ -95,7 +95,7 @@ const EditProMember = () => {
                     </>
                 )
             })}
-            <Button onClick={addFields} variant="outlined" style={{ margin: 10 }}>
+            <Button onClick={addFields} variant="outlined" style={{ margin: 5 }}>
                 <IconButton >
                     <AddIcon color="primary" size="large" />
                 </IconButton>

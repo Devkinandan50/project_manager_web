@@ -51,7 +51,7 @@ const EditproTask = () => {
                                 variant="outlined"
                                 margin="normal"
                                 required
-                                style={{ width: 800, margin: 10 }}
+                                style={{ width: 300, margin: 5 }}
                                 id="name"
                                 label="Task"
                                 name='taskname'
@@ -59,7 +59,19 @@ const EditproTask = () => {
                                 value={task.taskname}
                             />
 
-                            <FormControl variant="outlined" style={{ width: 400, margin: 10 }}>
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                style={{ width: 300, margin: 5 }}
+                                id="taskdescription"
+                                label="Task Description"
+                                name='taskdescription'
+                                onChange={event => handleFormChange(event, index)}
+                                value={task.taskdescription}
+                            />
+                            
+                            <FormControl variant="outlined" style={{ width: 200, margin: 5 }}>
                                 <Select label="Assign To" name='task_assignto' onChange={event => handleFormChange(event, index)}
                                     value={task.task_assignto}>
                                     {
@@ -70,19 +82,7 @@ const EditproTask = () => {
                                 <FormHelperText>Select a Task Assign To</FormHelperText>
                             </FormControl>
 
-                            <TextField
-                                variant="outlined"
-                                margin="normal"
-                                required
-                                style={{ width: 800, margin: 10 }}
-                                id="taskdescription"
-                                label="Task Description"
-                                name='taskdescription'
-                                onChange={event => handleFormChange(event, index)}
-                                value={task.taskdescription}
-                            />
-
-                            <FormControl variant="outlined" style={{ width: 400, margin: 10 }}>
+                            <FormControl variant="outlined" style={{ width: 150, margin: 5 }}>
                                 <Select label="Task Status" name='task_status' onChange={event => handleFormChange(event, index)}
                                     value={task.task_status}>
                                     <MenuItem value={"remaining"}>Remaining</MenuItem>
@@ -94,7 +94,7 @@ const EditproTask = () => {
 
 
 
-                            <Button onClick={() => removeFields(index)} variant="outlined" style={{ margin: 10 }}>
+                            <Button onClick={() => removeFields(index)} variant="outlined" style={{ margin: 5 }}>
                                 <IconButton >
                                     <RemoveIcon color="primary" size="large" />
                                 </IconButton>
@@ -104,7 +104,7 @@ const EditproTask = () => {
                     </>
                 )
             })}
-            <Button onClick={addFields} variant="outlined" style={{ margin: 10 }}>
+            <Button onClick={addFields} variant="outlined" style={{ margin: 5 }}>
                 <IconButton >
                     <AddIcon color="primary" size="large" />
                 </IconButton>

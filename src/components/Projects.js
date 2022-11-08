@@ -48,7 +48,7 @@ const Projects = () => {
                         Launch demo modal
                     </button>
                     <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div className="modal-dialog">
+                        <div className="modal-dialog modal-xl">
                             <div className="modal-content">
                                 <div className="modal-header">
                                     <h5 className="modal-title" id="exampleModalLabel">Edit Project</h5>
@@ -56,19 +56,11 @@ const Projects = () => {
                                 </div>
                                 <div className="modal-body">
                                     <form className="my-3">
-                                        <div className="mb-3">
-                                            <label htmlFor="Projectname" className="form-label">Project Name</label>
-                                            <input type="text" className="form-control" id="eProjectname" name="eProjectname" value={pro.eProjectname} aria-describedby="emailHelp" onChange={onChange} minLength={5} maxLength={15} required />
-                                        </div>
-                                        <div className="mb-3">
-                                            <label htmlFor="description" className="form-label">Description</label>
-                                            <input type="text" className="form-control" id="edescription" name="edescription" value={pro.edescription} onChange={onChange} minLength={5} required />
-                                        </div>
-                                        <div className="mb-3">
-                                            <label htmlFor="progess" className="form-label">progess</label>
-                                            <input type="text" className="form-control" id="eprogess" name="eprogess" value={pro.eprogess} onChange={onChange} minLength={5} required />
-                                        </div>
                                         <div className="row">
+                                            <div className="mb-3 col-sm">
+                                                <label htmlFor="Projectname" className="form-label">Project Name</label>
+                                                <input type="text" className="form-control" id="eProjectname" name="eProjectname" value={pro.eProjectname} aria-describedby="emailHelp" onChange={onChange} minLength={5} maxLength={15} required />
+                                            </div>
                                             <div className="mb-3 col-sm">
                                                 <label htmlFor="tag" className="form-label">Tag</label>
                                                 <input type="text" className="form-control" id="etag" name="etag" value={pro.etag} onChange={onChange} minLength={5} required />
@@ -77,6 +69,15 @@ const Projects = () => {
                                                 <label htmlFor="pro_enddate" className="form-label">Project End Date</label>
                                                 <input type="date" className="form-control" id="epro_enddate" name="epro_enddate" value={pro.epro_enddate} onChange={onChange} required />
                                             </div>
+                                        </div>
+
+                                        <div className="mb-3">
+                                            <label htmlFor="description" className="form-label">Description</label>
+                                            <input type="text" className="form-control" id="edescription" name="edescription" value={pro.edescription} onChange={onChange} minLength={5} required />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label htmlFor="progess" className="form-label">progess</label>
+                                            <input type="text" className="form-control" id="eprogess" name="eprogess" value={pro.eprogess} onChange={onChange} minLength={5} required />
                                         </div>
                                         <div className="mb-3">
                                             <label htmlFor="githublink" className="form-label">githublink</label>
