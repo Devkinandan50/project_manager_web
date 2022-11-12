@@ -5,7 +5,7 @@ const Some_State = (props) => {
   const [loginuserdata, setloginuserdata] = useState({name: '', email: ''})
 
 
-  const [addproEmployeData, setaddproEmployeData] = useState([]);
+  const [addproEmployeData, setaddproEmployeData] = useState([{employename: '', employerole: 'owner', employeemail: ''}]);
 
     const [addprotask, setaddprotask] = useState([]);
 
