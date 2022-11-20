@@ -11,7 +11,7 @@ const AddProMember = () => {
     const context = useContext(StateContext);
 
     // context mese add function lekar aao
-    const { addproEmployeData, setaddproEmployeData, loginuserdata } = context;
+    const { addproEmployeData, setaddproEmployeData, loginuserdata, addprotask, setaddprotask } = context;
     
     const handleFormChange = (event, index) => {
         let data = [...addproEmployeData];
@@ -29,7 +29,14 @@ const AddProMember = () => {
     }
 
 
-    const removeFields = (index) => {
+    const removeFields = (index, employename) => {
+        alert(`Note: All Task Assign to Deleted Member also Deleted`);
+
+        const newArr = addprotask.filter(object => {
+            return object.task_assignto !== employename;
+          });
+        setaddprotask(newArr);
+
         let data = [...addproEmployeData];
         data.splice(index, 1)
         setaddproEmployeData(data)
@@ -85,7 +92,7 @@ const AddProMember = () => {
                                 autoComplete="email"
                             />
 
-                            <Button onClick={() => removeFields(index)} variant="outlined" style={{ margin: 10 }}>
+                            <Button onClick={() => removeFields(index, empMember.employename)} variant="outlined" style={{ margin: 10 }}>
                                 <IconButton >
                                     <RemoveIcon color="primary" size="large" />
                                 </IconButton>
