@@ -75,19 +75,21 @@ const Pro_State = (props) => {
   const deleteProject = async (id) => {
     // API Call
     if (checK_loginOr_not) {
-      const response = await fetch(`${host}/api/projects/deleteproject/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          "auth-token": authtoken
-        }
-      });
-      const json = response.json();
-      console.log(json);
-
-      // agar id == id_of_delete then not filter that node    // Logic to delete in client
-      const newprojects = all_projects.filter((po) => { return po._id !== id })
-      setall_projects(newprojects);
+      if(window.confirm("You want to delete this Project")){
+        const response = await fetch(`${host}/api/projects/deleteproject/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            "auth-token": authtoken
+          }
+        });
+        const json = response.json();
+        console.log(json);
+  
+        // agar id == id_of_delete then not filter that node    // Logic to delete in client
+        const newprojects = all_projects.filter((po) => { return po._id !== id })
+        setall_projects(newprojects);
+      }
     }
     else {
       display_alert("Please Login/Signup to delete Project", "warning");
