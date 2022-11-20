@@ -13,7 +13,8 @@ const membersSchema = moongoose.Schema(
             required: true
         },
         employeemail: {
-            type: String
+            type: String,
+            required: true
         }
     }
 )
