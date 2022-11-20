@@ -12,7 +12,7 @@ const EditProMember = () => {
 
     // context mese add function lekar aao
     const { editproEmployee, seteditproEmployee, loginuserdata, editproTask, seteditproTask } = context;
-    
+
     const handleFormChange = (event, index) => {
         let data = [...editproEmployee];
         data[index][event.target.name] = event.target.value;
@@ -30,16 +30,16 @@ const EditProMember = () => {
 
 
     const removeFields = (index, employename) => {
-        alert(`Note: All Task Assign to Deleted Member also Deleted`);
+        if (window.confirm("All Task Assign to Deleted Member also Deleted")) {
+            const newArr = editproTask.filter(object => {
+                return object.task_assignto !== employename;
+            });
+            seteditproTask(newArr);
 
-        const newArr = editproTask.filter(object => {
-            return object.task_assignto !== employename;
-          });
-        seteditproTask(newArr);
-
-        let data = [...editproEmployee];
-        data.splice(index, 1)
-        seteditproEmployee(data)
+            let data = [...editproEmployee];
+            data.splice(index, 1)
+            seteditproEmployee(data)
+        }
     }
 
 
@@ -108,7 +108,7 @@ const EditProMember = () => {
                 </IconButton>
             </Button>
             {/* <button onClick={addFields}>Add More..</button> */}
-            
+
         </>
     )
 }

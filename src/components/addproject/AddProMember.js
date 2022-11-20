@@ -30,16 +30,16 @@ const AddProMember = () => {
 
 
     const removeFields = (index, employename) => {
-        alert(`Note: All Task Assign to Deleted Member also Deleted`);
-
-        const newArr = addprotask.filter(object => {
-            return object.task_assignto !== employename;
-          });
-        setaddprotask(newArr);
-
-        let data = [...addproEmployeData];
-        data.splice(index, 1)
-        setaddproEmployeData(data)
+        if(window.confirm("All Task Assign to Deleted Member also Deleted")){
+            const newArr = addprotask.filter(object => {
+                return object.task_assignto !== employename;
+              });
+            setaddprotask(newArr);
+    
+            let data = [...addproEmployeData];
+            data.splice(index, 1)
+            setaddproEmployeData(data)
+        }
     }
 
 
