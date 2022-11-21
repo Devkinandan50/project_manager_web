@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 
 
-const Barchart = () => {
+const DashBoard = () => {
 
     return (
         <div>
@@ -9,4 +9,4 @@ const Barchart = () => {
         </div>
     )
 };
-export default Barchart;
+export default DashBoard;

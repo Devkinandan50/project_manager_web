@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import ProjectContext from "../context/pro_jects/projectContext";
-import Barchart from './charts/Barchart'
+import Dashboard from './charts/DashBoard'
 
 
 export const Home = () => {
@@ -13,7 +13,7 @@ export const Home = () => {
                 <>
                     <div className="row my-3">
                         <h2> Dashboard</h2>
-                        < Barchart />
+                        < Dashboard />
                     </div>
                 </>
             ) : (
