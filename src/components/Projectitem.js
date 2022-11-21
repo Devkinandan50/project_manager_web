@@ -11,6 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import { BsGithub } from "react-icons/bs";
 import "../style/projectitem.css";
 import ReactTimeAgo from 'react-time-ago';
+import { height } from '@mui/system';
 
 const Projectitem = (props) => {
     const context = useContext(ProjectContext);
@@ -76,7 +77,7 @@ const Projectitem = (props) => {
                                 <div className="badge"> <span>{proj.tag}</span> </div>
                             </div>
                             <div className="mt-5">
-                                <p className="heading">{proj.description} </p>
+                                <p className="heading" style={{overflow: "hidden", textOverflow: "ellipsis", display: "-webkit-box", WebkitLineClamp: "2", WebkitBoxOrient: "vertical", height:"49px"}}>{proj.description} </p>
                                 <div className="mt-5">
                                     <div className="progress">
                                         <div className="progress-bar" role="progressbar" style= {{width: `${proj.progess}%`}} aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>

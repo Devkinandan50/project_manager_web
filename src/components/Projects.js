@@ -59,7 +59,7 @@ const Projects = () => {
                                         <div className="row">
                                             <div className="mb-3 col-sm">
                                                 <label htmlFor="Projectname" className="form-label">Project Name</label>
-                                                <input type="text" className="form-control" id="eProjectname" name="eProjectname" value={pro.eProjectname} aria-describedby="emailHelp" onChange={onChange} minLength={5} maxLength={15} required />
+                                                <input type="text" className="form-control" id="eProjectname" name="eProjectname" value={pro.eProjectname} aria-describedby="emailHelp" onChange={onChange} minLength={5} maxLength={35} required />
                                             </div>
                                             <div className="mb-3 col-sm">
                                                 <label htmlFor="tag" className="form-label">Tag</label>
