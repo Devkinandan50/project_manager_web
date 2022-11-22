@@ -4,7 +4,7 @@ import ProjectContext from "../../context/pro_jects/projectContext";
 
 
 const DashBoard = () => {
-    const [selectedProjectName, setselectedProjectName] = useState("")
+    const [selectedProjectName, setselectedProjectName] = useState("All")
 
     const Procontext = useContext(ProjectContext);
     const { getProjects_forDashboard, all_dashboardprojects } = Procontext;
@@ -20,7 +20,7 @@ const DashBoard = () => {
 
     return (
         <div>
-            <FormControl variant="outlined" style={{ width: 200, margin: 10 }}>
+            <FormControl variant="outlined" style={{ width: 200, marginTop: 10 }}>
                 <Select label="Project" name='project' defaultValue={'All'}>
                     {
                         all_dashboardprojects.map(displayemployeelist)
