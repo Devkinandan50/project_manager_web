@@ -12,7 +12,6 @@ export const Home = () => {
             {checK_loginOr_not ? (
                 <>
                     <div className="row my-3">
-                        <h2> Dashboard</h2>
                         < Dashboard />
                     </div>
                 </>

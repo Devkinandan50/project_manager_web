@@ -20,8 +20,9 @@ const DashBoard = () => {
 
     return (
         <div>
+            <h2> Dashboard</h2>
             <FormControl variant="outlined" style={{ width: 200, marginTop: 10 }}>
-                <Select label="Project" name='project' defaultValue={'All'}>
+                <Select label="Project" name='project' value={selectedProjectName}>
                     {
                         all_dashboardprojects.map(displayemployeelist)
                     }
