@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Select, MenuItem, FormHelperText, FormControl, InputLabel } from '@material-ui/core';
 import ProjectContext from "../../context/pro_jects/projectContext";
 import './Dashboard.css'
+import Widgets from './widget/Widgets';
 
 
 const DashBoard = () => {
@@ -35,10 +36,32 @@ const DashBoard = () => {
             </div>
 
             <div className="container" style={{ border: '1px solid red' }} >
-                <div className="row">
-                    <div class="col-8" style={{ border: '1px solid red', margin: '1rem' }}>col-8</div>
-                    <div class="col-4" style={{ border: '1px solid red', margin: '1rem' }}>col-4</div>
+                <div className="row col-md-4">
+                    <div className="col-8 col-md-4" style={{ border: '1px solid red' }}>
+                        <div className="row justify-content-between">
+                            <Widgets />
+                            <Widgets />
+                            <Widgets />
+                        </div>
+
+                        <div className="row justify-content-between">
+                            <Widgets />
+                            <Widgets />
+                            <Widgets />
+                        </div>
+                    </div>
+                    <div className="col-4 col-md-4" style={{ border: '1px solid red' }}>col-4</div>
                 </div>
+            </div>
+
+            <div className="row">
+                <div className="col-6 col-sm-4">.col-6 .col-sm-4</div>
+                <div className="col-6 col-sm-4">.col-6 .col-sm-4</div>
+
+                <div className="w-100 d-none d-md-block"></div>
+
+                <div className="col-6 col-sm-4">.col-6 .col-sm-4</div>
+                <div className="col-6 col-sm-4">.col-6 .col-sm-4</div>
             </div>
 
 
