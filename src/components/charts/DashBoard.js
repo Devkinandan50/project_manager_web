@@ -3,6 +3,20 @@ import { Select, MenuItem, FormHelperText, FormControl, InputLabel } from '@mate
 import ProjectContext from "../../context/pro_jects/projectContext";
 import './Dashboard.css'
 import Widgets from './widget/Widgets';
+import {
+    Badge,
+    Button,
+    Card,
+    Navbar,
+    Nav,
+    Table,
+    Container,
+    Row,
+    Col,
+    Form,
+    OverlayTrigger,
+    Tooltip,
+} from "react-bootstrap";
 
 
 const DashBoard = () => {
@@ -35,37 +49,20 @@ const DashBoard = () => {
                 </div>
             </div>
 
-            <div className="container" style={{ border: '1px solid red' }} >
-                <div className="row col-md-4">
-                    <div className="col-8 col-md-4" style={{ border: '1px solid red' }}>
+            <div className="container" style={{ border: '1px solid red', padding: '2rem 1rem 1rem 1rem'}} >
+                <div className="row">
+                    <div className="col-12" style={{ border: '1px solid red' }}>
                         <div className="row justify-content-between">
                             <Widgets />
-                            <Widgets />
-                            <Widgets />
-                        </div>
-
-                        <div className="row justify-content-between">
                             <Widgets />
                             <Widgets />
                             <Widgets />
                         </div>
                     </div>
-                    <div className="col-4 col-md-4" style={{ border: '1px solid red' }}>col-4</div>
                 </div>
             </div>
-
-            <div className="row">
-                <div className="col-6 col-sm-4">.col-6 .col-sm-4</div>
-                <div className="col-6 col-sm-4">.col-6 .col-sm-4</div>
-
-                <div className="w-100 d-none d-md-block"></div>
-
-                <div className="col-6 col-sm-4">.col-6 .col-sm-4</div>
-                <div className="col-6 col-sm-4">.col-6 .col-sm-4</div>
-            </div>
-
-
-        </>
-    )
-};
-export default DashBoard;
+            
+            </>
+            );
+}
+            export default DashBoard;

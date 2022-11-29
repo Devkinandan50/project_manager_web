@@ -11,7 +11,7 @@ export const Home = () => {
         <div>
             {checK_loginOr_not ? (
                 <>
-                    <div className="row my-3">
+                    <div className="my-3">
                         < Dashboard />
                     </div>
                 </>
