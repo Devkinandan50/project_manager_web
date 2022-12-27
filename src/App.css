@@ -1,6 +1,7 @@
-body {    
-  background-image: url("1.jpg");  
+/* body {    
+  background-image: url("2.jpg");  
   background-repeat:no-repeat;
   background-size: cover;
-  background-position: center; 
-}  
+  background-position: center;  
+  background-position: inherit;
+}   */

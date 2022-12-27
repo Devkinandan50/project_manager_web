@@ -3,20 +3,6 @@ import { Select, MenuItem, FormHelperText, FormControl, InputLabel } from '@mate
 import ProjectContext from "../../context/pro_jects/projectContext";
 import './Dashboard.css'
 import Widgets from './widget/Widgets';
-import {
-    Badge,
-    Button,
-    Card,
-    Navbar,
-    Nav,
-    Table,
-    Container,
-    Row,
-    Col,
-    Form,
-    OverlayTrigger,
-    Tooltip,
-} from "react-bootstrap";
 
 
 const DashBoard = () => {
@@ -36,7 +22,7 @@ const DashBoard = () => {
 
     return (
         <>
-            <div className='heading'>
+            <div className='headingdash'>
                 <h2 style={{ padding: '1rem' }}> Dashboard</h2>
                 <div>
                     <FormControl variant="outlined" style={{ width: 200, marginTop: 10 }}>
@@ -48,21 +34,36 @@ const DashBoard = () => {
                     </FormControl>
                 </div>
             </div>
+            <div className="container" style={{ boxShadow: '2px 10px 20px rgba(0, 0, 0, 0.1)', borderRadius: '1rem', padding: '2rem 1rem 1rem 1rem' }} >
+            {/* <div className="container" style={{ padding: '2rem 1rem 1rem 1rem' }} > */}
 
-            <div className="container" style={{ border: '1px solid red', padding: '2rem 1rem 1rem 1rem'}} >
-                <div className="row">
-                    <div className="col-12" style={{ border: '1px solid red' }}>
-                        <div className="row justify-content-between">
-                            <Widgets />
-                            <Widgets />
-                            <Widgets />
-                            <Widgets />
+                <div style={{marginBottom: '1rem'}}>
+                    <Widgets />
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-lg-7 mb-lg-0 mb-4">
+                        <div class="dev" style={{ height: '25rem', boxShadow: '1px 2px 9px #36454F', borderRadius: '1rem' }}>
+                            <div style={{ background: 'linear-gradient(82.59deg, #ff647c 0%, #0084f4 100%)', height: '0.5rem', borderRadius: '1rem' }}></div>
+                            <div style={{ marginLeft: '2rem' }}>
+                                <h4> Project Items status Summary </h4>
+                            </div>
+                            {/* <PieGraph board={props.selectedboard}  /> */}
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="dev" style={{ height: '25rem', boxShadow: '1px 2px 9px #36454F', borderRadius: '1rem' }}>
+                            <div style={{ background: 'linear-gradient(69.83deg, #0084f4 0%, #00c48c 100%)', height: '0.5rem', borderRadius: '1rem' }}></div>
+                            <div style={{ marginLeft: '2rem' }}>
+                                <h4> Project Items status Summary </h4>
+                            </div>
+
+                            {/* <Tableofdata board={props.selectedboard} /> */}
                         </div>
                     </div>
                 </div>
             </div>
-            
-            </>
-            );
+        </>
+    );
 }
-            export default DashBoard;
+export default DashBoard;
