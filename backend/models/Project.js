@@ -73,15 +73,12 @@ const ProjectsSchema = new Schema({
         required: true
     },
 
-    // to store update date we can also use timestamp 
-    lastprogress_updatedate:{
-        type: Date,
-        default: Date.now
-    },
     date: {
         type: Date,
         default: Date.now
     }
+},{
+    timestamps: true,
 })
 
 module.exports = moongoose.model('projects', ProjectsSchema);

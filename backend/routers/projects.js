@@ -51,7 +51,7 @@ router.put('/updateproject/:id', fetchuser, async (req, res) => {
         if (description) { newProject.description = description };
         if (tag) { newProject.tag = tag };
         if (progess) { newProject.progess = progess
-            newProject.lastpro_updatedate = Date.now();
+            // newProject.lastpro_updatedate = Date.now();
         };
         if (githublink) { newProject.githublink = githublink };
         if (pro_enddate) { newProject.pro_enddate = pro_enddate };
@@ -92,46 +92,4 @@ router.delete('/deleteproject/:id', fetchuser, async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 })
-
-// ROUTE 5: Delete an existing Project Member and its task using: DELETE "/api/projects/deleteMemberanditsTask". Login required
-// router.delete('/deleteMemberanditsTask/:userId/:empId', fetchuser, async (req, res) => {
-//     try {
-//         // Find the Project to be delete and delete it
-//         const { userId, empId } = req.params;
-//         let pro = await Project.findById(userId);
-//         if (!pro) { return res.status(404).send("Not Found") }
-        
-//         // Allow deletion only if user owns this Project
-//         if (pro.user.toString() !== req.user.id) {
-//             return res.status(401).send("Not Allowed");
-//         }
-        
-//         let allmember = pro.project_members;
-//         let allTask = pro.project_tasks;
-//         let newarr = [];
-//         let empname;
-        
-//         allmember.map((employee) => {
-//             if(employee._id == empId){
-//                 empname = employee.employename;
-//             }
-//         })
-        
-//         allTask.map((task) => {
-//             if(task.task_assignto !== empname){
-//                 newarr.push(task);
-//             }
-//         })
-//         // let member = await allmember.findById(empId);
-        
-//         pro = await Project.findByIdAndUpdate(userId, { $set: {
-//             'project_tasks': newarr
-//         }})
-
-//         res.json({ "Success": "delete all member tasks", project_info: newarr });
-//     } catch (error) {
-//         console.error(error.message);
-//         res.status(500).send("Internal Server Error");
-//     }
-// })
 module.exports = router
