@@ -34,6 +34,7 @@ const DashBoard = () => {
                     </FormControl>
                 </div>
             </div>
+            
             <div className="container" style={{ boxShadow: '2px 10px 20px rgba(0, 0, 0, 0.1)', borderRadius: '1rem', padding: '2rem 1rem 1rem 1rem' }} >
             {/* <div className="container" style={{ padding: '2rem 1rem 1rem 1rem' }} > */}
 
