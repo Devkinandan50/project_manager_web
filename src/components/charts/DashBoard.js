@@ -35,6 +35,8 @@ const DashBoard = () => {
                 </div>
             </div>
             
+
+            
             <div className="container" style={{ boxShadow: '2px 10px 20px rgba(0, 0, 0, 0.1)', borderRadius: '1rem', padding: '2rem 1rem 1rem 1rem' }} >
             {/* <div className="container" style={{ padding: '2rem 1rem 1rem 1rem' }} > */}
 
@@ -44,7 +46,7 @@ const DashBoard = () => {
 
                 <div class="row mt-4">
                     <div class="col-lg-7 mb-lg-0 mb-4">
-                        <div class="dev" style={{ height: '25rem', boxShadow: '1px 2px 9px #36454F', borderRadius: '1rem' }}>
+                        <div class="dev" style={{ height: '25rem', boxShadow: '2px 10px 20px rgba(0, 0, 0, 0.2)', borderRadius: '1rem' }}>
                             <div style={{ background: 'linear-gradient(82.59deg, #ff647c 0%, #0084f4 100%)', height: '0.5rem', borderRadius: '1rem' }}></div>
                             <div style={{ marginLeft: '2rem' }}>
                                 <h4> Project Items status Summary </h4>
@@ -53,7 +55,7 @@ const DashBoard = () => {
                         </div>
                     </div>
                     <div class="col-lg-5">
-                        <div class="dev" style={{ height: '25rem', boxShadow: '1px 2px 9px #36454F', borderRadius: '1rem' }}>
+                        <div class="dev" style={{ height: '25rem', boxShadow: '2px 10px 20px rgba(0, 0, 0, 0.2)', borderRadius: '1rem' }}>
                             <div style={{ background: 'linear-gradient(69.83deg, #0084f4 0%, #00c48c 100%)', height: '0.5rem', borderRadius: '1rem' }}></div>
                             <div style={{ marginLeft: '2rem' }}>
                                 <h4> Project Items status Summary </h4>
