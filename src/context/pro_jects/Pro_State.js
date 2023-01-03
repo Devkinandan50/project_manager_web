@@ -6,7 +6,6 @@ const Pro_State = (props) => {
   const host = "http://localhost:5000"
   const authtoken = localStorage.getItem('token');
   const [all_projects, setall_projects] = useState(proInitial)
-  const [all_dashboardprojects, setall_dashboardprojects] = useState(proInitial)
   const [checK_loginOr_not, set_checK_loginOr_not] = useState(false);
   const [facelogin_email, set_facelogin_email] = useState("");
   const[listview, set_listview] = useState(false);
@@ -43,27 +42,6 @@ const Pro_State = (props) => {
       const json = await response.json()
       // console.log(json)
       setall_projects(json);
-    }
-    else {
-      display_alert("Please Login/Signup to access all functionlity", "warning");
-    }
-  }
-
-  // Get all Projects for dashboard select with all  
-  const getProjects_forDashboard = async () => {
-    // API Call 
-    if (checK_loginOr_not) {
-      const response = await fetch(`${host}/api/projects/fetchallprojects`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          "auth-token": authtoken
-        }
-      });
-      const json = await response.json()
-      // console.log(json)
-      json.unshift({Projectname: "All"});
-      setall_dashboardprojects(json);
     }
     else {
       display_alert("Please Login/Signup to access all functionlity", "warning");
@@ -158,7 +136,7 @@ const Pro_State = (props) => {
   }
 
   return (
-    <ProjectContext.Provider value={{ all_projects, addProject, deleteProject, editProject, set_checK_loginOr_not, getProjects, checK_loginOr_not, show_alert, display_alert, set_listview, listview, facelogin_email, set_facelogin_email, addproEmployeData, setaddproEmployeData, getProjects_forDashboard, all_dashboardprojects}}>
+    <ProjectContext.Provider value={{ all_projects, addProject, deleteProject, editProject, set_checK_loginOr_not, getProjects, checK_loginOr_not, show_alert, display_alert, set_listview, listview, facelogin_email, set_facelogin_email, addproEmployeData, setaddproEmployeData}}>
       {props.children}
     </ProjectContext.Provider>
   )

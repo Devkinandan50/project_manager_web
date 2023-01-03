@@ -6,11 +6,29 @@ import Widgets from './widget/Widgets';
 
 
 const DashBoard = () => {
+    const host = "http://localhost:5000"
+    const authtoken = localStorage.getItem('token');
+    // const Procontext = useContext(ProjectContext);
     const [selectedProjectName, setselectedProjectName] = useState("All")
 
-    const Procontext = useContext(ProjectContext);
-    const { getProjects_forDashboard, all_dashboardprojects } = Procontext;
+    const [all_dashboardprojects, setall_dashboardprojects] = useState([]);
 
+
+    // Get all Projects for dashboard select with all  
+  const getProjects_forDashboard = async () => {
+    // API Call 
+      const response = await fetch(`${host}/api/projects/fetchallprojects`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          "auth-token": authtoken
+        }
+      });
+      const json = await response.json()
+      // console.log(json)
+      json.unshift({Projectname: "All"});
+      setall_dashboardprojects(json);
+  }
 
     useEffect(() => {
         getProjects_forDashboard();

@@ -92,4 +92,16 @@ router.delete('/deleteproject/:id', fetchuser, async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 })
+
+// ROUTE 5: Get All the Projects for Dashboard using: GET "/api/projects/dashboard". Login required
+router.get('/dashboard', fetchuser, async (req, res) => {
+    try {
+        const pro = await Project.find({ user: req.user.id });
+        pro.unshift({Projectname: "All"});
+        res.json(pro)
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
+})
 module.exports = router
