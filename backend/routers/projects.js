@@ -96,7 +96,6 @@ router.delete('/deleteproject/:id', fetchuser, async (req, res) => {
 // ROUTE 5: Get All the Projects for Dashboard using: GET "/api/projects/dashboard". Login required
 router.get('/dashboard', fetchuser, async (req, res) => {
     try {
-
         const pro = await Project.find({ user: req.user.id });
         pro.unshift({Projectname: "All", description: "Store data in database and manage it. add do crud operation for storing we use mysql and sql database.",
         tag: "c++"});
