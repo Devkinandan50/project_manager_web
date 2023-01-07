@@ -87,6 +87,7 @@ const EditproTask = () => {
                                     value={task.task_status}>
                                     <MenuItem value={"remaining"}>Remaining</MenuItem>
                                     <MenuItem value={"inprogress"}>In-Progress</MenuItem>
+                                    <MenuItem value={"underreview"}>Under Review</MenuItem>
                                     <MenuItem value={"completed"}>completed</MenuItem>
                                 </Select>
                                 <FormHelperText>Task Status</FormHelperText>

@@ -97,9 +97,17 @@ router.delete('/deleteproject/:id', fetchuser, async (req, res) => {
 router.get('/dashboard', fetchuser, async (req, res) => {
     try {
         const pro = await Project.find({ user: req.user.id });
+        let TotalProject = pro.length;
         pro.unshift({Projectname: "All", description: "Store data in database and manage it. add do crud operation for storing we use mysql and sql database.",
-        tag: "c++"});
+        tag: "c++", "TotalProject": TotalProject});
+
+
+//         const arr = [{id:1,name:'foo'},{id:2,name:'bar'}];
+// const mapped = arr.map(element => ({isApproved: true ,...element}))
+
+        
         res.json(pro)
+
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Internal Server Error");
