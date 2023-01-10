@@ -11,28 +11,37 @@ const Widgets = (props) => {
                     <div className="row justify-content-between">
                         <div className="c-dashboardInfo col-lg-3 col-md-6">
                             <div className="wrap">
-                                <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Total Project Int</h4>
-                                <span className="hind-font caption-12 c-dashboardInfo__count">{data.tag}</span>
+                                { data.Projectname == "All" ? (
+                                    <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Performance</h4>
+                                ) : (
+                                    <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Progess</h4>
+                                ) }
+                                
+                                <span className="hind-font caption-12 c-dashboardInfo__count">{data.totalCompleted + data.totalremaining} </span>
                             </div>
                         </div>
 
                         <div className="c-dashboardInfo col-lg-3 col-md-6">
                             <div className="wrap">
-                                <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Total Project Ite ompleted</h4>
+                                <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Total Task</h4>
                                 <span className="hind-font caption-12 c-dashboardInfo__count">dfeff</span>
                             </div>
                         </div>
 
                         <div className="c-dashboardInfo col-lg-3 col-md-6">
                             <div className="wrap">
-                                <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">New Project Items Added in last 2 days</h4>
+                                <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Total Employees</h4>
                                 <span className="hind-font caption-12 c-dashboardInfo__count">dfeff</span>
                             </div>
                         </div>
 
                         <div className="c-dashboardInfo col-lg-3 col-md-6">
                             <div className="wrap">
-                                <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Updated Project Items in last 2 days</h4>
+                                { data.Projectname == "All" ? (
+                                    <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Total Project</h4>
+                                ) : (
+                                    <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Due Date</h4>
+                                ) }
                                 <span className="hind-font caption-12 c-dashboardInfo__count">{data.tag}</span>
                             </div>
                         </div>

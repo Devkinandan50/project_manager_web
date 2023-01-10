@@ -77,8 +77,7 @@ const ProjectsSchema = new Schema({
         type: Date,
         default: Date.now
     }
-},{
-    timestamps: true,
-})
+}
+)
 
 module.exports = moongoose.model('projects', ProjectsSchema);
