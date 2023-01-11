@@ -114,89 +114,90 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             let task_inprogess = 0
             let task_underreview = 0
             let allremainingtask = []
+            // let empAndTask = new Map();
             let pre = [
                 {
                     "Date": "01",
                     "Remaining": 0,
-                    "In-Progess": 0,
-                    "Under-Review": 0,
+                    "InProgess": 0,
+                    "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "02",
                     "Remaining": 0,
-                    "In-Progess": 0,
-                    "Under-Review": 0,
+                    "InProgess": 0,
+                    "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "03",
                     "Remaining": 0,
-                    "In-Progess": 0,
-                    "Under-Review": 0,
+                    "InProgess": 0,
+                    "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "04",
                     "Remaining": 0,
-                    "In-Progess": 0,
-                    "Under-Review": 0,
+                    "InProgess": 0,
+                    "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "05",
                     "Remaining": 0,
-                    "In-Progess": 0,
-                    "Under-Review": 0,
+                    "InProgess": 0,
+                    "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "06",
                     "Remaining": 0,
-                    "In-Progess": 0,
-                    "Under-Review": 0,
+                    "InProgess": 0,
+                    "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "07",
                     "Remaining": 0,
-                    "In-Progess": 0,
-                    "Under-Review": 0,
+                    "InProgess": 0,
+                    "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "08",
                     "Remaining": 0,
-                    "In-Progess": 0,
-                    "Under-Review": 0,
+                    "InProgess": 0,
+                    "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "09",
                     "Remaining": 0,
-                    "In-Progess": 0,
-                    "Under-Review": 0,
+                    "InProgess": 0,
+                    "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "10",
                     "Remaining": 0,
-                    "In-Progess": 0,
-                    "Under-Review": 0,
+                    "InProgess": 0,
+                    "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "11",
                     "Remaining": 0,
-                    "In-Progess": 0,
-                    "Under-Review": 0,
+                    "InProgess": 0,
+                    "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "12",
                     "Remaining": 0,
-                    "In-Progess": 0,
-                    "Under-Review": 0,
+                    "InProgess": 0,
+                    "UnderReview": 0,
                     "Completed": 0
                 }
             ]
@@ -205,22 +206,29 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             employees = pro[index].project_members
 
             tasks.map(task => {
+                var str = JSON.stringify(task.createdAt);
+                var month = str.slice(6, 8);
+                var monthinInt = parseInt(month);
+                var ind = monthinInt - 1;
+
+                // empAndTask.set(task_assignto                    )
+
                 if(task.task_status == 'completed'){
                     task_completed++;
-                    // let date = task.updatedAt
-                    // ds = date.slice(5,6);
-                    // console.log(ds)
-
+                    pre[ind].Completed = pre[ind].Completed + 1
                 }
                 else if(task.task_status == 'remaining'){
                     // task_remaining++;
                     allremainingtask.push(task);
+                    pre[ind].Remaining = pre[ind].Remaining + 1
                 }
                 else if(task.task_status == 'inprogress'){
                     task_inprogess++;
+                    pre[ind].InProgess = pre[ind].InProgess + 1
                 }
                 else if(task.task_status == 'underreview'){
                     task_underreview++;
+                    pre[ind].UnderReview = pre[ind].UnderReview + 1
                 }
             })
             // data for particular project

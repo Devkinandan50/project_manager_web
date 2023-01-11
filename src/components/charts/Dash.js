@@ -18,7 +18,6 @@ const Dash = (props) => {
                             <div style={{ marginLeft: '2rem' }}>
                                 {data.Projectname == "All" ? (<h4> Project vs Progess </h4>) : (<h4> Stream Chart </h4>)}
                             </div>
-                            <PieGraph data={data} />
                         </div>
                     </div>
                     <div class="col-lg-5">
@@ -29,7 +28,7 @@ const Dash = (props) => {
                                 {/* <h4> {data.description} </h4> */}
                             </div>
 
-                            {/* <Tableofdata board={props.selectedboard} /> */}
+                            <PieGraph data={data} />
                         </div>
                     </div>
                 </div>
