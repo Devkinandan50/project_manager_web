@@ -16,7 +16,11 @@ const Dash = (props) => {
                         <div class="dev" style={{ height: '25rem', boxShadow: '2px 10px 20px rgba(0, 0, 0, 0.2)', borderRadius: '1rem' }}>
                             <div style={{ background: 'linear-gradient(82.59deg, #ff647c 0%, #0084f4 100%)', height: '0.5rem', borderRadius: '1rem' }}></div>
                             <div style={{ marginLeft: '2rem' }}>
-                                {data.Projectname == "All" ? (<h4> Project vs Progess </h4>) : (<h4> Stream Chart </h4>)}
+                                {data.Projectname == "All" ? (
+                                    <h4> Project vs Progess </h4>
+                                ) : (
+                                    <h4> Stream Chart </h4>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -25,10 +29,33 @@ const Dash = (props) => {
                             <div style={{ background: 'linear-gradient(69.83deg, #0084f4 0%, #00c48c 100%)', height: '0.5rem', borderRadius: '1rem' }}></div>
                             <div style={{ marginLeft: '2rem' }}>
                                 <h4> Task Status Summary </h4>
-                                {/* <h4> {data.description} </h4> */}
+                            </div>
+                            <PieGraph review={data.underreviewTask} comp={data.completedTask} inpro={data.inprogessTask} remaining={data.remainingTask} />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-lg-7 mb-lg-0 mb-4">
+                        <div class="dev" style={{ height: '25rem', boxShadow: '2px 10px 20px rgba(0, 0, 0, 0.2)', borderRadius: '1rem' }}>
+                            <div style={{ background: 'linear-gradient(82.59deg, #ff647c 0%, #0084f4 100%)', height: '0.5rem', borderRadius: '1rem' }}></div>
+                            <div style={{ marginLeft: '2rem' }}>
+                                {data.Projectname == "All" ? (
+                                    <h4> missing deadline </h4>
+                                ) : (
+                                    <h4> Remaining Tasks</h4>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="dev" style={{ height: '25rem', boxShadow: '2px 10px 20px rgba(0, 0, 0, 0.2)', borderRadius: '1rem' }}>
+                            <div style={{ background: 'linear-gradient(69.83deg, #0084f4 0%, #00c48c 100%)', height: '0.5rem', borderRadius: '1rem' }}></div>
+                            <div style={{ marginLeft: '2rem' }}>
+                                <h4> Summary </h4>
                             </div>
 
-                            <PieGraph data={data} />
+                            {/* <PieGraph data={data} /> */}
                         </div>
                     </div>
                 </div>

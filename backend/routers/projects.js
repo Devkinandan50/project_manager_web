@@ -110,7 +110,7 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             pro[index] = pro[index].toJSON();
 
             let task_completed = 0
-            // let task_remaining = 0
+            let task_remaining = 0
             let task_inprogess = 0
             let task_underreview = 0
             let allremainingtask = []
@@ -218,7 +218,7 @@ router.get('/dashboard', fetchuser, async (req, res) => {
                     pre[ind].Completed = pre[ind].Completed + 1
                 }
                 else if(task.task_status == 'remaining'){
-                    // task_remaining++;
+                    task_remaining++;
                     allremainingtask.push(task);
                     pre[ind].Remaining = pre[ind].Remaining + 1
                 }
@@ -235,8 +235,8 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             pro[index].completedTask = task_completed;
             pro[index].inprogessTask = task_inprogess;
             pro[index].underreviewTask = task_underreview;
-            // pro[index].remainingTask = task_remaining;
-            pro[index].remainingtask = allremainingtask;
+            pro[index].remainingTask = task_remaining;
+            pro[index].Allremainingtask = allremainingtask;
             pro[index].streamchart = pre;
 
 
@@ -245,7 +245,7 @@ router.get('/dashboard', fetchuser, async (req, res) => {
 
             // data collect for project for -------> all project
             totalcompleted_task = totalcompleted_task + task_completed;
-            totalremaining_task = totalremaining_task + allremainingtask.length;
+            totalremaining_task = totalremaining_task + task_remaining;
             totalinprogess_task = totalinprogess_task + task_inprogess;
             totalunderreview_task = totalunderreview_task + task_underreview;
             totalEmployee = totalEmployee + employees.length;
@@ -259,10 +259,10 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             Projectname: "All",
             tag: "c++", 
             "TotalProject": TotalProject,
-            "totalCompleted": totalcompleted_task,
-            "totalremaining": totalremaining_task,
-            "totalinprogess": totalinprogess_task,
-            "totalunderreview": totalunderreview_task,
+            "completedTask": totalcompleted_task,
+            "remainingTask": totalremaining_task,
+            "inprogessTask": totalinprogess_task,
+            "underreviewTask": totalunderreview_task,
             "totalemployee": totalEmployee
         });
 

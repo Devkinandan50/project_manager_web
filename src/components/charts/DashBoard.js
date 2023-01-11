@@ -76,12 +76,20 @@ const DashBoard = () => {
                     <h5 style={{ fontSize: 20 }}> Loading..... </h5>
                 </div>
             ) : (
-                <>  
-                    {all_dashboardprojects.map((item) => {
-                        if(item.Projectname == selectedProjectName){
-                            return <Dash data = {item} />
-                        }
-                    })}
+                <>
+                    {all_dashboardprojects.length === 1 ? (
+                        <>
+                          <p> Add Project to visualize dashboard </p>
+                        </>
+                    ) : (
+                        <>
+                            {all_dashboardprojects.map((item) => {
+                                if (item.Projectname == selectedProjectName) {
+                                    return <Dash data={item} />
+                                }
+                            })}
+                        </>
+                    )}
                 </>
             )}
 

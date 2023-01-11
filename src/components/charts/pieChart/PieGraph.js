@@ -214,8 +214,15 @@ import { useState, useEffect } from "react";
 // import { ResponsivePie } from "@nivo/pie";
 
 const PieGraph = (props) => {
+    const { review, comp, inpro, remaining } = props;
     return (
-        <p> pie Chart</p>
+        <>
+            <p>dvfvfbfbgfbrgb</p>
+            <p> {remaining}</p>
+            <p> {review}</p>
+            <p> {inpro}</p>
+            <p> {comp}</p>
+        </>
     )
 }
 export default PieGraph

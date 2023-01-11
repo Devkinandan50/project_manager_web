@@ -19,7 +19,7 @@ const Widgets = (props) => {
                                         {/* <div style={{ width: 100, height: 100, margin: '0px auto' }}>
                                             <CircularProgressbar value={data.totalCompleted * 100 / (data.totalCompleted + data.totalremaining + data.totalinprogess + data.totalunderreview)} text={`${Math.round(data.totalCompleted * 100 / (data.totalCompleted + data.totalremaining + data.totalinprogess + data.totalunderreview))}%`} />
                                         </div> */}
-                                        <span className="hind-font caption-12 c-dashboardInfo__count">{`${Math.round(data.totalCompleted * 100 / (data.totalCompleted + data.totalremaining + data.totalinprogess + data.totalunderreview))}%`} </span>
+                                        <span className="hind-font caption-12 c-dashboardInfo__count">{`${Math.round(data.completedTask * 100 / (data.completedTask + data.remainingTask + data.inprogessTask + data.underreviewTask))}%`} </span>
                                     </>
                                 ) : (
                                     <>
@@ -36,11 +36,7 @@ const Widgets = (props) => {
                         <div className="c-dashboardInfo col-lg-3 col-md-6">
                             <div className="wrap">
                                 <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Total Tasks</h4>
-                                { data.Projectname == "All" ? (
-                                    <span className="hind-font caption-12 c-dashboardInfo__count">{data.totalCompleted + data.totalremaining + data.totalinprogess + data.totalunderreview}</span>
-                                    ) : (
-                                    <span className="hind-font caption-12 c-dashboardInfo__count">{data.completedTask + data.inprogessTask + data.underreviewTask + data.remainingtask.length}</span>
-                                )}
+                                    <span className="hind-font caption-12 c-dashboardInfo__count">{data.completedTask + data.inprogessTask + data.underreviewTask + data.remainingTask}</span>
                             </div>
                         </div>
 
