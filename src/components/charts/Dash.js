@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import Widgets from './widget/Widgets';
+import PieGraph from './pieChart/PieGraph';
 
 const Dash = (props) => {
     const { data } = props;
@@ -16,9 +17,8 @@ const Dash = (props) => {
                             <div style={{ background: 'linear-gradient(82.59deg, #ff647c 0%, #0084f4 100%)', height: '0.5rem', borderRadius: '1rem' }}></div>
                             <div style={{ marginLeft: '2rem' }}>
                                 {data.Projectname == "All" ? (<h4> Project vs Progess </h4>) : (<h4> Stream Chart </h4>)}
-                                {/* <h4> {data.Projectname} </h4> */}
                             </div>
-                            {/* <PieGraph board={props.selectedboard}  /> */}
+                            <PieGraph data={data} />
                         </div>
                     </div>
                     <div class="col-lg-5">
