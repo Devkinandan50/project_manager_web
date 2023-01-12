@@ -114,89 +114,89 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             let task_inprogess = 0
             let task_underreview = 0
             let allremainingtask = []
-            // let empAndTask = new Map();
+            let empAndTask = {};
             let pre = [
                 {
                     "Date": "01",
                     "Remaining": 0,
-                    "InProgess": 0,
+                    "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "02",
                     "Remaining": 0,
-                    "InProgess": 0,
+                    "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "03",
                     "Remaining": 0,
-                    "InProgess": 0,
+                    "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "04",
                     "Remaining": 0,
-                    "InProgess": 0,
+                    "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "05",
                     "Remaining": 0,
-                    "InProgess": 0,
+                    "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "06",
                     "Remaining": 0,
-                    "InProgess": 0,
+                    "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "07",
                     "Remaining": 0,
-                    "InProgess": 0,
+                    "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "08",
                     "Remaining": 0,
-                    "InProgess": 0,
+                    "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "09",
                     "Remaining": 0,
-                    "InProgess": 0,
+                    "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "10",
                     "Remaining": 0,
-                    "InProgess": 0,
+                    "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "11",
                     "Remaining": 0,
-                    "InProgess": 0,
+                    "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
                     "Date": "12",
                     "Remaining": 0,
-                    "InProgess": 0,
+                    "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 }
@@ -211,7 +211,11 @@ router.get('/dashboard', fetchuser, async (req, res) => {
                 var monthinInt = parseInt(month);
                 var ind = monthinInt - 1;
 
-                // empAndTask.set(task_assignto                    )
+                if(!empAndTask[task.task_assignto]){
+                    empAndTask[task.task_assignto] = 1;
+                }else{
+                    empAndTask[task.task_assignto] = empAndTask[task.task_assignto] + 1;
+                }
 
                 if(task.task_status == 'completed'){
                     task_completed++;
@@ -224,7 +228,7 @@ router.get('/dashboard', fetchuser, async (req, res) => {
                 }
                 else if(task.task_status == 'inprogress'){
                     task_inprogess++;
-                    pre[ind].InProgess = pre[ind].InProgess + 1
+                    pre[ind].InProgress = pre[ind].InProgress + 1
                 }
                 else if(task.task_status == 'underreview'){
                     task_underreview++;
@@ -233,11 +237,12 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             })
             // data for particular project
             pro[index].completedTask = task_completed;
-            pro[index].inprogessTask = task_inprogess;
+            pro[index].inprogressTask = task_inprogess;
             pro[index].underreviewTask = task_underreview;
             pro[index].remainingTask = task_remaining;
             pro[index].Allremainingtask = allremainingtask;
             pro[index].streamchart = pre;
+            pro[index].TaskToEmp = empAndTask;
 
 
 
@@ -261,7 +266,7 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             "TotalProject": TotalProject,
             "completedTask": totalcompleted_task,
             "remainingTask": totalremaining_task,
-            "inprogessTask": totalinprogess_task,
+            "inprogressTask": totalinprogess_task,
             "underreviewTask": totalunderreview_task,
             "totalemployee": totalEmployee
         });
