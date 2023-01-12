@@ -262,7 +262,6 @@ router.get('/dashboard', fetchuser, async (req, res) => {
 
         pro.unshift({
             Projectname: "All",
-            tag: "c++", 
             "TotalProject": TotalProject,
             "completedTask": totalcompleted_task,
             "remainingTask": totalremaining_task,

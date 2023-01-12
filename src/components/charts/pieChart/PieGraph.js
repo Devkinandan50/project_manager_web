@@ -4,25 +4,25 @@ import { ResponsivePie } from "@nivo/pie";
 const PieGraph = (props) => {
     const { review, comp, inpro, remaining } = props;
     const [dataofchart, setdataofchart] = useState([{
-        "id": "underreview",
+        "id": "Under-Review",
         "label": "Under-Review",
         "value": review,
         "color": "hsl(303, 70%, 50%)"
     },
     {
-        "id": "completed",
+        "id": "Completed",
         "label": "Completed",
         "value": comp,
         "color": "hsl(322, 70%, 50%)"
     },
     {
-        "id": "inprogress",
+        "id": "In-Progress",
         "label": "In-Progress",
         "value": inpro,
         "color": "hsl(330, 70%, 50%)"
     },
     {
-        "id": "remaining",
+        "id": "Remaining",
         "label": "Remaining",
         "value": remaining,
         "color": "hsl(24, 70%, 50%)"
@@ -134,7 +134,7 @@ const PieGraph = (props) => {
                 fill={[
                     {
                         match: {
-                            id: 'remaining'
+                            id: 'Remaining'
                         },
                         id: 'dots'
                     },
@@ -146,13 +146,13 @@ const PieGraph = (props) => {
                     },
                     {
                         match: {
-                            id: 'underreview'
+                            id: 'Under-Review'
                         },
                         id: 'lines'
                     },
                     {
                         match: {
-                            id: 'inprogress'
+                            id: 'In-Progress'
                         },
                         id: 'lines'
                     }
