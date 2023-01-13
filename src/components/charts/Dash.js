@@ -19,7 +19,7 @@ const Dash = (props) => {
                             {data.Projectname == "All" ? (
                                 <>
                                     <div style={{ marginLeft: '2rem' }}>
-                                        <h4> Project vs Progess </h4>
+                                        <h4> Project vs Progress </h4>
                                     </div>
                                     <PieGraph review={data.underreviewTask} comp={data.completedTask} inpro={data.inprogressTask} remaining={data.remainingTask} />
 
