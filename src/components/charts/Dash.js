@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Widgets from './widget/Widgets';
 import PieGraph from './pieChart/PieGraph';
 import Streamgraph from './streamChart/StreamChart';
-
+import Bargraph from './barChart/BarGraph';
 const Dash = (props) => {
     const { data } = props;
     return (
@@ -21,7 +21,7 @@ const Dash = (props) => {
                                     <div style={{ marginLeft: '2rem' }}>
                                         <h4> Project vs Progress </h4>
                                     </div>
-                                    <PieGraph review={data.underreviewTask} comp={data.completedTask} inpro={data.inprogressTask} remaining={data.remainingTask} />
+                                    <Bargraph data={data.barchart}></Bargraph>
 
                                 </>
                             ) : (
