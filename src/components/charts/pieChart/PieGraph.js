@@ -6,77 +6,55 @@ const PieGraph = (props) => {
     const [dataofchart, setdataofchart] = useState([{
         "id": "Under-Review",
         "label": "Under-Review",
-        "value": review,
+        "value": 0,
         "color": "hsl(303, 70%, 50%)"
     },
     {
         "id": "Completed",
         "label": "Completed",
-        "value": comp,
+        "value": 0,
         "color": "hsl(322, 70%, 50%)"
     },
     {
         "id": "In-Progress",
         "label": "In-Progress",
-        "value": inpro,
+        "value": 0,
         "color": "hsl(330, 70%, 50%)"
     },
     {
         "id": "Remaining",
         "label": "Remaining",
-        "value": remaining,
+        "value": 0,
         "color": "hsl(24, 70%, 50%)"
     }]);
 
-    // const dataofchart = [{
-    //     "id": "underreview",
-    //     "label": "Under-Review",
-    //     "value": review,
-    //     "color": "hsl(303, 70%, 50%)"
-    // },
-    // {
-    //     "id": "completed",
-    //     "label": "Completed",
-    //     "value": comp,
-    //     "color": "hsl(322, 70%, 50%)"
-    // },
-    // {
-    //     "id": "inprogress",
-    //     "label": "In-Progress",
-    //     "value": inpro,
-    //     "color": "hsl(330, 70%, 50%)"
-    // },
-    // {
-    //     "id": "remaining",
-    //     "label": "Remaining",
-    //     "value": remaining,
-    //     "color": "hsl(24, 70%, 50%)"
-    // }];
+    setTimeout(function(){
+        setdataofchart([{
+            "id": "underreview",
+            "label": "Under-Review",
+            "value": review,
+            "color": "hsl(303, 70%, 50%)"
+        },
+        {
+            "id": "completed",
+            "label": "Completed",
+            "value": comp,
+            "color": "hsl(322, 70%, 50%)"
+        },
+        {
+            "id": "inprogress",
+            "label": "In-Progress",
+            "value": inpro,
+            "color": "hsl(330, 70%, 50%)"
+        },
+        {
+            "id": "remaining",
+            "label": "Remaining",
+            "value": remaining,
+            "color": "hsl(24, 70%, 50%)"
+        }])
+    }, 500);
 
-    // setdataofchart([{
-    //     "id": "underreview",
-    //     "label": "Under-Review",
-    //     "value": review,
-    //     "color": "hsl(303, 70%, 50%)"
-    // },
-    // {
-    //     "id": "completed",
-    //     "label": "Completed",
-    //     "value": comp,
-    //     "color": "hsl(322, 70%, 50%)"
-    // },
-    // {
-    //     "id": "inprogress",
-    //     "label": "In-Progress",
-    //     "value": inpro,
-    //     "color": "hsl(330, 70%, 50%)"
-    // },
-    // {
-    //     "id": "remaining",
-    //     "label": "Remaining",
-    //     "value": remaining,
-    //     "color": "hsl(24, 70%, 50%)"
-    // }])
 
     return (
         <>
@@ -102,6 +80,12 @@ const PieGraph = (props) => {
                 arcLinkLabelsThickness={2}
                 arcLinkLabelsColor={{ from: 'color' }}
                 arcLabelsSkipAngle={10}
+                radialLabelsSkipAngle={0}
+                radialLabelsTextColor="#333333"
+                radialLabelsLinkColor={{ from: "color" }}
+                sliceLabelsSkipAngle={10}
+                sliceLabelsTextColor="#333333"
+                isInteractive={true}
                 arcLabelsTextColor={{
                     from: 'color',
                     modifiers: [
@@ -157,7 +141,7 @@ const PieGraph = (props) => {
                         id: 'lines'
                     }
                 ]}
-                motionConfig="wobbly"
+                transitionMode="startAngle"
                 legends={[
                     {
                         anchor: 'bottom',

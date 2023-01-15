@@ -103,7 +103,7 @@ router.get('/dashboard', fetchuser, async (req, res) => {
         let totalinprogess_task = 0
         let totalunderreview_task = 0
         let totalEmployee = 0
-        
+        let barChartData = {}
 
 
         for (let index = 0; index < pro.length; index++) {
@@ -117,84 +117,72 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             let empAndTask = {};
             let pre = [
                 {
-                    "Date": "01",
                     "Remaining": 0,
                     "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
-                    "Date": "02",
                     "Remaining": 0,
                     "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
-                    "Date": "03",
                     "Remaining": 0,
                     "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
-                    "Date": "04",
                     "Remaining": 0,
                     "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
-                    "Date": "05",
                     "Remaining": 0,
                     "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
-                    "Date": "06",
                     "Remaining": 0,
                     "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
-                    "Date": "07",
                     "Remaining": 0,
                     "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
-                    "Date": "08",
                     "Remaining": 0,
                     "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
-                    "Date": "09",
                     "Remaining": 0,
                     "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
-                    "Date": "10",
                     "Remaining": 0,
                     "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
-                    "Date": "11",
                     "Remaining": 0,
                     "InProgress": 0,
                     "UnderReview": 0,
                     "Completed": 0
                 },
                 {
-                    "Date": "12",
                     "Remaining": 0,
                     "InProgress": 0,
                     "UnderReview": 0,
@@ -254,7 +242,7 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             totalinprogess_task = totalinprogess_task + task_inprogess;
             totalunderreview_task = totalunderreview_task + task_underreview;
             totalEmployee = totalEmployee + employees.length;
-
+            barChartData[pro[index].Projectname] = pro[index].progess;
         }
 
 
@@ -267,7 +255,8 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             "remainingTask": totalremaining_task,
             "inprogressTask": totalinprogess_task,
             "underreviewTask": totalunderreview_task,
-            "totalemployee": totalEmployee
+            "totalemployee": totalEmployee,
+            "barchart": barChartData
         });
 
         
