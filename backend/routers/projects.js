@@ -103,7 +103,8 @@ router.get('/dashboard', fetchuser, async (req, res) => {
         let totalinprogess_task = 0
         let totalunderreview_task = 0
         let totalEmployee = 0
-        let barChartData = {}
+        let barChartData = []
+        let barChartDatakeys = []
 
 
         for (let index = 0; index < pro.length; index++) {
@@ -242,7 +243,15 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             totalinprogess_task = totalinprogess_task + task_inprogess;
             totalunderreview_task = totalunderreview_task + task_underreview;
             totalEmployee = totalEmployee + employees.length;
-            barChartData[pro[index].Projectname] = pro[index].progess;
+            
+            if(index < 10){
+                barChartData.push({
+                    "projectname": pro[index].Projectname,
+                    [pro[index].Projectname] : pro[index].progess
+                })
+                barChartDatakeys.push(pro[index].Projectname)
+            }
+            
         }
 
 
@@ -256,7 +265,8 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             "inprogressTask": totalinprogess_task,
             "underreviewTask": totalunderreview_task,
             "totalemployee": totalEmployee,
-            "barchart": barChartData
+            "barchart": barChartData,
+            "barchartkeys": barChartDatakeys
         });
 
         

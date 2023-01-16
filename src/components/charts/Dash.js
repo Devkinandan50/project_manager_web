@@ -21,7 +21,7 @@ const Dash = (props) => {
                                     <div style={{ marginLeft: '2rem' }}>
                                         <h4> Project vs Progress </h4>
                                     </div>
-                                    <Bargraph data={data.barchart}></Bargraph>
+                                    <Bargraph dataofchart={data.barchart} keys={data.barchartkeys}></Bargraph>
 
                                 </>
                             ) : (
