@@ -1,8 +1,14 @@
-import { useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from 'react'
 import { ResponsiveBar } from '@nivo/bar'
+import StateContext from "../../../context/some_State/stateContext"
 
-const bargraph = (props) => {
+const Bargraph = (props) => {
     const { dataofchart, keys } = props;
+
+    const context = useContext(StateContext);
+
+    // context mese add function lekar aao
+    const { setselectedProjectName} = context;
 
     return (
         <>
@@ -51,8 +57,8 @@ const bargraph = (props) => {
                 }}
 
                 onClick={(data, e) => {
-                    console.log({ is: 'mouseenter', data, event: e })
-                    console.log(data.id)
+                    // console.log({ is: 'mouseenter', data, event: e })
+                    setselectedProjectName(data.id)
           
                   }}
             
@@ -64,7 +70,7 @@ const bargraph = (props) => {
                             background: '#222222',
                         }}
                     >
-                        <span>Click</span>
+                        <span>Click to go on</span>
                         <br />
                         <strong>
                             {id}: {value}
@@ -77,4 +83,4 @@ const bargraph = (props) => {
         </>
     )
 }
-export default bargraph
+export default Bargraph

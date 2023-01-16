@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Select, MenuItem, FormHelperText, FormControl, InputLabel } from '@material-ui/core';
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { withStyles, useTheme } from "@material-ui/core/styles";
-import ProjectContext from "../../context/pro_jects/projectContext";
+import StateContext from "../../context/some_State/stateContext"
 import './Dashboard.css'
 import Dash from './Dash';
 
@@ -11,8 +11,12 @@ import Dash from './Dash';
 const DashBoard = () => {
     const host = "http://localhost:5000"
     const authtoken = localStorage.getItem('token');
-    // const Procontext = useContext(ProjectContext);
-    const [selectedProjectName, setselectedProjectName] = useState("All")
+    const context = useContext(StateContext);
+
+    // context mese add function lekar aao
+    const { selectedProjectName, setselectedProjectName} = context;
+
+    // const [selectedProjectName, setselectedProjectName] = useState("All")
 
     const [all_dashboardprojects, setall_dashboardprojects] = useState([]);
     const [loading, setLoading] = useState(true);
