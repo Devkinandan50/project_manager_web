@@ -244,7 +244,7 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             totalunderreview_task = totalunderreview_task + task_underreview;
             totalEmployee = totalEmployee + employees.length;
             
-            if(index < 10){
+            if(index < 15){
                 barChartData.push({
                     "projectname": pro[index].Projectname,
                     [pro[index].Projectname] : pro[index].progess
