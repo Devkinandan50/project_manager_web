@@ -16,7 +16,7 @@ const Bargraph = (props) => {
                 data={dataofchart}
                 keys={keys}
                 indexBy="projectname"
-                margin={{ top: 50, right: 30, bottom: 90, left: 60 }}
+                margin={{ top: 30, right: 30, bottom: 90, left: 60 }}
                 padding={0.3}
                 // groupMode="grouped"
                 // innerPadding={18}

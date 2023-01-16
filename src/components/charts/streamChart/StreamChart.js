@@ -31,7 +31,7 @@ const Streamgraph = (props) => {
                     'UnderReview',
                     'Completed'
                 ]}
-                margin={{ top: 50, right: 50, bottom: 100, left: 60 }}
+                margin={{ top: 20, right: 50, bottom: 100, left: 60 }}
                 axisTop={null}
                 axisRight={null}
                 axisBottom={{
