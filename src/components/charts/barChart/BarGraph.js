@@ -49,6 +49,12 @@ const bargraph = (props) => {
                         ]
                     ]
                 }}
+
+                onClick={(data, e) => {
+                    console.log({ is: 'mouseenter', data, event: e })
+                    console.log(data.id)
+          
+                  }}
             
                 tooltip={({ id, value, color }) => (
                     <div
