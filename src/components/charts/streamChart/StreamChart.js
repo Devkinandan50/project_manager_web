@@ -48,6 +48,7 @@ const Streamgraph = (props) => {
                     tickSize: 5,
                     tickPadding: 5,
                     tickRotation: 0,
+                    legendPosition: 'middle',
                     legend: 'No of Tasks',
                     legendOffset: -40
                 }}
