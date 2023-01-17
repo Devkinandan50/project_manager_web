@@ -23,7 +23,7 @@ const Widgets = (props) => {
                                     </>
                                 ) : (
                                     <>
-                                        <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Progess</h4>
+                                        <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Progress</h4>
                                         {/* <div style={{ width: 100, height: 100, margin: '0px auto' }}>
                                             <CircularProgressbar value={data.progess} text={`${Math.round(data.progess)}%`} />
                                         </div> */}
