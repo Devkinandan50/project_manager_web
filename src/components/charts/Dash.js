@@ -3,6 +3,7 @@ import Widgets from './widget/Widgets';
 import PieGraph from './pieChart/PieGraph';
 import Streamgraph from './streamChart/StreamChart';
 import Bargraph from './barChart/BarGraph';
+import RemainingTable from './tableChart/RemainingTable';
 const Dash = (props) => {
     const { data } = props;
     return (
@@ -54,9 +55,12 @@ const Dash = (props) => {
                                     <h4> missing deadline </h4>
                                 </div>
                             ) : (
-                                <div style={{ marginLeft: '2rem' }}>
-                                    <h4> Remaining Tasks</h4>
-                                </div>
+                                <>
+                                    <div style={{ marginLeft: '2rem' }}>
+                                        <h4> Remaining Tasks</h4>
+                                    </div>
+                                    <RemainingTable data={data.Allremainingtask} />
+                                </>
                             )}
                         </div>
                     </div>
