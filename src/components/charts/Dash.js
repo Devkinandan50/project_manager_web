@@ -61,7 +61,7 @@ const Dash = (props) => {
                             ) : (
                                 <>
                                     <div style={{ marginLeft: '2rem' }}>
-                                        <h4> Waffle Chart of employees </h4>
+                                        <h4> Waffle Chart of Employees </h4>
                                     </div>
                                     <WaffleChart data={data.TaskToEmp} review={data.underreviewTask} comp={data.completedTask} inpro={data.inprogressTask} remaining={data.remainingTask} />
                                 </>
@@ -74,9 +74,9 @@ const Dash = (props) => {
                             {data.Projectname == "All" ? (
                                 <>
                                     <div style={{ marginLeft: '2rem' }}>
-                                        <h4> missing deadline </h4>
+                                        <h4> Missing Deadline </h4>
                                     </div>
-                                    <MissingDueDate />
+                                    <MissingDueDate data={data.missingdate}/>
                                 </>
                             ) : (
                                 <>

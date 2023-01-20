@@ -106,6 +106,7 @@ router.get('/dashboard', fetchuser, async (req, res) => {
         let totalEmployee = 0
         let barChartData = []
         let barChartDatakeys = []
+        let duedatemiss = []
 
 
         for (let index = 0; index < pro.length; index++) {
@@ -262,6 +263,32 @@ router.get('/dashboard', fetchuser, async (req, res) => {
                 barChartDatakeys.push(pro[index].Projectname)
             }
 
+            dateStatus = "";
+            var today = new Date();
+            var Christmas = new Date(pro[index].pro_enddate); 
+            var diffMs = (Christmas - today); 
+            var diffDays = Math.floor(diffMs / 86400000);
+            console.log(diffDays)
+            if(diffDays < 0){
+                dateStatus = "table-danger";
+            }
+            else if(diffDays >= 0 && diffDays < 5){
+                dateStatus = "table-warning";
+            }
+            else{
+                dateStatus = "table-success";
+            }
+
+            duedatemiss.push({
+                "datemiss": dateStatus,
+                "projectname": pro[index].Projectname,
+                "tag": pro[index].tag,
+                "progress":pro[index].progess,
+                "github": pro[index].githublink,
+                "duedate": pro[index].pro_enddate,
+            })
+
+
         }
 
 
@@ -276,7 +303,8 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             "underreviewTask": totalunderreview_task,
             "totalemployee": totalEmployee,
             "barchart": barChartData,
-            "barchartkeys": barChartDatakeys
+            "barchartkeys": barChartDatakeys,
+            "missingdate": duedatemiss
         });
 
 
