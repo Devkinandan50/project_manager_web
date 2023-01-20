@@ -52,10 +52,20 @@ const Dash = (props) => {
                     <div class="col-lg-7 mb-lg-0 mb-4">
                         <div class="dev" style={{ height: '25rem', boxShadow: '2px 10px 20px rgba(0, 0, 0, 0.2)', borderRadius: '1rem' }}>
                             <div style={{ background: 'linear-gradient(82.59deg, #ff647c 0%, #0084f4 100%)', height: '0.5rem', borderRadius: '1rem' }}></div>
-                            <div style={{ marginLeft: '2rem' }}>
-                                <h4> Waffle Chart </h4>
-                            </div>
-                            <WaffleChart data={data.TaskToEmp}/>
+                            {data.Projectname == "All" ? (
+                                <>
+                                    <div style={{ marginLeft: '2rem' }}>
+                                        <h4> missing sfwefregine </h4>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div style={{ marginLeft: '2rem' }}>
+                                        <h4> Waffle Chart of employees </h4>
+                                    </div>
+                                    <WaffleChart data={data.TaskToEmp} review={data.underreviewTask} comp={data.completedTask} inpro={data.inprogressTask} remaining={data.remainingTask} />
+                                </>
+                            )}
                         </div>
                     </div>
                     <div class="col-lg-5">

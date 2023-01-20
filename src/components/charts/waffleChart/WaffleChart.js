@@ -2,25 +2,15 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ResponsiveWaffle } from '@nivo/waffle'
 
 
+
 const WaffleChart = (props) => {
-    const { data } = props;
-
-    const dataofchart = [];
-
-    for (const key in data) {
-        if (data.hasOwnProperty(key)) {
-            // dataofchart.push({
-
-            // })
-          console.log(`${key}: ${data[key]}`);
-        }
-      }
+    const { data, review, comp, inpro, remaining } = props;
 
     return (
         <>
             <ResponsiveWaffle
-                data={dataofchart}
-                total={11}
+                data={data}
+                total={review + comp + inpro + remaining}
                 rows={10}
                 columns={21}
                 fillDirection="top"

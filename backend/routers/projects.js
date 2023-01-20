@@ -43,14 +43,15 @@ router.post('/addproject', fetchuser, [
 
 // ROUTE 3: Update an existing Project using: PUT "/api/projects/updateProject". Login required
 router.put('/updateproject/:id', fetchuser, async (req, res) => {
-    const { Projectname, description, tag, progess, githublink, pro_enddate, project_members, project_tasks} = req.body;
+    const { Projectname, description, tag, progess, githublink, pro_enddate, project_members, project_tasks } = req.body;
     try {
         // Create a newProject object
         const newProject = {};
         if (Projectname) { newProject.Projectname = Projectname };
         if (description) { newProject.description = description };
         if (tag) { newProject.tag = tag };
-        if (progess) { newProject.progess = progess
+        if (progess) {
+            newProject.progess = progess
             // newProject.lastpro_updatedate = Date.now();
         };
         if (githublink) { newProject.githublink = githublink };
@@ -79,7 +80,7 @@ router.delete('/deleteproject/:id', fetchuser, async (req, res) => {
         // Find the Project to be delete and delete it
         let pro = await Project.findById(req.params.id);
         if (!pro) { return res.status(404).send("Not Found") }
-        
+
         // Allow deletion only if user owns this Project
         if (pro.user.toString() !== req.user.id) {
             return res.status(401).send("Not Allowed");
@@ -200,30 +201,39 @@ router.get('/dashboard', fetchuser, async (req, res) => {
                 var monthinInt = parseInt(month);
                 var ind = monthinInt - 1;
 
-                if(!empAndTask[task.task_assignto]){
+                if (!empAndTask[task.task_assignto]) {
                     empAndTask[task.task_assignto] = 1;
-                }else{
+                } else {
                     empAndTask[task.task_assignto] = empAndTask[task.task_assignto] + 1;
                 }
 
-                if(task.task_status == 'completed'){
+                if (task.task_status == 'completed') {
                     task_completed++;
                     pre[ind].Completed = pre[ind].Completed + 1
                 }
-                else if(task.task_status == 'remaining'){
+                else if (task.task_status == 'remaining') {
                     task_remaining++;
                     allremainingtask.push(task);
                     pre[ind].Remaining = pre[ind].Remaining + 1
                 }
-                else if(task.task_status == 'inprogress'){
+                else if (task.task_status == 'inprogress') {
                     task_inprogess++;
                     pre[ind].InProgress = pre[ind].InProgress + 1
                 }
-                else if(task.task_status == 'underreview'){
+                else if (task.task_status == 'underreview') {
                     task_underreview++;
                     pre[ind].UnderReview = pre[ind].UnderReview + 1
                 }
             })
+
+            temp = [];
+            for (const key in empAndTask) {
+                temp.push({
+                    "id": key,
+                    "label": key,
+                    "value": empAndTask[key]
+                })
+            }
             // data for particular project
             pro[index].completedTask = task_completed;
             pro[index].inprogressTask = task_inprogess;
@@ -231,7 +241,7 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             pro[index].remainingTask = task_remaining;
             pro[index].Allremainingtask = allremainingtask;
             pro[index].streamchart = pre;
-            pro[index].TaskToEmp = empAndTask;
+            pro[index].TaskToEmp = temp;
 
 
 
@@ -243,15 +253,15 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             totalinprogess_task = totalinprogess_task + task_inprogess;
             totalunderreview_task = totalunderreview_task + task_underreview;
             totalEmployee = totalEmployee + employees.length;
-            
-            if(index < 15){
+
+            if (index < 15) {
                 barChartData.push({
                     "projectname": pro[index].Projectname,
-                    [pro[index].Projectname] : pro[index].progess
+                    [pro[index].Projectname]: pro[index].progess
                 })
                 barChartDatakeys.push(pro[index].Projectname)
             }
-            
+
         }
 
 
@@ -269,7 +279,7 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             "barchartkeys": barChartDatakeys
         });
 
-        
+
         res.json(pro)
 
     } catch (error) {
