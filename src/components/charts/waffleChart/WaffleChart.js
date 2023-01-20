@@ -4,13 +4,13 @@ import { ResponsiveWaffle } from '@nivo/waffle'
 
 
 const WaffleChart = (props) => {
-    const { data, review, comp, inpro, remaining } = props;
+    const { data, Count } = props;
 
     return (
         <>
             <ResponsiveWaffle
                 data={data}
-                total={review + comp + inpro + remaining}
+                total={Count}
                 rows={10}
                 columns={21}
                 fillDirection="top"

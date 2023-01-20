@@ -107,6 +107,7 @@ router.get('/dashboard', fetchuser, async (req, res) => {
         let barChartData = []
         let barChartDatakeys = []
         let duedatemiss = []
+        let wafflechartForall = {};
 
 
         for (let index = 0; index < pro.length; index++) {
@@ -242,7 +243,7 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             pro[index].remainingTask = task_remaining;
             pro[index].Allremainingtask = allremainingtask;
             pro[index].streamchart = pre;
-            pro[index].TaskToEmp = temp;
+            pro[index].wafflechart = temp;
 
 
 
@@ -268,7 +269,7 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             var Christmas = new Date(pro[index].pro_enddate); 
             var diffMs = (Christmas - today); 
             var diffDays = Math.floor(diffMs / 86400000);
-            console.log(diffDays)
+            
             if(diffDays < 0){
                 dateStatus = "table-danger";
             }
@@ -288,8 +289,25 @@ router.get('/dashboard', fetchuser, async (req, res) => {
                 "duedate": pro[index].pro_enddate,
             })
 
+            if (!wafflechartForall[pro[index].tag]) {
+                wafflechartForall[pro[index].tag] = 1;
+            } else {
+                wafflechartForall[pro[index].tag] = wafflechartForall[pro[index].tag] + 1;
+            }
+
+
 
         }
+
+
+        wafflealldata = [];
+            for (const key in wafflechartForall) {
+                wafflealldata.push({
+                    "id": key,
+                    "label": key,
+                    "value": wafflechartForall[key]
+                })
+            }
 
 
 
@@ -304,7 +322,8 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             "totalemployee": totalEmployee,
             "barchart": barChartData,
             "barchartkeys": barChartDatakeys,
-            "missingdate": duedatemiss
+            "missingdate": duedatemiss,
+            "wafflechartAll": wafflealldata
         });
 
 
