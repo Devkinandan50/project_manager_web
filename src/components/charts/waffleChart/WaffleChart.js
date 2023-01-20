@@ -2,54 +2,25 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ResponsiveWaffle } from '@nivo/waffle'
 
 
-const WaffleChart = () => {
-    // const { dataofchart } = props;
+const WaffleChart = (props) => {
+    const { data } = props;
 
-    const dataofchart = [
-        {
-          "id": "men",
-          "label": "men",
-          "value": 7.6097656961264475,
-        //   "color": "#468df3"
-        },
-        {
-          "id": "women",
-          "label": "women",
-          "value": 16.9265765880633,
-        //   "color": "#ba72ff"
-        },
-        {
-          "id": "children",
-          "label": "children",
-          "value": 0.1662339990873345,
-        //   "color": "#a1cfff"
-        },
-        {
-            "id": "menq",
-            "label": "menq",
-            "value": 7.6097656961264475,
-          //   "color": "#468df3"
-          },
-          {
-            "id": "menw",
-            "label": "menw",
-            "value": 7.6097656961264475,
-          //   "color": "#468df3"
-          },
-          {
-            "id": "menwa",
-            "label": "menwa",
-            "value": 7.6097656961264475,
-          //   "color": "#468df3"
-          }
-      ];
+    const dataofchart = [];
 
+    for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+            // dataofchart.push({
+
+            // })
+          console.log(`${key}: ${data[key]}`);
+        }
+      }
 
     return (
         <>
             <ResponsiveWaffle
                 data={dataofchart}
-                total={100}
+                total={11}
                 rows={10}
                 columns={21}
                 fillDirection="top"

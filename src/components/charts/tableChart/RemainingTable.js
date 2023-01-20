@@ -11,7 +11,7 @@ const RemainingTable = (props) => {
 
                 <MDBTable align='middle'>
                     <MDBTableHead style={{ border:'1px solid black'}}>
-                        <tr>
+                        <tr className='table-active'>
                             <th scope='col'>Task Name</th>
                             <th scope='col'>Task Assign To</th>
                             <th scope='col'>Task Create Date</th>

@@ -55,7 +55,7 @@ const Dash = (props) => {
                             <div style={{ marginLeft: '2rem' }}>
                                 <h4> Waffle Chart </h4>
                             </div>
-                            <WaffleChart/>
+                            <WaffleChart data={data.TaskToEmp}/>
                         </div>
                     </div>
                     <div class="col-lg-5">
