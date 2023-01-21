@@ -40,7 +40,8 @@ const MissingDueDate = (props) => {
                                 </td>
                                 <td>
                                     <div className='d-flex align-items-center'>
-                                        <MDBBadge color='primary' pill>
+                                    
+                                        <MDBBadge color={item.datemiss.slice(6)} pill>
                                             <ReactTimeAgo date={item.duedate} locale="en-US" />
                                         </MDBBadge>
                                     </div>
