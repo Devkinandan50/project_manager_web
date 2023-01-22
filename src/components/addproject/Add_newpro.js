@@ -49,7 +49,7 @@ const Add_newpro = () => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="tag" className="form-label">Tag</label>
-                            <input type="text" className="form-control" id="tag" name="tag" value={pro.tag} onChange={onChange} minLength={5} required />
+                            <input type="text" className="form-control" id="tag" name="tag" value={pro.tag} onChange={onChange} minLength={5} maxLength={10} required />
                             <div id="emailHelp" className="form-text">Tag should be only one word </div>
                         </div>
                         <div className="mb-3">

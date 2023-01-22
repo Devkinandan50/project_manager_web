@@ -63,7 +63,7 @@ const Projects = () => {
                                             </div>
                                             <div className="mb-3 col-sm">
                                                 <label htmlFor="tag" className="form-label">Tag</label>
-                                                <input type="text" className="form-control" id="etag" name="etag" value={pro.etag} onChange={onChange} minLength={5} required />
+                                                <input type="text" className="form-control" id="etag" name="etag" value={pro.etag} onChange={onChange} minLength={5} maxLength={10} required />
                                             </div>
                                             <div className="mb-3 col-sm">
                                                 <label htmlFor="pro_enddate" className="form-label">Project End Date</label>

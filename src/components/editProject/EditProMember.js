@@ -63,10 +63,10 @@ const EditProMember = () => {
                                 id="name"
                                 label="Name"
                                 name='employename'
-                                maxLength={12}
+                                inputProps={{ maxLength: 15 }}
                                 onChange={event => handleFormChange(event, index)}
                                 value={empMember.employename}
-                            />
+                                />
 
                             <FormControl variant="outlined" style={{ width: 200, margin: 5 }}>
                                 <Select label="Months" name='employerole' onChange={event => handleFormChange(event, index)}
