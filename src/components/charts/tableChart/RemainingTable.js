@@ -39,7 +39,7 @@ const RemainingTable = (props) => {
                                 <td>
                                     <div className='d-flex align-items-center'>
                                         <MDBBadge color='primary' pill>
-                                            <ReactTimeAgo date={item.createdAt} locale="en-US" />
+                                            <ReactTimeAgo date={item.date} locale="en-US" />
                                         </MDBBadge>
                                     </div>
                                 </td>

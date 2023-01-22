@@ -198,7 +198,7 @@ router.get('/dashboard', fetchuser, async (req, res) => {
             employees = pro[index].project_members
 
             tasks.map(task => {
-                var str = JSON.stringify(task.createdAt);
+                var str = JSON.stringify(task.date);
                 var month = str.slice(6, 8);
                 var monthinInt = parseInt(month);
                 var ind = monthinInt - 1;
