@@ -6,10 +6,12 @@ import Projectitem from './Projectitem';
 import AddProbutton from './AddPro_button';
 import EditProMember from './editProject/EditProMember';
 import EditProTask from './editProject/EditProTask';
+import { Link, useHistory } from 'react-router-dom'
 
 const Projects = () => {
     const context = useContext(ProjectContext);
     const statecontext = useContext(StateContext);
+    let history = useHistory();
 
     const { all_projects, editProject, getProjects, checK_loginOr_not } = context;
     const { editproEmployee, seteditproEmployee, editproTask, seteditproTask } = statecontext;
@@ -128,7 +130,11 @@ const Projects = () => {
                     </div>
                 </>
             ) : (
-                <div className="my-3">login kar abe</div>
+                <div className="my-3">
+                    Please login First
+                    { history.push("/login") }
+
+                </div>
             )}
 
         </>
