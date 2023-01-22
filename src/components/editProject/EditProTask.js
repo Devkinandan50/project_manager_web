@@ -55,6 +55,7 @@ const EditproTask = () => {
                                 id="name"
                                 label="Task"
                                 name='taskname'
+                                inputProps={{ maxLength: 20 }}
                                 onChange={event => handleFormChange(event, index)}
                                 value={task.taskname}
                             />
