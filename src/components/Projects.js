@@ -91,7 +91,8 @@ const Projects = () => {
                                 </div>
                                 <div className="modal-footer">
                                     <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button disabled={pro.eProjectname.length < 5 || pro.edescription.length < 5 || pro.eprogess.length <= 1} onClick={handleClick} type="button" className="btn btn-primary">Update Project</button>
+                                    
+                                    <button disabled={pro.eProjectname.length < 5 || pro.epro_enddate.length < 2 || pro.egithublink.length < 1 || pro.etag.length <1 || pro.eprogess.length <= 1} onClick={handleClick} type="button" className="btn btn-primary">Update Project</button>
                                     {/* <div id="emailHelp" className="form-text"> to enable button add project name, description, progess</div> */}
                                 </div>
                             </div>

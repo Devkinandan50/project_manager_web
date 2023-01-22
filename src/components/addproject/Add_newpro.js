@@ -68,7 +68,7 @@ const Add_newpro = () => {
                         <AddProMember />
                         <AddProTask />
 
-                        <button disabled={pro.Projectname.length < 5 || pro.description.length < 5 || pro.progess.length <= 1} type="submit" className="btn btn-primary" onClick={handleClick}>Add Project</button>
+                        <button disabled={pro.Projectname.length < 5 || pro.pro_enddate.length < 2 || pro.githublink.length < 1 || pro.tag.length <1 || pro.progess.length <= 1} type="submit" className="btn btn-primary" onClick={handleClick}>Add Project</button>
                         <div id="emailHelp" className="form-text"> to enable button add project name, description, progess</div>
                     </form>
                 </div>
