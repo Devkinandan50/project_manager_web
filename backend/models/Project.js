@@ -19,6 +19,27 @@ const membersSchema = moongoose.Schema(
     }
 )
 
+// const taskSchema = mongoose.Schema({
+//     taskname: {
+//         type: String,
+//         required: true
+//     },
+//     taskdescription:{
+//         type: String,
+//         default: "desc"
+//     },
+//     task_assignto:{
+//         type: String,
+//         required: true
+//     },
+//     task_status:{
+//         type: String,
+//         default: "remaining" 
+//     }
+// },{
+//     timestamps: true,
+// })
+
 const taskSchema = mongoose.Schema({
     taskname: {
         type: String,
@@ -35,9 +56,12 @@ const taskSchema = mongoose.Schema({
     task_status:{
         type: String,
         default: "remaining" 
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
-},{
-    timestamps: true,
+
 })
 
 const ProjectsSchema = new Schema({
