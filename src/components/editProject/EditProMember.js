@@ -47,7 +47,7 @@ const EditProMember = () => {
 
     return (
         <>
-            <h5>Project Member</h5>
+            <h5>Project Members</h5>
             {/* <p> {loginuserdata.name}</p> */}
             {/* <p> {{loginuserdata.email}}</p> */}
 
@@ -63,6 +63,7 @@ const EditProMember = () => {
                                 id="name"
                                 label="Name"
                                 name='employename'
+                                maxLength={12}
                                 onChange={event => handleFormChange(event, index)}
                                 value={empMember.employename}
                             />

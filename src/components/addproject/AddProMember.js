@@ -64,6 +64,8 @@ const AddProMember = () => {
                                 label="Name"
                                 name='employename'
                                 onChange={event => handleFormChange(event, index)}
+                                // maxLength={15}
+                                maxLength={12}
                                 value={empMember.employename}
                             />
 
