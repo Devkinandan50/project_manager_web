@@ -5,8 +5,7 @@ import "../style/userinfo.css";
 
 export default function UserInfo() {
     const context = useContext(ProjectContext);
-    const host = "http://localhost:5000"
-    const { checK_loginOr_not } = context;
+    const { checK_loginOr_not, host } = context;
     const history = useHistory();
 
     const intialdata = {};

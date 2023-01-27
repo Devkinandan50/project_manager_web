@@ -9,10 +9,8 @@ const Login = (props) => {
     const context = useContext(ProjectContext);
     const sta_context = useContext(StateContext);
 
-    const host = "http://localhost:5000"
-
     // context mese set_login function lekar aao
-    const { set_checK_loginOr_not, display_alert, facelogin_email, set_facelogin_email} = context;
+    const { set_checK_loginOr_not, display_alert, facelogin_email, set_facelogin_email, host} = context;
     const { setloginuserdata } = sta_context;
 
     const [credentials, setCredentials] = useState({ email: "", password: "" })

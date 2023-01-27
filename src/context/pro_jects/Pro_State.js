@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 
 const Pro_State = (props) => {
   const proInitial = []
-  const host = "http://localhost:5000"
+  // const host = "http://localhost:5000"
+  const host = "https://projectmanagebackend.onrender.com"
   const authtoken = localStorage.getItem('token');
   const [all_projects, setall_projects] = useState(proInitial)
   const [checK_loginOr_not, set_checK_loginOr_not] = useState(false);
@@ -136,7 +137,7 @@ const Pro_State = (props) => {
   }
 
   return (
-    <ProjectContext.Provider value={{ all_projects, addProject, deleteProject, editProject, set_checK_loginOr_not, getProjects, checK_loginOr_not, show_alert, display_alert, set_listview, listview, facelogin_email, set_facelogin_email, addproEmployeData, setaddproEmployeData}}>
+    <ProjectContext.Provider value={{ host, all_projects, addProject, deleteProject, editProject, set_checK_loginOr_not, getProjects, checK_loginOr_not, show_alert, display_alert, set_listview, listview, facelogin_email, set_facelogin_email, addproEmployeData, setaddproEmployeData}}>
       {props.children}
     </ProjectContext.Provider>
   )
