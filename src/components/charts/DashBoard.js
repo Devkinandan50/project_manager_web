@@ -3,7 +3,7 @@ import { Select, MenuItem, FormHelperText, FormControl, InputLabel } from '@mate
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { withStyles, useTheme } from "@material-ui/core/styles";
 import StateContext from "../../context/some_State/stateContext";
-import ProjectContext from "../context/pro_jects/projectContext";
+import ProjectContext from "../../context/pro_jects/projectContext";
 import './Dashboard.css'
 import Dash from './Dash';
 
