@@ -55,7 +55,7 @@ const Dash = (props) => {
                             {data.Projectname == "All" ? (
                                 <>
                                     <div style={{ marginLeft: '2rem' }}>
-                                        <h4> Waffle Chart of Tasks </h4>
+                                        <h4> Waffle Chart of Tag </h4>
                                     </div>
                                     <WaffleChart data={data.wafflechartAll} Count={data.TotalProject} />
                                 </>
