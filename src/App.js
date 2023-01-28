@@ -14,6 +14,8 @@ import Login from './components/Login';
 import UserInfo from './components/UserInfo';
 import Facelogin from './components/face_recog/Face_login'
 import Allprojects from './components/Projects'
+import ForgotPassword from './components/passwordReset/ForgotPassword';
+import PasswordReset from './components/passwordReset/PasswordReset';
 import Newproject from './components/addproject/Add_newpro'
 
 function App() {
@@ -45,6 +47,12 @@ function App() {
               </Route>
               <Route exact path="/allprojects">
                 <Allprojects />
+              </Route>
+              <Route exact path="/password-reset">
+                <PasswordReset />
+              </Route>
+              <Route exact path="/forgotpassword/:id/:token">
+                <ForgotPassword />
               </Route>
               <Route exact path="/addproject">
                 <Newproject />

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { NavLink ,useNavigate} from "react-router-dom"
 import '../style/login.css';
 import ProjectContext from "../context/pro_jects/projectContext"
 import Accordion from 'react-bootstrap/Accordion';
@@ -65,6 +66,9 @@ const Login = (props) => {
                                 </div>
 
                                 <button type="submit" className="btn btn-primary">Submit</button>
+                                <p>Don't have an Account? <NavLink to="/signup">Sign Up</NavLink> </p>
+                                <p style={{color:"black",fontWeight:"bold"}}>Forgot Password  <NavLink to="/password-reset">Click Here</NavLink> </p>
+                
                             </form>
                         </Accordion.Body>
                     </Accordion.Item>
