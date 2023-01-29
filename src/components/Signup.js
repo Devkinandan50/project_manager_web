@@ -63,7 +63,7 @@ const Signup = () => {
             display_alert("Signup Successfully", "success");
         }
         else {
-            display_alert("Invalid credentials", "danger");
+            display_alert(`${json.error}`, "danger");
         }
         }
         else{
