@@ -86,12 +86,12 @@ const Login = (props) => {
                             </div>
                         </Accordion.Body>
                     </Accordion.Item>
-                    <Accordion.Item eventKey="2">
+                    {/* <Accordion.Item eventKey="2">
                         <Accordion.Header>Login with Google</Accordion.Header>
                         <Accordion.Body style={{ backgroundColor: 'beige' }}>
                             Not Available this feature now
                         </Accordion.Body>
-                    </Accordion.Item>
+                    </Accordion.Item> */}
                 </Accordion>
             </div>
         </>
