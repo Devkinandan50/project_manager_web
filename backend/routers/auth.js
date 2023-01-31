@@ -1,13 +1,16 @@
 const express = require('express');
 const User = require('../models/User');
+const Token = require('../models/Token');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var fetchuser = require('../middleware/fetchuser');
 var face_re = require('../middleware/face_reco');
+const SendMail = require('../middleware/sendemail');
+const crypto = require("crypto");
 
-const JWT_SECRET = 'dEVKINANDANqwerasdf';
+const JWT_SECRET = process.env.JWTPRIVATEKEY;
 
 /*
 router.get('/', (req, res)=>{
@@ -44,6 +47,9 @@ router.post('/createuser', [
   try {
     // Check whether the user with this email exists already
     let user = await User.findOne({ email: req.body.email });
+    if(user && !user.verified){
+      return res.status(400).json({ success, error: "user already exists Please do email verification or login to get new verification link" })
+    }
     if (user) {
       return res.status(400).json({ success, error: "Sorry a user with this email already exists" })
     }
@@ -58,16 +64,26 @@ router.post('/createuser', [
       email: req.body.email,
       image: req.body.image,
     });
-    const data = {
-      user: {
-        id: user.id
-      }
-    }
-    const authtoken = jwt.sign(data, JWT_SECRET);
+
+    const token = await new Token({
+			userId: user._id,
+			token: crypto.randomBytes(32).toString("hex"),
+		}).save();
+		const url = `${process.env.BASE_URL}users/${user.id}/verify/${token.token}`;
+		await SendMail(user.email, "Verify Email", url);
+
+
+    // const data = {
+    //   user: {
+    //     id: user.id
+    //   }
+    // }
+    // const authtoken = jwt.sign(data, JWT_SECRET);
     success = true;
 
     // res.json(user)
-    res.json({ success, authtoken, "name": user.name, "email": user.email })
+    res.status(201).send({ success, "name": user.name, "email": user.email, "message": "An Email sent to your account please verify" });
+    // res.status(201).send({ success, authtoken, "name": user.name, "email": user.email, "message": "An Email sent to your account please verify" });
 
   } catch (error) {
     console.error(error.message);
@@ -75,6 +91,28 @@ router.post('/createuser', [
   }
 })
 
+
+
+// Activate Account of signup user
+router.get("/:id/verify/:token/", async (req, res) => {
+	try {
+		const user = await User.findOne({ _id: req.params.id });
+		if (!user) return res.status(400).send({ message: "Invalid link" });
+
+		const token = await Token.findOne({
+			userId: user._id,
+			token: req.params.token,
+		});
+		if (!token) return res.status(400).send({ message: "Invalid link" });
+
+		await User.updateOne({ _id: user._id, verified: true });
+		await token.remove();
+
+		res.status(200).send({ message: "Email verified successfully" });
+	} catch (error) {
+		res.status(500).send({ message: "Internal Server Error" });
+	}
+});
 
 // ROUTE 2: Authenticate a User using: POST "/api/auth/login". No login required
 router.post('/login', [
@@ -99,17 +137,35 @@ router.post('/login', [
     const passwordCompare = await bcrypt.compare(password, user.password);
     if (!passwordCompare) {
       success = false
-      return res.status(400).json({ success, error: "Please try to login with correct credentials" });
+      return res.status(400).json({ success, error: "Please try to login with correct credentials incorrect password" });
     }
 
-    const data = {
-      user: {
-        id: user.id
-      }
-    }
-    const authtoken = jwt.sign(data, JWT_SECRET);
+    if (!user.verified) {
+			let token = await Token.findOne({ userId: user._id });
+			if (!token) {
+				token = await new Token({
+					userId: user._id,
+					token: crypto.randomBytes(32).toString("hex"),
+				}).save();
+				const url = `${process.env.BASE_URL}users/${user.id}/verify/${token.token}`;
+				await SendMail(user.email, "Verify Email", url);
+			}
+
+			return res.status(400).send({ message: "An Email sent to your account please verify" });
+		}
+
+
+
+    // const data = {
+    //   user: {
+    //     id: user.id
+    //   }
+    // }
+    // const authtoken = jwt.sign(data, JWT_SECRET);
+    const authtoken = user.generateAuthToken();
     success = true;
-    res.json({ success, authtoken, "name": user.name, "email": user.email })
+    res.status(200).send({ success, authtoken, message: "logged in successfully", "name": user.name, "email": user.email });
+    // res.json({ success, authtoken, "name": user.name, "email": user.email })
 
   } catch (error) {
     console.error(error.message);
