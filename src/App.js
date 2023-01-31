@@ -17,6 +17,7 @@ import Allprojects from './components/Projects'
 import ForgotPassword from './components/passwordReset/ForgotPassword';
 import PasswordReset from './components/passwordReset/PasswordReset';
 import Newproject from './components/addproject/Add_newpro'
+import EmailVerify from './components/EmailVerify';
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
               <Route exact path="/addproject">
                 <Newproject />
               </Route>
+              <Route path="/users/:id/verify/:token" element={<EmailVerify />} />
             </Switch>
           </div>
         </Router>

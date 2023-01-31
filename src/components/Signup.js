@@ -57,10 +57,10 @@ const Signup = () => {
         console.log(json);
         if (json.success) {
             // Save the auth token and redirect
-            localStorage.setItem('token', json.authtoken);
-            set_checK_loginOr_not(true);
-            history.push("/");
-            display_alert("Signup Successfully", "success");
+            // localStorage.setItem('token', json.authtoken);
+            // set_checK_loginOr_not(true);
+            // history.push("/");
+            display_alert(`${json.message}`, "success");
         }
         else {
             display_alert(`${json.error}`, "danger");
