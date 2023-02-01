@@ -69,7 +69,7 @@ router.post('/createuser', [
       userId: user._id,
       token: crypto.randomBytes(32).toString("hex"),
     }).save();
-    const url = `${process.env.BASE_URL}/users/${user.id}/verify/${token.token}`;
+    const url = `This Link Valid For 15 MINUTES ${process.env.BASE_URL}/users/${user.id}/verify/${token.token}`;
     await SendMail(user.email, "Verify Email", url);
 
 
@@ -152,7 +152,7 @@ router.post('/login', [
           userId: user._id,
           token: crypto.randomBytes(32).toString("hex"),
         }).save();
-        const url = `${process.env.BASE_URL}/users/${user.id}/verify/${token.token}`;
+        const url = `This Link Valid For 15 MINUTES ${process.env.BASE_URL}/users/${user.id}/verify/${token.token}`;
         await SendMail(user.email, "Verify Email", url);
       }
 
@@ -193,6 +193,7 @@ router.post('/getuser', fetchuser, async (req, res) => {
 });
 
 
+// get email data from user to reset password
 router.post('/sendpasswordlinktoemail', [
   body('email', 'Enter a valid email').isEmail(),
 ], async (req, res) => {
@@ -216,14 +217,14 @@ router.post('/sendpasswordlinktoemail', [
       return res.status(400).send({ success, error: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: "120s" });
+    const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: "1d" });
     
     const setusertoken = await User.findByIdAndUpdate({ _id: user._id }, { passwordverificationtoken: token }, { new: true });
     console.log(setusertoken)
     
     if (setusertoken) {
       const text = `This Link Valid For 2 MINUTES ${process.env.BASE_URL}/forgotpassword/${user.id}/${setusertoken.passwordverificationtoken}`
-      console.log(text)
+      // console.log(text)
       await SendMail(email, "Sending Email For password Reset", text);
     }
     success = true;
@@ -234,6 +235,53 @@ router.post('/sendpasswordlinktoemail', [
     res.status(500).send("Internal Server Error");
   }
 });
+
+
+// verify user for forgot password time
+router.get("/forgotpasswordlinkverification/:id/:token",async(req,res)=>{
+  const {id,token} = req.params;
+
+  try {
+      const validuser = await User.findOne({_id:id,passwordverificationtoken:token});
+      
+      const verifyToken = jwt.verify(token,JWT_SECRET);
+
+      if(validuser && verifyToken._id){
+          res.status(201).json({status:201,success:true})
+      }else{
+          res.status(401).json({status:401,message:"user not exist"})
+      }
+
+  } catch (error) {
+      res.status(401).json({status:401,error})
+  }
+});
+
+
+// add new password
+router.post("/newpassword/:id/:token",async(req,res)=>{
+  const {id,token} = req.params;
+
+  try {
+      const validuser = await User.findOne({_id:id,passwordverificationtoken:token});
+      
+      const verifyToken = jwt.verify(token,JWT_SECRET);
+
+      if(validuser && verifyToken._id){
+          const newpassword = await bcrypt.hash(req.body.password,12);
+
+          const setnewuserpass = await User.findByIdAndUpdate({_id:id},{password:newpassword});
+
+          setnewuserpass.save();
+          res.status(201).json({status:201,setnewuserpass})
+
+      }else{
+          res.status(401).json({status:401,message:"user not exist"})
+      }
+  } catch (error) {
+      res.status(401).json({status:401,error})
+  }
+})
 
 
 // ROUTE : log in using face: POST "/api/auth/face_login".
