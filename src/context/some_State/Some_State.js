@@ -2,7 +2,7 @@ import StateContext from "./stateContext";
 import React, { useState } from 'react'
 
 const Some_State = (props) => {
-  const [loginuserdata, setloginuserdata] = useState({name: '', email: ''})
+  const [loginusername, setloginusername] = useState("");
 
 
   const [addproEmployeData, setaddproEmployeData] = useState([{employename: '', employerole: 'owner', employeemail: ''}]);
@@ -17,7 +17,7 @@ const Some_State = (props) => {
 
 
   return (
-    <StateContext.Provider value={{ addproEmployeData, setaddproEmployeData, loginuserdata, setloginuserdata, addprotask, setaddprotask, editproEmployee, seteditproEmployee, editproTask, seteditproTask, selectedProjectName, setselectedProjectName}}>
+    <StateContext.Provider value={{ addproEmployeData, setaddproEmployeData, loginusername, setloginusername, addprotask, setaddprotask, editproEmployee, seteditproEmployee, editproTask, seteditproTask, selectedProjectName, setselectedProjectName}}>
       {props.children}
     </StateContext.Provider>
   )

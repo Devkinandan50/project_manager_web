@@ -2,13 +2,17 @@ import React, { useContext, useEffect } from 'react'
 import { Link, useLocation } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import ProjectContext from "../context/pro_jects/projectContext";
+import StateContext from "../context/some_State/stateContext";
 import Alert from './Alert';
 
 const Navbar = () => {
     let location = useLocation();
     let history = useHistory();
     const context = useContext(ProjectContext);
+    const statecontext = useContext(StateContext);
+
     const { checK_loginOr_not, set_checK_loginOr_not, show_alert } = context;
+    const { loginusername } = statecontext;
 
     function handle_logout() {
         let ans = window.confirm("You want to logout");
@@ -49,6 +53,7 @@ const Navbar = () => {
                         <form className="d-flex">
                             {checK_loginOr_not ? (
                                 <>
+                                    <p style={{color:'white', margin:'auto 1rem'}}> Hello, {loginusername}</p>
                                     <Link className="btn btn-primary mx-1" to="/userinfo" role="button">user</Link>
                                     <i className="btn btn-primary mx-1" role="button" onClick={handle_logout}>Logout</i>
                                 </>

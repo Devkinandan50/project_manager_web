@@ -12,7 +12,7 @@ const Login = (props) => {
 
     // context mese set_login function lekar aao
     const { set_checK_loginOr_not, display_alert, facelogin_email, set_facelogin_email, host} = context;
-    const { setloginuserdata } = sta_context;
+    const { setloginusername } = sta_context;
 
     const [credentials, setCredentials] = useState({ email: "", password: "" })
     let history = useHistory();
@@ -32,7 +32,7 @@ const Login = (props) => {
             // Save the auth token and redirect
             localStorage.setItem('token', json.authtoken);
             set_checK_loginOr_not(true);
-            setloginuserdata({ "name": json.name, "email": json.email});
+            setloginusername(json.name);
             display_alert(`${json.message}`, "success");
             history.push("/");
         }

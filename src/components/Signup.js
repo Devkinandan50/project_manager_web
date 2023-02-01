@@ -79,7 +79,7 @@ const Signup = () => {
             <form onSubmit={handleSubmit}>
                 <div className="form-group mb-3">
                     <label htmlFor="name" className="form-label">Name </label>
-                    <input type="text" id="name" name="name" value={credentials.name} className="form-control" aria-describedby="emailHelp" placeholder="Enter name" onChange={onchange} required minLength={3} />
+                    <input type="text" id="name" name="name" value={credentials.name} className="form-control" aria-describedby="emailHelp" placeholder="Enter name" onChange={onchange} required minLength={3} maxLength={18} />
                 </div>
                 <div className="form-group mb-3">
                     <label htmlFor="email" className="form-label">Email </label>
