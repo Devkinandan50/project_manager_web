@@ -7,10 +7,10 @@ import ProjectContext from "../context/pro_jects/projectContext"
 
 
 const EmailVerify = () => {
-    const context = useContext(ProjectContext);
+	const context = useContext(ProjectContext);
 
-    // // context mese set_login function lekar aao
-    const { host } = context;
+	// // context mese set_login function lekar aao
+	const { host } = context;
 
 	const [validUrl, setValidUrl] = useState(true);
 	const param = useParams();
@@ -18,21 +18,21 @@ const EmailVerify = () => {
 	useEffect(() => {
 		const verifyEmailUrl = async () => {
 			try {
-                const response = await fetch(`${host}/api/auth/${param.id}/verify/${param.token}`, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-                const json = await response.json()
-				if(json.success){
+				const response = await fetch(`${host}/api/auth/${param.id}/verify/${param.token}`, {
+					method: 'PATCH',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				});
+				const json = await response.json()
+				if (json.success) {
 					setValidUrl(true);
 				}
-				else{
+				else {
 					console.log(json.message)
 					setValidUrl(false);
 				}
-                
+
 			} catch (error) {
 				console.log(error);
 				setValidUrl(false);
@@ -52,7 +52,10 @@ const EmailVerify = () => {
 					</Link>
 				</div>
 			) : (
-				<h1>404 Not Found</h1>
+				<>
+					<h1>404 Not Found</h1>
+					<p> Invalid Link or link expires</p>
+				</>
 			)}
 		</>
 	);
