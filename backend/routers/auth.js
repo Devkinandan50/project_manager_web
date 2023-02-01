@@ -270,7 +270,7 @@ router.post("/newpassword/:id/:token",async(req,res)=>{
       if(validuser && verifyToken._id){
           const newpassword = await bcrypt.hash(req.body.password,12);
 
-          const setnewuserpass = await User.findByIdAndUpdate({_id:id},{password:newpassword});
+          const setnewuserpass = await User.findByIdAndUpdate({_id:id},{password:newpassword},{passwordverificationtoken:"a"});
 
           setnewuserpass.save();
           res.status(201).json({status:201,success:true})
