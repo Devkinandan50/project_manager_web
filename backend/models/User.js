@@ -28,11 +28,11 @@ const UserSchema = new Schema({
     },
 })
 
-UserSchema.methods.generateAuthToken = function () {
-	const token = jwt.sign({ _id: this._id }, process.env.JWTPRIVATEKEY, {
-		expiresIn: "7d",
-	});
-	return token;
-};
+// UserSchema.methods.generateAuthToken = function () {
+// 	const token = jwt.sign({ id: this.id }, process.env.JWTPRIVATEKEY, {
+// 		expiresIn: "7d",
+// 	});
+// 	return token;
+// };
 
 module.exports = moongoose.model('user', UserSchema);

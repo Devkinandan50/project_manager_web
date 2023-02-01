@@ -156,13 +156,13 @@ router.post('/login', [
 
 
 
-    // const data = {
-    //   user: {
-    //     id: user.id
-    //   }
-    // }
-    // const authtoken = jwt.sign(data, JWT_SECRET);
-    const authtoken = user.generateAuthToken();
+    const data = {
+      user: {
+        id: user.id
+      }
+    }
+    const authtoken = jwt.sign(data, JWT_SECRET);
+    // const authtoken = user.generateAuthToken();
     success = true;
     res.status(200).send({ success, authtoken, message: "logged in successfully", "name": user.name, "email": user.email });
     // res.json({ success, authtoken, "name": user.name, "email": user.email })

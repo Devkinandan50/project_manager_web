@@ -33,7 +33,7 @@ const Login = (props) => {
             localStorage.setItem('token', json.authtoken);
             set_checK_loginOr_not(true);
             setloginuserdata({ "name": json.name, "email": json.email});
-            display_alert("Login Successfully", "success");
+            display_alert(`${json.message}`, "success");
             history.push("/");
         }
         else {
