@@ -217,7 +217,7 @@ router.post('/sendpasswordlinktoemail', [
       return res.status(400).send({ success, error: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: "1d" });
+    const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: "120s" });
     
     const setusertoken = await User.findByIdAndUpdate({ _id: user._id }, { passwordverificationtoken: token }, { new: true });
     console.log(setusertoken)
@@ -273,7 +273,7 @@ router.post("/newpassword/:id/:token",async(req,res)=>{
           const setnewuserpass = await User.findByIdAndUpdate({_id:id},{password:newpassword});
 
           setnewuserpass.save();
-          res.status(201).json({status:201,setnewuserpass})
+          res.status(201).json({status:201,success:true})
 
       }else{
           res.status(401).json({status:401,message:"user not exist"})
