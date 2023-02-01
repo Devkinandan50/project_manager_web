@@ -31,7 +31,7 @@ router.get('/', (req, res)=>{
 
 })  */
 
-// ROUTE 1: Create a User using: POST "/api/auth/createuser". No login required
+// ROUTE : Create a User using: POST "/api/auth/createuser". No login required
 router.post('/createuser', [
   body('name', 'Enter a valid name').isLength({ min: 3 }),
   body('email', 'Enter a valid email').isEmail(),
@@ -47,13 +47,13 @@ router.post('/createuser', [
   try {
     // Check whether the user with this email exists already
     let user = await User.findOne({ email: req.body.email });
-    if(user && !user.verified){
+    if (user && !user.verified) {
       return res.status(400).json({ success, error: "user already exists Please do email verification or login to get new verification link" })
     }
     if (user) {
       return res.status(400).json({ success, error: "Sorry a user with this email already exists" })
     }
-    
+
     const salt = await bcrypt.genSalt(10);
     const secPass = await bcrypt.hash(req.body.password, salt);
 
@@ -66,11 +66,11 @@ router.post('/createuser', [
     });
 
     const token = await new Token({
-			userId: user._id,
-			token: crypto.randomBytes(32).toString("hex"),
-		}).save();
-		const url = `${process.env.BASE_URL}/users/${user.id}/verify/${token.token}`;
-		await SendMail(user.email, "Verify Email", url);
+      userId: user._id,
+      token: crypto.randomBytes(32).toString("hex"),
+    }).save();
+    const url = `${process.env.BASE_URL}/users/${user.id}/verify/${token.token}`;
+    await SendMail(user.email, "Verify Email", url);
 
 
     // const data = {
@@ -96,30 +96,30 @@ router.post('/createuser', [
 // Activate Account of signup user
 router.patch("/:id/verify/:token/", async (req, res) => {
   let success = false;
-	try {
-		// const user = await User.findOne({ _id: req.params.id });
-		// if (!user) return res.status(400).send({ success, message: "Invalid link 1" });
+  try {
+    // const user = await User.findOne({ _id: req.params.id });
+    // if (!user) return res.status(400).send({ success, message: "Invalid link 1" });
 
-		const token = await Token.findOne({
-			userId: req.params.id,
-			token: req.params.token,
-		});
-		if (!token) return res.status(400).send({ success, message: "Invalid link 2" });
+    const token = await Token.findOne({
+      userId: req.params.id,
+      token: req.params.token,
+    });
+    if (!token) return res.status(400).send({ success, message: "Invalid link 2" });
 
-		// await User.updateOne({ verified: true });
+    // await User.updateOne({ verified: true });
     pro = await User.findByIdAndUpdate(req.params.id, { verified: true }, { new: true });
-    if(pro.verified){
+    if (pro.verified) {
       await token.remove();
       success = true;
     }
-		res.status(200).send({ success, message: "Email verified successfully" });
-	} catch (error) {
-		res.status(500).send({ message: "Internal Server Error" });
+    res.status(200).send({ success, message: "Email verified successfully" });
+  } catch (error) {
+    res.status(500).send({ message: "Internal Server Error" });
     console.log(error)
-	}
+  }
 });
 
-// ROUTE 2: Authenticate a User using: POST "/api/auth/login". No login required
+// ROUTE : Authenticate a User using: POST "/api/auth/login". No login required
 router.post('/login', [
   body('email', 'Enter a valid email').isEmail(),
   body('password', 'Password cannot be blank').exists(),
@@ -146,18 +146,18 @@ router.post('/login', [
     }
 
     if (!user.verified) {
-			let token = await Token.findOne({ userId: user._id });
-			if (!token) {
-				token = await new Token({
-					userId: user._id,
-					token: crypto.randomBytes(32).toString("hex"),
-				}).save();
-				const url = `${process.env.BASE_URL}/users/${user.id}/verify/${token.token}`;
-				await SendMail(user.email, "Verify Email", url);
-			}
+      let token = await Token.findOne({ userId: user._id });
+      if (!token) {
+        token = await new Token({
+          userId: user._id,
+          token: crypto.randomBytes(32).toString("hex"),
+        }).save();
+        const url = `${process.env.BASE_URL}/users/${user.id}/verify/${token.token}`;
+        await SendMail(user.email, "Verify Email", url);
+      }
 
-			return res.status(400).send({ error: "An Email sent to your account please verify" });
-		}
+      return res.status(400).send({ error: "An Email sent to your account please verify" });
+    }
 
 
 
@@ -178,8 +178,8 @@ router.post('/login', [
   }
 });
 
-// ROUTE 3: Get loggedin User Details using: POST "/api/auth/getuser". Login required
-router.post('/getuser', fetchuser,  async (req, res) => {
+// ROUTE : Get loggedin User Details using: POST "/api/auth/getuser". Login required
+router.post('/getuser', fetchuser, async (req, res) => {
 
   try {
     userId = req.user.id;
@@ -192,11 +192,63 @@ router.post('/getuser', fetchuser,  async (req, res) => {
   }
 });
 
-// ROUTE 4: log in using face: POST "/api/auth/face_login".
+
+router.post('/sendpasswordlinktoemail', [
+  body('email', 'Enter a valid email').isEmail(),
+], async (req, res) => {
+  let success = false;
+  // If there are errors, return Bad request and the errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  const { email } = req.body;
+  try {
+    let user = await User.findOne({ email });
+    if (!user) {
+      success = false
+      return res.status(400).json({ success, error: "User not exist" });
+    }
+
+    if (!user.verified) {
+      success = false
+      return res.status(400).send({ success, error: "Invalid credentials" });
+    }
+
+
+    // let token = await Token.findOne({ userId: user._id });
+    // if (!token) {
+    //   token = await new Token({
+    //     userId: user._id,
+    //     token: crypto.randomBytes(32).toString("hex"),
+    //   }).save();
+    //   const url = `${process.env.BASE_URL}/users/${user.id}/verify/${token.token}`;
+    //   await SendMail(user.email, "Verify Email", url);
+
+    // const data = {
+    //   user: {
+    //     id: user.id
+    //   }
+    // }
+    // const authtoken = jwt.sign(data, JWT_SECRET);
+    // const authtoken = user.generateAuthToken();
+    success = true;
+    res.status(200).send({ success, message: "logged in successfully", email });
+    // res.json({ success, authtoken, "name": user.name, "email": user.email })
+
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+
+});
+
+// ROUTE : log in using face: POST "/api/auth/face_login".
 router.post('/face_login', [
   body('email', 'Enter a valid email').isEmail(),
   body('image', 'image cannot be capture').exists(),
-] ,async (req, res) => {
+], async (req, res) => {
 
   let success = false;
   // If there are errors, return Bad request and the errors
@@ -215,7 +267,7 @@ router.post('/face_login', [
 
 
     let imgCompare = false;
-    if(face_re(user.image, image, user.name)){
+    if (face_re(user.image, image, user.name)) {
       imgCompare = true;
     }
 

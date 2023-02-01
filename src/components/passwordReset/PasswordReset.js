@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext} from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ProjectContext from '../../context/pro_jects/projectContext';
 
 const PasswordReset = () => {
+    const context = useContext(ProjectContext);
+
+    // context mese set_login function lekar aao
+    const { host } = context;
 
     const [email, setEmail] = useState("");
 
@@ -24,21 +29,21 @@ const PasswordReset = () => {
                 position: "top-center"
             });
         } else {
-            const res = await fetch("/sendpasswordlink", {
+            const res = await fetch(`${host}/api/auth/sendpasswordlinktoemail`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ email })
+                body: JSON.stringify({ email: email })
             });
 
             const data = await res.json();
 
-            if (data.status == 201) {
+            if (data.success) {
                 setEmail("");
                 setMessage(true)
             } else {
-                toast.error("Invalid User",{
+                toast.error(`${data.error}`,{
                     position: "top-center"
                 })
             }
