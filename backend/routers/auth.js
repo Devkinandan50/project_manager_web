@@ -216,33 +216,25 @@ router.post('/sendpasswordlinktoemail', [
       return res.status(400).send({ success, error: "Invalid credentials" });
     }
 
-
-    // let token = await Token.findOne({ userId: user._id });
-    // if (!token) {
-    //   token = await new Token({
-    //     userId: user._id,
-    //     token: crypto.randomBytes(32).toString("hex"),
-    //   }).save();
-    //   const url = `${process.env.BASE_URL}/users/${user.id}/verify/${token.token}`;
-    //   await SendMail(user.email, "Verify Email", url);
-
-    // const data = {
-    //   user: {
-    //     id: user.id
-    //   }
-    // }
-    // const authtoken = jwt.sign(data, JWT_SECRET);
-    // const authtoken = user.generateAuthToken();
+    const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: "120s" });
+    
+    const setusertoken = await User.findByIdAndUpdate({ _id: user._id }, { passwordverificationtoken: token }, { new: true });
+    console.log(setusertoken)
+    
+    if (setusertoken) {
+      const text = `This Link Valid For 2 MINUTES ${process.env.BASE_URL}/forgotpassword/${user.id}/${setusertoken.passwordverificationtoken}`
+      console.log(text)
+      await SendMail(email, "Sending Email For password Reset", text);
+    }
     success = true;
     res.status(200).send({ success, message: "logged in successfully", email });
-    // res.json({ success, authtoken, "name": user.name, "email": user.email })
 
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Server Error");
   }
-
 });
+
 
 // ROUTE : log in using face: POST "/api/auth/face_login".
 router.post('/face_login', [
