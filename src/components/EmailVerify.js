@@ -9,7 +9,7 @@ import ProjectContext from "../context/pro_jects/projectContext"
 const EmailVerify = () => {
     const context = useContext(ProjectContext);
 
-    // context mese set_login function lekar aao
+    // // context mese set_login function lekar aao
     const { host } = context;
 
 	const [validUrl, setValidUrl] = useState(true);
@@ -25,7 +25,7 @@ const EmailVerify = () => {
                     }
                 });
                 const json = await response.json()
-                console.log(json);
+                console.log(json.message);
 				// console.log(data);
 				setValidUrl(true);
 			} catch (error) {

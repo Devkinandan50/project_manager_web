@@ -24,44 +24,46 @@ function App() {
     <>
       <ProState>
         <SomeState>
-        <Router>
-          <Navbar />
-          <div className="container">
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route exact path="/about">
-                <About />
-              </Route>
-              <Route exact path="/login">
-                <Login />
-              </Route>
-              <Route exact path="/signup">
-                <Signup />
-              </Route>
-              <Route exact path="/userinfo">
-                <UserInfo />
-              </Route>
-              <Route exact path="/facelogin">
-                <Facelogin />
-              </Route>
-              <Route exact path="/allprojects">
-                <Allprojects />
-              </Route>
-              <Route exact path="/password-reset">
-                <PasswordReset />
-              </Route>
-              <Route exact path="/forgotpassword/:id/:token">
-                <ForgotPassword />
-              </Route>
-              <Route exact path="/addproject">
-                <Newproject />
-              </Route>
-              <Route path="/users/:id/verify/:token" element={<EmailVerify />} />
-            </Switch>
-          </div>
-        </Router>
+          <Router>
+            <Navbar />
+            <div className="container">
+              <Switch>
+                <Route exact path="/">
+                  <Home />
+                </Route>
+                <Route exact path="/about">
+                  <About />
+                </Route>
+                <Route exact path="/login">
+                  <Login />
+                </Route>
+                <Route exact path="/signup">
+                  <Signup />
+                </Route>
+                <Route exact path="/userinfo">
+                  <UserInfo />
+                </Route>
+                <Route exact path="/facelogin">
+                  <Facelogin />
+                </Route>
+                <Route exact path="/allprojects">
+                  <Allprojects />
+                </Route>
+                <Route exact path="/password-reset">
+                  <PasswordReset />
+                </Route>
+                <Route exact path="/forgotpassword/:id/:token">
+                  <ForgotPassword />
+                </Route>
+                <Route exact path="/addproject">
+                  <Newproject />
+                </Route>
+                <Route exact path="/users/:id/verify/:token">
+                  <EmailVerify />
+                </Route>
+              </Switch>
+            </div>
+          </Router>
         </SomeState>
       </ProState>
     </>
