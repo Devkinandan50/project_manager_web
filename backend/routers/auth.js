@@ -94,23 +94,28 @@ router.post('/createuser', [
 
 
 // Activate Account of signup user
-router.get("/:id/verify/:token/", async (req, res) => {
+router.patch("/:id/verify/:token/", async (req, res) => {
+  let success = false;
 	try {
-		const user = await User.findOne({ _id: req.params.id });
-		if (!user) return res.status(400).send({ message: "Invalid link" });
+		// const user = await User.findOne({ _id: req.params.id });
+		// if (!user) return res.status(400).send({ success, message: "Invalid link 1" });
 
 		const token = await Token.findOne({
-			userId: user._id,
+			userId: req.params.id,
 			token: req.params.token,
 		});
-		if (!token) return res.status(400).send({ message: "Invalid link" });
+		if (!token) return res.status(400).send({ success, message: "Invalid link 2" });
 
-		await User.updateOne({ _id: user._id, verified: true });
-		await token.remove();
-
-		res.status(200).send({ message: "Email verified successfully" });
+		// await User.updateOne({ verified: true });
+    pro = await User.findByIdAndUpdate(req.params.id, { verified: true }, { new: true });
+    if(pro.verified){
+      await token.remove();
+      success = true;
+    }
+		res.status(200).send({ success, message: "Email verified successfully" });
 	} catch (error) {
 		res.status(500).send({ message: "Internal Server Error" });
+    console.log(error)
 	}
 });
 
@@ -137,7 +142,7 @@ router.post('/login', [
     const passwordCompare = await bcrypt.compare(password, user.password);
     if (!passwordCompare) {
       success = false
-      return res.status(400).json({ success, error: "Please try to login with correct credentials incorrect password" });
+      return res.status(400).json({ success, error: "Please try to login with correct credentials (incorrect password)" });
     }
 
     if (!user.verified) {
@@ -151,7 +156,7 @@ router.post('/login', [
 				await SendMail(user.email, "Verify Email", url);
 			}
 
-			return res.status(400).send({ message: "An Email sent to your account please verify" });
+			return res.status(400).send({ error: "An Email sent to your account please verify" });
 		}
 
 

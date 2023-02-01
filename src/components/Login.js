@@ -37,7 +37,7 @@ const Login = (props) => {
             history.push("/");
         }
         else {
-            display_alert("Invalid credentials", "danger");
+            display_alert(`${json.error}`, "danger");
         }
     }
 

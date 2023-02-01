@@ -19,15 +19,20 @@ const EmailVerify = () => {
 		const verifyEmailUrl = async () => {
 			try {
                 const response = await fetch(`${host}/api/auth/${param.id}/verify/${param.token}`, {
-                    method: 'GET',
+                    method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
                 const json = await response.json()
-                console.log(json.message);
-				// console.log(data);
-				setValidUrl(true);
+				if(json.success){
+					setValidUrl(true);
+				}
+				else{
+					console.log(json.message)
+					setValidUrl(false);
+				}
+                
 			} catch (error) {
 				console.log(error);
 				setValidUrl(false);
