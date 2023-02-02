@@ -33,7 +33,8 @@ router.get('/', (req, res)=>{
 
 // ROUTE : Create a User using: POST "/api/auth/createuser". No login required
 router.post('/createuser', [
-  body('name', 'Enter a valid name').isLength({ min: 3 }),
+  body('firstname', 'Enter a valid name').isLength({ min: 3 }),
+  body('lastname', 'Enter a valid name').isLength({ min: 3 }),
   body('email', 'Enter a valid email').isEmail(),
   body('password', 'Password must be atleast 5 characters').isLength({ min: 5 }),
 
@@ -59,7 +60,8 @@ router.post('/createuser', [
 
     // Create a new user
     user = await User.create({
-      name: req.body.name,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
       password: secPass,
       email: req.body.email,
       image: req.body.image,
@@ -82,7 +84,7 @@ router.post('/createuser', [
     success = true;
 
     // res.json(user)
-    res.status(201).send({ success, "name": user.name, "email": user.email, "message": "An Email sent to your account please verify" });
+    res.status(201).send({ success, "firstname": user.firstname, "lastname": user.lastname, "email": user.email, "message": "An Email sent to your account please verify" });
     // res.status(201).send({ success, authtoken, "name": user.name, "email": user.email, "message": "An Email sent to your account please verify" });
 
   } catch (error) {
@@ -169,7 +171,7 @@ router.post('/login', [
     const authtoken = jwt.sign(data, JWT_SECRET);
     // const authtoken = user.generateAuthToken();
     success = true;
-    res.status(200).send({ success, authtoken, message: "logged in successfully", "name": user.name, "email": user.email });
+    res.status(200).send({ success, authtoken, message: "logged in successfully", "firstname": user.firstname, "lastname": user.lastname, "email": user.email });
     // res.json({ success, authtoken, "name": user.name, "email": user.email })
 
   } catch (error) {
@@ -307,7 +309,7 @@ router.post('/face_login', [
 
 
     let imgCompare = false;
-    if (face_re(user.image, image, user.name)) {
+    if (face_re(user.image, image, user.firstname, user.lastname)) {
       imgCompare = true;
     }
 

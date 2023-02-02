@@ -49,7 +49,7 @@ export default function UserInfo() {
                             height= '350'
                         />
 
-                        <p className="title_0f_userinfo mt-3"> {userdata.name} </p>
+                        <p className="title_0f_userinfo mt-3"> {userdata.firstname} {userdata.lastname} </p>
                         <p> {userdata.email}</p>
 
                         <button className="mt-3" onClick={history.goBack} >back</button>

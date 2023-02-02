@@ -32,7 +32,7 @@ const Login = (props) => {
             // Save the auth token and redirect
             localStorage.setItem('token', json.authtoken);
             set_checK_loginOr_not(true);
-            setloginusername(json.name);
+            setloginusername(json.firstname);
             display_alert(`${json.message}`, "success");
             history.push("/");
         }

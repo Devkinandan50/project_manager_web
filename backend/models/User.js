@@ -4,7 +4,11 @@ const { Schema } = moongoose;
 
 
 const UserSchema = new Schema({
-    name:{
+    firstname:{
+        type: String,
+        required: true
+    },
+    lastname:{
         type: String,
         required: true
     },

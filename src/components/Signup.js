@@ -36,12 +36,12 @@ const Signup = () => {
 
 
     // get by id or name
-    const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpass: "" })
+    const [credentials, setCredentials] = useState({ firstname: "", lastname: "", email: "", password: "", cpass: "" })
     let history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { name, email, password, cpass } = credentials;
+        const { firstname, lastname, email, password, cpass } = credentials;
 
         if(cpass === password){
             const response = await fetch(`${host}/api/auth/createuser`, {
@@ -50,7 +50,7 @@ const Signup = () => {
                 'Content-Type': 'application/json'
             },
             // body: JSON.stringify({name: name, email: email, password: password})
-            body: JSON.stringify({name: name, email: email, password: password, image: base64code })
+            body: JSON.stringify({firstname: firstname, lastname: lastname, email: email, password: password, image: base64code })
             // body: JSON.stringify({ name, email, password, base64code })
         });
         const json = await response.json()
@@ -78,8 +78,12 @@ const Signup = () => {
         <div className="container mt-5">
             <form onSubmit={handleSubmit}>
                 <div className="form-group mb-3">
-                    <label htmlFor="name" className="form-label">Name </label>
-                    <input type="text" id="name" name="name" value={credentials.name} className="form-control" aria-describedby="emailHelp" placeholder="Enter name" onChange={onchange} required minLength={3} maxLength={18} />
+                    <label htmlFor="name" className="form-label">First Name </label>
+                    <input type="text" id="firstname" name="firstname" value={credentials.firstname} className="form-control" aria-describedby="emailHelp" placeholder="Enter name" onChange={onchange} required minLength={3} maxLength={18} />
+                </div>
+                <div className="form-group mb-3">
+                    <label htmlFor="name" className="form-label">last Name </label>
+                    <input type="text" id="lastname" name="lastname" value={credentials.lastname} className="form-control" aria-describedby="emailHelp" placeholder="Enter name" onChange={onchange} required minLength={3} maxLength={18} />
                 </div>
                 <div className="form-group mb-3">
                     <label htmlFor="email" className="form-label">Email </label>

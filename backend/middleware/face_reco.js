@@ -14,7 +14,7 @@ faceapi.env.monkeyPatch({ fetch: fetch });
 
 const MODELS_URL = path.join(__dirname, '/models');
 
-const face_re = (storeImg, log_Img, name) => {
+const face_re = (storeImg, log_Img, firstname, lastname) => {
     Promise.all([
         async function loadAllmodel() {
             await faceapi.nets.ssdMobilenetv1.loadFromDisk(MODELS_URL);
@@ -44,7 +44,7 @@ const face_re = (storeImg, log_Img, name) => {
             descriptions.push(detections.descriptor)
             console.log("description")
             console.log(descriptions)
-            return new faceapi.LabeledFaceDescriptors(name, descriptions)
+            return new faceapi.LabeledFaceDescriptors(firstname, descriptions)
         }
 
     // temp add kiya qki error nahi aana chahiye
