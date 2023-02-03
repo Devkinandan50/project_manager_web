@@ -90,7 +90,7 @@ const Dash = (props) => {
                                             </label>
                                         </div>
                                     </div>
-                                    <MissingDueDate data={data.missingdate} filter={checked}/>
+                                    <MissingDueDate data={data.missingdate}/>
 
 
                                 </>
