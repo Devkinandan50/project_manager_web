@@ -5,7 +5,6 @@ import { BsGithub } from "react-icons/bs";
 
 const MissingDueDate = (props) => {
     const { data } = props;
-
     return (
         <>
             <div style={{ height: '23rem', width: '100%', overflow: 'scroll' }}>
@@ -28,7 +27,6 @@ const MissingDueDate = (props) => {
                                         <div className='ms-3'>
                                             <p className='fw-bold mb-1'>
                                                 {item.projectname}
-
                                             </p>
                                         </div>
                                     </div>
