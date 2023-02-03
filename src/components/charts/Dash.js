@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Widgets from './widget/Widgets';
 import PieGraph from './pieChart/PieGraph';
 import Streamgraph from './streamChart/StreamChart';
@@ -6,12 +6,22 @@ import Bargraph from './barChart/BarGraph';
 import RemainingTable from './tableChart/RemainingTable';
 import MissingDueDate from './tableChart/MissingDueDate';
 import WaffleChart from './waffleChart/WaffleChart';
-import { Checkbox } from "reakit/Checkbox";
 
 const Dash = (props) => {
     const { data } = props;
     const [checked, setChecked] = React.useState(false);
-    const toggle = () => setChecked(!checked);
+    const toggle = () => { setChecked(!checked)};
+    const [filtermissingdate, setfiltermissingdate] = useState([])
+
+
+    // if(data.Projectname == "All"){
+    //     const filterdate = data.missingdate.filter((element) => {
+    //         return element.datemiss == "table-danger";
+    //     })
+    //     setfiltermissingdate(filterdate)
+    // }
+
+
     return (
         <>
             <div className="container" style={{ boxShadow: '2px 10px 20px rgba(0, 0, 0, 0.1)', borderRadius: '1rem', padding: '2rem 1rem 1rem 1rem' }} >
@@ -83,14 +93,20 @@ const Dash = (props) => {
                                             <h4> Missing Deadline </h4>
                                         </div>
 
-                                        <div style={{ marginRight: '1rem' }}>
-                                            <label>
-                                                <Checkbox checked={checked} onChange={toggle} />
-                                                Only missing
-                                            </label>
+                                        <div style={{ marginRight: '1rem', marginTop: '0.3rem' }}>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked={checked} onChange={toggle} />
+                                                <label class="form-check-label" for="flexSwitchCheckDefault">Only show Missing</label>
+                                            </div>
                                         </div>
+
                                     </div>
-                                    <MissingDueDate data={data.missingdate}/>
+                                    {checked ? (
+                                        <MissingDueDate data={filtermissingdate} />
+
+                                    ) : (
+                                        <MissingDueDate data={data.missingdate} />
+                                    )}
 
 
                                 </>
