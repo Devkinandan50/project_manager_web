@@ -4,7 +4,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { withStyles, useTheme } from "@material-ui/core/styles";
 import StateContext from "../../context/some_State/stateContext";
 import ProjectContext from "../../context/pro_jects/projectContext";
-import './Dashboard.css'
 import Dash from './Dash';
 
 
@@ -49,7 +48,7 @@ const DashBoard = () => {
 
     return (
         <>
-            <div className='headingdash'>
+            <div className='d-flex justify-content-between'>
                 <h2 style={{ padding: '1rem' }}> Dashboard</h2>
                 <div>
                     <FormControl variant="outlined" style={{ width: 200, marginTop: 10 }}>
