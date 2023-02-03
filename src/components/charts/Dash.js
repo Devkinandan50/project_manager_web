@@ -10,16 +10,7 @@ import WaffleChart from './waffleChart/WaffleChart';
 const Dash = (props) => {
     const { data } = props;
     const [checked, setChecked] = React.useState(false);
-    const toggle = () => { setChecked(!checked)};
-    const [filtermissingdate, setfiltermissingdate] = useState([])
-
-
-    // if(data.Projectname == "All"){
-    //     const filterdate = data.missingdate.filter((element) => {
-    //         return element.datemiss == "table-danger";
-    //     })
-    //     setfiltermissingdate(filterdate)
-    // }
+    const toggle = () => { setChecked(!checked) };
 
 
     return (
@@ -101,12 +92,9 @@ const Dash = (props) => {
                                         </div>
 
                                     </div>
-                                    {checked ? (
-                                        <MissingDueDate data={filtermissingdate} />
-
-                                    ) : (
-                                        <MissingDueDate data={data.missingdate} />
-                                    )}
+                                    
+                                        <MissingDueDate data={data.missingdate} filter={checked} />
+                            
 
 
                                 </>
