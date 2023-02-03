@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import ProjectContext from "../context/pro_jects/projectContext"
+import { ToastContainer, toast } from 'react-toastify';
 
 const Signup = () => {
     const context = useContext(ProjectContext);
 
     // context mese set_login function lekar aao
-    const { set_checK_loginOr_not, display_alert, host } = context;
+    const { host } = context;
 
 
     // convert input string to base64 string
@@ -49,25 +50,25 @@ const Signup = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            // body: JSON.stringify({name: name, email: email, password: password})
             body: JSON.stringify({firstname: firstname, lastname: lastname, email: email, password: password, image: base64code })
-            // body: JSON.stringify({ name, email, password, base64code })
         });
         const json = await response.json()
         console.log(json);
         if (json.success) {
-            // Save the auth token and redirect
-            // localStorage.setItem('token', json.authtoken);
-            // set_checK_loginOr_not(true);
-            // history.push("/");
-            display_alert(`${json.message}`, "success");
+            toast.success(`${json.message}`, {
+                position: "top-center"
+            });
         }
         else {
-            display_alert(`${json.error}`, "danger");
+            toast.error(`${json.error}`, {
+                position: "top-center"
+            });
         }
         }
         else{
-            display_alert("Password are not same", "danger");
+            toast.error("Password are not same", {
+                position: "top-center"
+            });
         }
     }
 
@@ -105,6 +106,7 @@ const Signup = () => {
 
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
+            <ToastContainer />
         </div>
     )
 }

@@ -18,18 +18,7 @@ const Pro_State = (props) => {
         { employename: '', employerole: '', employeemail: ''},
     ])
 
-  const [show_alert, set_show_alert] = useState(null);
-  // show_alert call in navbar and when we need to use alert we use display_alert function
-  const display_alert = (message, type) =>{
-    set_show_alert({
-      msg: message,
-      type: type
-    })
-    setTimeout(() => {
-      set_show_alert(null);
-    }, 2500);
-
-  }
+  
 
 
 
@@ -47,9 +36,6 @@ const Pro_State = (props) => {
       const json = await response.json()
       // console.log(json)
       setall_projects(json);
-    }
-    else {
-      display_alert("Please Login/Signup to access all functionlity", "warning");
     }
   }
 
@@ -70,9 +56,6 @@ const Pro_State = (props) => {
       const pro = await response.json();
       // old project me new node add karo  // Logic to add in client
       setall_projects(all_projects.concat(pro));
-    }
-    else {
-      display_alert("Please Login/Signup to add Project", "warning");
     }
   }
 
@@ -95,9 +78,6 @@ const Pro_State = (props) => {
         const newprojects = all_projects.filter((po) => { return po._id !== id })
         setall_projects(newprojects);
       }
-    }
-    else {
-      display_alert("Please Login/Signup to delete Project", "warning");
     }
   }
 
@@ -135,13 +115,10 @@ const Pro_State = (props) => {
       }
       setall_projects(newproj);
     }
-    else {
-      display_alert("Please Login/Signup to update Project", "warning");
-    }
   }
 
   return (
-    <ProjectContext.Provider value={{ host, all_projects, addProject, deleteProject, editProject, set_checK_loginOr_not, getProjects, checK_loginOr_not, show_alert, display_alert, set_listview, listview, facelogin_email, set_facelogin_email, addproEmployeData, setaddproEmployeData}}>
+    <ProjectContext.Provider value={{ host, all_projects, addProject, deleteProject, editProject, set_checK_loginOr_not, getProjects, checK_loginOr_not, set_listview, listview, facelogin_email, set_facelogin_email, addproEmployeData, setaddproEmployeData}}>
       {props.children}
     </ProjectContext.Provider>
   )

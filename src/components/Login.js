@@ -5,13 +5,14 @@ import '../style/login.css';
 import ProjectContext from "../context/pro_jects/projectContext"
 import Accordion from 'react-bootstrap/Accordion';
 import StateContext from "../context/some_State/stateContext"
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = (props) => {
     const context = useContext(ProjectContext);
     const sta_context = useContext(StateContext);
 
     // context mese set_login function lekar aao
-    const { set_checK_loginOr_not, display_alert, facelogin_email, set_facelogin_email, host} = context;
+    const { set_checK_loginOr_not, facelogin_email, set_facelogin_email, host} = context;
     const { setloginusername } = sta_context;
 
     const [credentials, setCredentials] = useState({ email: "", password: "" })
@@ -33,11 +34,15 @@ const Login = (props) => {
             localStorage.setItem('token', json.authtoken);
             set_checK_loginOr_not(true);
             setloginusername(json.firstname);
-            display_alert(`${json.message}`, "success");
+            toast.success(`${json.message}`, {
+                position: "top-center"
+            });
             history.push("/");
         }
         else {
-            display_alert(`${json.error}`, "danger");
+            toast.error(`${json.error || json.error.msg}`, {
+                position: "top-center"
+            });
         }
     }
 
@@ -93,6 +98,7 @@ const Login = (props) => {
                         </Accordion.Body>
                     </Accordion.Item> */}
                 </Accordion>
+                <ToastContainer />
             </div>
         </>
     )

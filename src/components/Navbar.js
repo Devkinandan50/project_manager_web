@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import ProjectContext from "../context/pro_jects/projectContext";
 import StateContext from "../context/some_State/stateContext";
-import Alert from './Alert';
 
 const Navbar = () => {
     let location = useLocation();
@@ -11,7 +10,7 @@ const Navbar = () => {
     const context = useContext(ProjectContext);
     const statecontext = useContext(StateContext);
 
-    const { checK_loginOr_not, set_checK_loginOr_not, show_alert } = context;
+    const { checK_loginOr_not, set_checK_loginOr_not } = context;
     const { loginusername } = statecontext;
 
     function handle_logout() {
@@ -67,8 +66,6 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
-            {/* use context and get show_alert state  */}
-            <Alert alert={show_alert} />
         </>
     )
 }
