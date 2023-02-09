@@ -44,7 +44,7 @@ const EmailVerify = () => {
 	return (
 		<>
 			{validUrl ? (
-				<div className={styles.containerofemail}>
+				<div className="container text-center">
 					<img src={success} alt="success_img" className={styles.success_img} />
 					<h1>Email verified successfully</h1>
 					<Link to="/login">
