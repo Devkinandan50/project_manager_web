@@ -18,6 +18,7 @@ import ForgotPassword from './components/passwordReset/ForgotPassword';
 import PasswordReset from './components/passwordReset/PasswordReset';
 import Newproject from './components/addproject/Add_newpro'
 import EmailVerify from './components/EmailVerify';
+import Howitsworks from './components/howitsworks';
 
 function App() {
   return (
@@ -60,6 +61,9 @@ function App() {
                 </Route>
                 <Route exact path="/users/:id/verify/:token">
                   <EmailVerify />
+                </Route>
+                <Route exact path="/howitsworks">
+                  < Howitsworks />
                 </Route>
               </Switch>
             </div>
