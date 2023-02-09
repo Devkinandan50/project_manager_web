@@ -71,7 +71,7 @@ const PasswordReset = () => {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default btn-sm btn-icon" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
-                            <button type="input" name="submit" value="resetPass" class="btn btn-success btn-sm btn-icon" onClick={sendLink}><i class="fa fa-check-square-o"></i> Reset Password</button>
+                            <button type="input" name="submit" value="resetPass" class="btn btn-success btn-sm btn-icon" onClick={sendLink}><i class="fa fa-check-square-o"></i> Send</button>
                         </div>
                     </form>
                 </div>
