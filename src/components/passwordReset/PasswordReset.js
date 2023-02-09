@@ -1,4 +1,4 @@
-import React, { useState, useContext} from 'react'
+import React, { useState, useContext } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProjectContext from '../../context/pro_jects/projectContext';
@@ -11,7 +11,7 @@ const PasswordReset = () => {
 
     const [email, setEmail] = useState("");
 
-    const [message, setMessage] = useState("");
+    // const [message, setMessage] = useState(true);
 
     const setVal = (e) => {
         setEmail(e.target.value)
@@ -41,9 +41,12 @@ const PasswordReset = () => {
 
             if (data.success) {
                 setEmail("");
-                setMessage(true)
+                toast.success("pasword reset link send Succsfully in Your Email", {
+                    position: "top-center"
+                })
+                // setMessage(true)
             } else {
-                toast.error(`${data.error}`,{
+                toast.error(`${data.error}`, {
                     position: "top-center"
                 })
             }
@@ -52,24 +55,28 @@ const PasswordReset = () => {
 
     return (
         <>
-            <section>
-                <div className="form_data">
-                    <div className="form_heading">
-                        <h1>Enter Your Email</h1>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Reset Your Account Password</h4>
                     </div>
-
-                    {message ? <p style={{ color: "green", fontWeight: "bold" }}>pasword reset link send Succsfully in Your Email</p> : ""}
                     <form>
-                        <div className="form_input">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" value={email} onChange={setVal} name="email" id="email" placeholder='Enter Your Email Address' />
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="accountEmail">Account Email</label>
+                                <input type="email" className="form-control" required="required" name="email" id="email" value={email} onChange={setVal} />
+                                <span class="help-block">The email address associated with your Account.</span>
+                                {/* {message ? <p style={{ color: "green", fontWeight: "bold" }}>pasword reset link send Succsfully in Your Email</p> : ""} */}
+                            </div>
                         </div>
-
-                        <button className='btn' onClick={sendLink}>Send</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default btn-sm btn-icon" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
+                            <button type="input" name="submit" value="resetPass" class="btn btn-success btn-sm btn-icon" onClick={sendLink}><i class="fa fa-check-square-o"></i> Reset Password</button>
+                        </div>
                     </form>
-                    <ToastContainer />
                 </div>
-            </section>
+                <ToastContainer />
+            </div>
         </>
     )
 }
