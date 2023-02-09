@@ -1,10 +1,23 @@
-import React, { useEffect, useState, useContext} from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useHistory } from 'react-router-dom';
 import ProjectContext from '../../context/pro_jects/projectContext';
+import {
+    MDBBtn,
+    MDBContainer,
+    MDBRow,
+    MDBCol,
+    MDBCard,
+    MDBCardBody,
+    MDBCardImage,
+    MDBInput,
+    MDBIcon,
+    MDBCheckbox
+}
+    from 'mdb-react-ui-kit';
 
 const ForgotPassword = () => {
     const context = useContext(ProjectContext);
@@ -18,8 +31,8 @@ const ForgotPassword = () => {
     const [data2, setData] = useState(false);
 
     const [password, setPassword] = useState("");
+    const [confirmPassword, setconfirmPassword] = useState("");
 
-    const [message, setMessage] = useState("");
 
     const userValid = async () => {
         const res = await fetch(`${host}/api/auth/forgotpasswordlinkverification/${id}/${token}`, {
@@ -43,11 +56,19 @@ const ForgotPassword = () => {
         setPassword(e.target.value)
     }
 
+    const setvalofconfirmpass = (e) => {
+        setconfirmPassword(e.target.value)
+    }
+
     const sendpassword = async (e) => {
         e.preventDefault();
 
         if (password === "") {
             toast.error("password is required!", {
+                position: "top-center"
+            });
+        } else if (password != confirmPassword) {
+            toast.error("password is not same", {
                 position: "top-center"
             });
         } else if (password.length < 5) {
@@ -67,9 +88,13 @@ const ForgotPassword = () => {
 
             if (data.status == 201) {
                 setPassword("")
-                setMessage(true)
+                setconfirmPassword("")
+                toast.success("Password Change Successfully", {
+                    position: "top-center"
+                })
+                
             } else {
-                toast.error("! Token Expired generate new LInk",{
+                toast.error("Token Expired generate new LInk", {
                     position: "top-center"
                 })
             }
@@ -88,25 +113,31 @@ const ForgotPassword = () => {
             {
                 data2 ? (
                     <>
-                        <section>
-                            <div className="form_data">
-                                <div className="form_heading">
-                                    <h1>Enter Your NEW Password</h1>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Enter Your NEW Password</h4>
                                 </div>
-
                                 <form>
-                                    {message ? <p style={{ color: "green", fontWeight: "bold" }}>Password Succesfulyy Update </p> : ""}
-                                    <div className="form_input">
-                                        <label htmlFor="password">New password</label>
-                                        <input type="password" value={password} onChange={setval} name="password" id="password" placeholder='Enter Your new password' />
-                                    </div>
+                                    <div class="modal-body">
+                                        <div className="d-flex flex-row align-items-center mb-4">
+                                            <MDBIcon fas icon="lock me-3" size='lg' />
+                                            <input type="password" id="password" name="password" value={password} className="form-control" placeholder="Password" onChange={setval} minLength={5} required />
+                                        </div>
 
-                                    <button className='btn' onClick={sendpassword}>Send</button>
+                                        <div className="d-flex flex-row align-items-center mb-4">
+                                            <MDBIcon fas icon="key me-3" size='lg' />
+                                            <input type="password" id="cpass" name="cpass" value={confirmPassword} className="form-control" placeholder="Confirm Password" onChange={setvalofconfirmpass} minLength={5} required />
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href='/login'><button type="button" class="btn btn-default btn-sm btn-icon" data-dismiss="modal"> Login</button></a>
+                                        <button type="input" name="submit" value="resetPass" class="btn btn-success btn-sm btn-icon" onClick={sendpassword}><i class="fa fa-check-square-o"></i> Reset Password</button>
+                                    </div>
                                 </form>
-                                <p><NavLink to="/">Home</NavLink></p>
-                                <ToastContainer />
                             </div>
-                        </section>
+                            <ToastContainer />
+                        </div>
                     </>
                 ) : <Box sx={{ display: 'flex', justifyContent: "center", alignItems: "center", height: "100vh" }}>
                     Loading... &nbsp;

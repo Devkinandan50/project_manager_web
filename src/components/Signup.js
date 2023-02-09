@@ -73,6 +73,7 @@ const Signup = () => {
             const json = await response.json()
             console.log(json);
             if (json.success) {
+                setCredentials({firstname: "", lastname: "", email: "", password: "", cpass: "" });
                 toast.success(`${json.message}`, {
                     position: "top-center"
                 });
@@ -95,37 +96,6 @@ const Signup = () => {
     }
     return (
         <div>
-            {/* <div className="container mt-5"> */}
-            {/* <form onSubmit={handleSubmit}>
-                <div className="form-group mb-3">
-                    <label htmlFor="name" className="form-label">First Name </label>
-                    <input type="text" id="firstname" name="firstname" value={credentials.firstname} className="form-control" aria-describedby="emailHelp" placeholder="Enter name" onChange={onchange} required minLength={3} maxLength={18} />
-                </div>
-                <div className="form-group mb-3">
-                    <label htmlFor="name" className="form-label">last Name </label>
-                    <input type="text" id="lastname" name="lastname" value={credentials.lastname} className="form-control" aria-describedby="emailHelp" placeholder="Enter name" onChange={onchange} required minLength={3} maxLength={18} />
-                </div>
-                <div className="form-group mb-3">
-                    <label htmlFor="email" className="form-label">Email </label>
-                    <input type="email" id="email" name="email" value={credentials.email} className="form-control" aria-describedby="emailHelp" placeholder="Enter email" onChange={onchange} required />
-                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div className="form-group mb-3">
-                    <label htmlFor="password" className="form-label">Password</label>
-                    <input type="password" id="password" name="password" value={credentials.password} className="form-control" placeholder="Password" onChange={onchange} minLength={5} required />
-                </div>
-                <div className="form-group mb-3">
-                    <label htmlFor="cpassword" className="form-label">Confirm Password</label>
-                    <input type="password" id="cpass" name="cpass" value={credentials.cpass} className="form-control" placeholder="Confirm Password" onChange={onchange} minLength={5} required />
-                </div>
-                <div className="form-group mb-3">
-                    <label htmlFor="image" className="form-label">Image</label>
-                    <input type="file" id="image" name="image" className="form-control" onChange={onchange_image} />
-                </div>
-
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
-            <ToastContainer /> */}
             <MDBContainer fluid>
 
                 <MDBCard className='text-black m-5' style={{ borderRadius: '25px' }}>
