@@ -70,7 +70,7 @@ const PasswordReset = () => {
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default btn-sm btn-icon" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
+                            <a href='/login'><button type="button" class="btn btn-default btn-sm btn-icon" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button></a>
                             <button type="input" name="submit" value="resetPass" class="btn btn-success btn-sm btn-icon" onClick={sendLink}><i class="fa fa-check-square-o"></i> Send</button>
                         </div>
                     </form>
