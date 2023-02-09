@@ -2,6 +2,24 @@ import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import ProjectContext from "../context/pro_jects/projectContext"
 import { ToastContainer, toast } from 'react-toastify';
+import {
+    MDBBtn,
+    MDBContainer,
+    MDBRow,
+    MDBCol,
+    MDBCard,
+    MDBCardBody,
+    MDBCardImage,
+    MDBInput,
+    MDBIcon,
+    MDBCheckbox
+}
+    from 'mdb-react-ui-kit';
+import successs from "../img/signup-image.jpg";
+
+
+
+
 
 const Signup = () => {
     const context = useContext(ProjectContext);
@@ -44,28 +62,28 @@ const Signup = () => {
         e.preventDefault();
         const { firstname, lastname, email, password, cpass } = credentials;
 
-        if(cpass === password){
+        if (cpass === password) {
             const response = await fetch(`${host}/api/auth/createuser`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({firstname: firstname, lastname: lastname, email: email, password: password, image: base64code })
-        });
-        const json = await response.json()
-        console.log(json);
-        if (json.success) {
-            toast.success(`${json.message}`, {
-                position: "top-center"
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ firstname: firstname, lastname: lastname, email: email, password: password, image: base64code })
             });
+            const json = await response.json()
+            console.log(json);
+            if (json.success) {
+                toast.success(`${json.message}`, {
+                    position: "top-center"
+                });
+            }
+            else {
+                toast.error(`${json.error}`, {
+                    position: "top-center"
+                });
+            }
         }
         else {
-            toast.error(`${json.error}`, {
-                position: "top-center"
-            });
-        }
-        }
-        else{
             toast.error("Password are not same", {
                 position: "top-center"
             });
@@ -76,8 +94,9 @@ const Signup = () => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value })
     }
     return (
-        <div className="container mt-5">
-            <form onSubmit={handleSubmit}>
+        <div>
+            {/* <div className="container mt-5"> */}
+            {/* <form onSubmit={handleSubmit}>
                 <div className="form-group mb-3">
                     <label htmlFor="name" className="form-label">First Name </label>
                     <input type="text" id="firstname" name="firstname" value={credentials.firstname} className="form-control" aria-describedby="emailHelp" placeholder="Enter name" onChange={onchange} required minLength={3} maxLength={18} />
@@ -106,7 +125,69 @@ const Signup = () => {
 
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
-            <ToastContainer />
+            <ToastContainer /> */}
+            <MDBContainer fluid>
+
+                <MDBCard className='text-black m-5' style={{ borderRadius: '25px' }}>
+                    <MDBCardBody>
+                        <MDBRow>
+                            <MDBCol md='10' lg='6' className='order-2 order-lg-1 d-flex flex-column align-items-center'>
+
+                                <div class="section-header">
+                                    <span>Sign up</span>
+                                    <h2>Sign up</h2>
+
+                                </div>
+                                <form onSubmit={handleSubmit}>
+                                    <div className="d-flex flex-row align-items-center mb-4 ">
+                                        <MDBIcon fas icon="user me-3" size='lg' />
+                                        <input type="text" id="firstname" name="firstname" value={credentials.firstname} className="form-control" aria-describedby="emailHelp" placeholder="Enter name" onChange={onchange} required minLength={3} maxLength={18} />
+                                    </div>
+
+                                    <div className="d-flex flex-row align-items-center mb-4 ">
+                                        <MDBIcon fas icon="user me-3" size='lg' />
+                                        <input type="text" id="lastname" name="lastname" value={credentials.lastname} className="form-control" aria-describedby="emailHelp" placeholder="Enter name" onChange={onchange} required minLength={3} maxLength={18} />
+                                    </div>
+
+                                    <div className="d-flex flex-row align-items-center mb-4">
+                                        <MDBIcon fas icon="envelope me-3" size='lg' />
+                                        <input type="email" id="email" name="email" value={credentials.email} className="form-control" aria-describedby="emailHelp" placeholder="Enter email" onChange={onchange} required />
+                                    </div>
+
+                                    <div className="d-flex flex-row align-items-center mb-4">
+                                        <MDBIcon fas icon="lock me-3" size='lg' />
+                                        <input type="password" id="password" name="password" value={credentials.password} className="form-control" placeholder="Password" onChange={onchange} minLength={5} required />
+                                    </div>
+
+                                    <div className="d-flex flex-row align-items-center mb-4">
+                                        <MDBIcon fas icon="key me-3" size='lg' />
+                                        <input type="password" id="cpass" name="cpass" value={credentials.cpass} className="form-control" placeholder="Confirm Password" onChange={onchange} minLength={5} required />
+                                    </div>
+
+                                    <div className="d-flex flex-row align-items-center mb-4">
+                                        <MDBIcon fas icon="envelope me-3" size='lg' />
+                                        <input type="file" id="image" name="image" className="form-control" onChange={onchange_image} />
+                                    </div>
+
+                                    <button type="submit" className="btn btn-primary">Submit</button>
+                                </form>
+
+                                {/* <MDBBtn className='mb-4' size='lg'>Register</MDBBtn> */}
+
+                            </MDBCol>
+
+                            <MDBCol md='10' lg='6' className='order-1 order-lg-2 d-flex align-items-center'>
+                                <MDBCardImage src={successs} fluid />
+                            </MDBCol>
+
+                        </MDBRow>
+                        <ToastContainer />
+                    </MDBCardBody>
+                </MDBCard>
+
+            </MDBContainer>
+
+
         </div>
     )
 }
