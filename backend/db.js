@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const mongoURL = "mongodb://localhost:27017/projectTracker";
+// const mongoURL = "mongodb://localhost:27017/projectTracker";
+const mongoURL = "mongodb+srv://devkinandan50:Devjagtap%40123@cluster0.ifcnprz.mongodb.net/projectTracker?retryWrites=true&w=majority";
 // const mongoURL = process.env.DATABASE;
 
 // const connectToMongo = () =>{
